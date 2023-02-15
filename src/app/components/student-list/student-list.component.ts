@@ -7,7 +7,9 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent {
+  
   s_founded: Student[] = [];
+  selected: string = "name";
   founded: number = 0;
   searchingBy: string = '';
 
