@@ -1,5 +1,5 @@
-<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-<app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
+<div *ngIf="total > 0" class="card-cointainer">
+<app-student-card *ngFor="let student of students" [student]="student"></app-student-card>
 </div>
 <ng-container *ngIf="total > 0; else noStudentsFound">
     <br/>
@@ -9,6 +9,6 @@
   </ng-container>
   <ng-template #noStudentsFound>
     <div>
-      <h4 class="result_text">There is no students, start adding one</h4>
+      <h4 class="result_text">There is no students, start by adding one</h4>
     </div>
 </ng-template>
