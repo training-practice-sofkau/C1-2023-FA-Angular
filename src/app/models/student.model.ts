@@ -1,8 +1,11 @@
+import { Course } from "./course.model";
+
 export interface Student {
-    id: string,
-    name: string,
-    idNum: string,
-    age: number,
-    mail: string,
-    numCourses: number
+  studentId: string,
+  name: string,
+  idNum: string,
+  age: number,
+  mail: string,
+  numCourses: number,
+  courseListDTO: Course[]
 }
