@@ -16,4 +16,8 @@ export class StudentService {
   getAll(): Observable<any>{
     return this.httpClient.get(this.url);
   }
+
+  saveStudent(form: any): Observable<any>{
+    return this.httpClient.post(this.url, form);
+  }
 }
