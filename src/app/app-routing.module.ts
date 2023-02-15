@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: WelcomePageComponent,
-    
+
   },
   {
     path: 'students',
@@ -30,29 +30,38 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    
+
     children: [
       {
         path: 'new',
-        component: StudentFormComponent},
+        component: StudentFormComponent
+      },
       {
         path: 'search',
-        component: StudentListComponent},
+        component: StudentListComponent
+      },
       {
         path: 'edit',
-        component: StudentFormComponent}  
+        component: StudentFormComponent
+      }
     ]
   },
   {
     path: 'courses',
-   
+
     children: [
       {
         path: 'new',
-        component: CourseFormComponent},
+        component: CourseFormComponent
+      },
       {
         path: 'search',
-        component: CourseListComponent}
+        component: CourseListComponent
+      },
+      {
+        path: 'edit',
+        component: CourseFormComponent
+      }
     ]
   }
 ];
