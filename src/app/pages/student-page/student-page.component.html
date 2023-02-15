@@ -1,5 +1,5 @@
 <div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-<app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
+  <app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
 </div>
 <ng-container *ngIf="total > 0; else noStudentsFound">
     <br/>
