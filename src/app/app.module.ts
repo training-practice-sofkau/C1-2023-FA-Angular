@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
@@ -42,6 +43,7 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
