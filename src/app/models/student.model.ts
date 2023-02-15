@@ -7,5 +7,5 @@ export interface Student {
   age: number,
   mail: string,
   numCourses: number,
-  courseListDTO: Course[]
+  courseListDTO: Course[] | []
 }
