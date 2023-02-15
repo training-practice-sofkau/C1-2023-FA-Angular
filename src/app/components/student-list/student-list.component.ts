@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
+
 
 @Component({
   selector: 'app-student-list',
@@ -12,6 +13,4 @@ export class StudentListComponent {
   selected: string = "name";
   founded: number = 0;
   searchingBy: string = '';
-
-
 }

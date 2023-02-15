@@ -16,7 +16,13 @@ export class StudentCardComponent {
     idNum: '',
     age: 0,
     mail: '',
-    numCourses: 0
+    course: {
+      id: 'test',
+      name: '',
+      coach: '',
+      level: 0,
+      lastUpdated: new Date(),
+    }
   }
 
   goToForm(){
