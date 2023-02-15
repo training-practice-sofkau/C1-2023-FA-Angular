@@ -11,12 +11,13 @@ import { StudentFormComponent } from '../../forms/student-form/student-form.comp
 export class StudentCardComponent {
   constructor(private router: Router) { }
   @Input() student: Student = {
-    id: '',
-    name: '',
-    idNum: '',
+    studentId: "n/a",
+    name: "n/a",
+    idNum: "n/a",
     age: 0,
-    mail: '',
-    numCourses: 0
+    mail: "n/a",
+    numCourses: 0,
+    courseListDTO: []
   }
 
   goToForm(){
@@ -25,9 +26,6 @@ export class StudentCardComponent {
         data: JSON.stringify(this.student)
 
       }
-      
     })
   }
-
-
 }
