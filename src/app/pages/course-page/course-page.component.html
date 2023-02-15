@@ -1,1 +1,14 @@
-<p>course-page works!</p>
+<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
+  <app-course-card *ngFor="let i_course of l_courses" [course]="i_course"></app-course-card>
+  </div>
+  <ng-container *ngIf="total > 0; else noStudentsFound">
+      <br/>
+      <div>
+        <h4 class="result_text">Founded: {{ total }}</h4>
+      </div>
+    </ng-container>
+    <ng-template #noStudentsFound>
+      <div>
+        <h4 class="result_text">There is no students, start adding one</h4>
+      </div>
+  </ng-template>
