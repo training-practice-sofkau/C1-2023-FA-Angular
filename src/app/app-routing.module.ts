@@ -12,53 +12,60 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
-
+    redirectTo: 'home',
   },
   {
     path: 'home',
     component: WelcomePageComponent,
-    
   },
   {
     path: 'students',
-    component: StudentPageComponent
+    component: StudentPageComponent,
   },
   {
     path: 'courses',
-    component: CoursePageComponent
+    component: CoursePageComponent,
   },
   {
     path: 'students',
-    
+
     children: [
       {
         path: 'new',
-        component: StudentFormComponent},
+        component: StudentFormComponent,
+      },
       {
         path: 'search',
-        component: StudentListComponent},
+        component: StudentListComponent,
+      },
       {
         path: 'edit',
-        component: StudentFormComponent}  
-    ]
+        component: StudentFormComponent,
+      },
+    ],
   },
   {
     path: 'courses',
-   
+
     children: [
       {
         path: 'new',
-        component: CourseFormComponent},
+        component: CourseFormComponent,
+      },
       {
         path: 'search',
-        component: CourseListComponent}
-    ]
-  }
+        component: CourseListComponent,
+      },
+      {
+        path: 'edit',
+        component: CourseFormComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
