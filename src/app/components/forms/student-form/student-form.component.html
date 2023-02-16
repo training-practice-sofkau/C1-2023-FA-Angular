@@ -1,17 +1,30 @@
-<form [formGroup] = "studentForm" ngClass="save">
-    <mat-form-field appearance="fill" >
-        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification" formControlName="idNum"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="age"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
-    </mat-form-field>
-    <button mat-raised-button color="primary">Save</button>
-    <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
- 
+<form [formGroup]="studentForm" ngClass="save">
+  <mat-form-field appearance="fill" aria-readonly="true">
+    <mat-label>Name: </mat-label>
+    <input matInput placeholder="Insert name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Identification: </mat-label>
+    <input
+      matInput
+      placeholder="Insert Identification"
+      formControlName="idNumber"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Age: </mat-label>
+    <input matInput placeholder="Insert age" formControlName="age" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Mail: </mat-label>
+    <input matInput placeholder="Insert mail" formControlName="mail" />
+  </mat-form-field>
+  <div class="buttons-container">
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Submit
+    </button>
+    <button mat-raised-button color="warn" routerLink="/students">
+      Go Back
+    </button>
+  </div>
 </form>
