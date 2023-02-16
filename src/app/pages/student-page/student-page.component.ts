@@ -26,13 +26,13 @@ export class StudentPageComponent implements OnInit {
   }
 
   deleteStudent(): void {
-    if (confirm('Do you want to delete the Artist?')) {
+    if (confirm('Do you want to delete the student?')) {
       this.service.deleteStudent(this.searchParameter).subscribe({
         error: console.log,
         complete: console.log,
       });
       this.total = this.students.length;
-      alert('The Student was deleted');
+      alert('The student was deleted');
     }
   }
 }
