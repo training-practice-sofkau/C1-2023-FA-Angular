@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Course} from "../../../models/course.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-card',
@@ -6,5 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-card.component.scss']
 })
 export class CourseCardComponent {
+
+  constructor(private router: Router) {
+  }
+
+  @Input() course: Course = {
+    id: "",
+    name: "",
+    coach: "",
+    level: 0,
+    lastUpdated: new Date(),
+    studentList: []
+  }
+
+  goToForm(){
+    this.router.navigate(['courses/edit'],{
+      queryParams:{
+        data: JSON.stringify(this.course)
+      }
+
+    })
+  }
 
 }

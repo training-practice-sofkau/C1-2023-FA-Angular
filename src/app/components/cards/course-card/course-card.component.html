@@ -1,1 +1,15 @@
-<p>course-card works!</p>
+<div class="flexContainer">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{course.name}}</mat-card-title>
+      <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
+      <mat-card-subtitle>Level: {{course.level}}</mat-card-subtitle>
+      <mat-card-subtitle>Last update: {{course.lastUpdated}}</mat-card-subtitle>
+      <app-student-card *ngFor="let i_student of course.studentList" [student]="i_student"></app-student-card>
+    </mat-card-header>
+    <mat-card-actions align="start">
+      <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
+      <button mat-button mat-raised-button color="warn" [ngStyle]="{marginLeft:'10px'}">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
