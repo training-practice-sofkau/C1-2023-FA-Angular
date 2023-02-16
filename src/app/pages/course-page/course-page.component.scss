@@ -1,0 +1,24 @@
+.course-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.course-card{
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    .course-card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .course-page{
+        margin-top: 6rem;
+    }
+
+}
+
