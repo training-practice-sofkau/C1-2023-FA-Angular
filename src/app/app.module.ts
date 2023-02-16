@@ -18,6 +18,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { StudentCardComponent } from './components/cards/student-card/student-card.component';
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
-    CourseCardComponent
+    CourseCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +44,10 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
