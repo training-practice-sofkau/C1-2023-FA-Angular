@@ -1,22 +1,54 @@
-<div [ngStyle]="{display: 'flex'}">
-  
+<!-- <div [ngStyle]="{display: 'flex'}">
+
         <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
         <button mat-raised-button color="primary" >Search</button>
 
+</div> -->
+
+<!-- Selectors and search -->
+<div ngClass="option-selector" [ngStyle]="{display: 'flex'}">
+  <div Ngclass="searchTxt">
+    <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
+  </div>
+  <div ngClass="dropdown-container">
+    <!-- Search type selector -->
+    <div style="width:200px; text-align:center">
+      <mat-select [(value)]="typeSearch">
+        <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </div>
+    <!-- Search strategy selector -->
+    <div style="width:200px; text-align:center">
+      <mat-select [(value)]="searchStrategy">
+        <mat-option *ngFor="let option of strategyOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div Ngclass="button" style="margin: 5px">
+    <button mat-raised-button color="primary">Search</button>
+  </div>
 </div>
 
+
+
+
+
+
+
+
+
+
 <div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
+  <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
 </div>
 <ng-container *ngIf="founded > 0; else noStudentsFound">
-    <div>
-      <h4 >Founded: {{ founded }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 >No student(s) were found</h4>
-    </div>
+  <div>
+    <h4>Founded: {{ founded }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div>
+    <h4>No student(s) were found</h4>
+  </div>
 </ng-template>

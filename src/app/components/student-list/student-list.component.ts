@@ -11,5 +11,10 @@ export class StudentListComponent {
   founded: number = 0;
   searchingBy: string = '';
 
-
+  typeSearch: string ="";
+  param: string = "";
+  paramApp: string ="";
+  searchStrategy: string = "";
+  typeOptions: string[] = ["ID", "Name", "Age", "Email"];
+  strategyOptions: string[] =["Starts with", "Contains"] ;
 }

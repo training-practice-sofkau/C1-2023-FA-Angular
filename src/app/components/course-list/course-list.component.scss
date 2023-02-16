@@ -1,0 +1,34 @@
+.option-selector{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.dropdown-container{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+
+.searchTxt{
+  padding: 12px 20px;
+  background-color: rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid rgb(0,0,0);
+}
+
+@media screen and (max-width: 650px) {
+  .option-selector{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+  }
+
+  .dropdown-container{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+  }
+}

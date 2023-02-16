@@ -1,1 +1,39 @@
-<p>course-list works!</p>
+<!-- Selectors and search -->
+<div ngClass="option-selector" [ngStyle]="{display: 'flex'}">
+  <div Ngclass="searchTxt">
+    <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
+  </div>
+  <div ngClass="dropdown-container">
+    <!-- Search type selector -->
+    <div style="width:200px; text-align:center">
+      <mat-select [(value)]="typeSearch">
+        <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </div>
+    <!-- Search strategy selector -->
+    <div style="width:200px; text-align:center">
+      <mat-select [(value)]="searchStrategy">
+        <mat-option *ngFor="let option of strategyOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div Ngclass="button" style="margin: 5px">
+    <button mat-raised-button color="primary">Search</button>
+  </div>
+</div>
+
+
+<div *ngIf="founded > 0">
+  <app-course-card *ngFor="let i_course of c_founded" [course]="i_course"></app-course-card>
+</div>
+<ng-container *ngIf="founded > 0; else noCoursesFound">
+  <div>
+    <h4>Founded: {{ founded }}</h4>
+  </div>
+</ng-container>
+<ng-template #noCoursesFound>
+  <div>
+    <h4>No course(s) were found</h4>
+  </div>
+</ng-template>
