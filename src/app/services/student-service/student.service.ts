@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Student } from 'src/app/models/student.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,14 @@ export class StudentService {
   }
   getByIdNum(param: string): Observable<any> {
     return this.http.get(`${this.api}idnum/${param}`);
+  }
+  saveNew(student: Student): Observable<any> {
+    return this.http.post(this.api,student);
+  }
+  update(student: Student): Observable<any> {
+    return this.http.patch(this.api,student);
+  }
+  delete(param: string): Observable<any> {
+    return this.http.delete(`${this.api}${param}`);
   }
 }

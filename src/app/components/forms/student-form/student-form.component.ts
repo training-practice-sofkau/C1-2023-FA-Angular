@@ -21,10 +21,12 @@ export class StudentFormComponent implements OnInit {
 
   constructor(
     private builder: FormBuilder,
-    private service: StudentService,
+    private studentService: StudentService,
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
+
+
     this.studentForm = this.builder.group({
       studentId: '',
       name: '',
@@ -44,9 +46,37 @@ export class StudentFormComponent implements OnInit {
       }
     });
   }
+
+  setFormValues(student: Student) {
+    this.studentForm.setValue({
+      studentId: student.studentId,
+      name: student.name,
+      idNum: student.idNum,
+      age: student.age,
+      mail: student.mail,
+    });
+  }
+
   onSave() {
     if (this.checkData('save')) {
-      console.log(this.studentForm.value);
+      this.studentService.saveNew(this.studentForm.value).subscribe({
+        next: (student) => {
+          this.setFormValues(student);
+        },
+        error: console.log,
+        complete: console.log,
+      });
+    }
+  }
+  update() {
+    if (this.checkData('save')) {
+      this.studentService.update(this.studentForm.value).subscribe({
+        next: (course) => {
+          this.setFormValues(course);
+        },
+        error: console.log,
+        complete: console.log,
+      });
     }
   }
   onCreate() {
@@ -55,7 +85,11 @@ export class StudentFormComponent implements OnInit {
         this.studentForm.value.studentId === '' ? 'create' : 'duplicate'
       )
     ) {
-      console.log(this.studentForm.value);
+      if(this.studentForm.value.studentId === ''){
+        this.onSave();
+      }else{
+        this.update();
+      }
     }
   }
 

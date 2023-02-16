@@ -14,15 +14,27 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Age: </mat-label>
-    <input type="number" matInput placeholder="Insert age" formControlName="age" />
+    <input
+      type="number"
+      matInput
+      placeholder="Insert age"
+      formControlName="age"
+    />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Mail: </mat-label>
     <input matInput placeholder="Insert mail" formControlName="mail" />
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
   <button mat-raised-button color="primary" (click)="onCreate()">
-    {{ this.studentForm.value.studentId === "" ? "Create" : "Duplicate" }}
+    {{ this.studentForm.value.studentId === "" ? "Save" : "Edit" }}
+  </button>
+  <button
+    *ngIf="!(this.studentForm.value.studentId === '')"
+    mat-raised-button
+    color="primary"
+    (click)="onSave()"
+  >
+  Duplicate
   </button>
   <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
 </form>
