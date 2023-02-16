@@ -4,3 +4,31 @@
 $pink-color: mat.$pink-palette;
 $blue-gray-color: mat.$blue-gray-palette;
 $gray-color: mat.$gray-palette;
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 400px;
+  margin: 10px;
+}
+
+.scrollable{
+  height: 200px;
+  width: fit-content;
+  overflow-y: auto;
+  margin: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  overflow-y: scroll;
+  background: transparent;
+  box-shadow: inset 0 0 4px #707070;
+}
+
+::-webkit-scrollbar-thumb {
+  background: map.get($blue-gray-color, 500);
+  border-radius: 10px;
+}
