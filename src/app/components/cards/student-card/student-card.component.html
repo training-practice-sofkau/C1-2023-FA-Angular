@@ -1,19 +1,23 @@
 <div class="container-fluid">
-<div [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-    <mat-card>
+
+    <mat-card [ngStyle]="{margin: '5px 0px 5px 0px'}">
+      <div [ngStyle]="{backgroundColor: '#ec84ae', display: 'flex',  flexDirection: 'column'}">
         <mat-card-header>
           <mat-card-title>{{student.name}}</mat-card-title>
-          <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
-          <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
-          <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
-          <mat-card-subtitle>No. Courses: {{student.numCourses}}</mat-card-subtitle>
         </mat-card-header>
+        <mat-card-content>
+          <mat-card-subtitle><b>Age:</b> {{student.age}}</mat-card-subtitle>
+          <mat-card-subtitle><b>Identification:</b> {{student.idNum}}</mat-card-subtitle>
+          <mat-card-subtitle><b>Email:</b> {{student.mail}}</mat-card-subtitle>
+          <mat-card-subtitle><b>No. Courses:</b> {{student.numCourses}}</mat-card-subtitle>
+        </mat-card-content>
         <mat-card-actions align="start">
-          <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
-          <button mat-button mat-raised-button color="accent">Delete</button>
+          <button mat-mini-fab  color="primary" (click)="goToForm()"><mat-icon>update</mat-icon></button>
+          <button mat-mini-fab  color="accent"><mat-icon>delete</mat-icon></button>
         </mat-card-actions>
+      </div>
     </mat-card>
 </div>
-</div>
+
   
 
