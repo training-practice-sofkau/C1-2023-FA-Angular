@@ -4,42 +4,51 @@ import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CourseService{
+export class CourseService {
+  url: string = 'http://localhost:8080/api/v1/sofka_catalog/course/';
 
-  url: string = "http://localhost:8080/api/v1/sofka_catalog/course/"
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(
-    private httpClient: HttpClient
-  ) {}
-
-  getAll(): Observable<any>{
+  getAll(): Observable<any> {
     return this.httpClient.get(this.url);
   }
 
-  getCourseById(id: string): Observable<any>{
+  getCourseById(id: string): Observable<any> {
     return this.httpClient.get(`${this.url}${id}`);
   }
 
-  editCourse(id: string, form: any): Observable<any>{
+  editCourse(id: string, form: any): Observable<any> {
     return this.httpClient.put(`${this.url}edit`, {
       id: id,
       name: form.name,
       coach: form.coach,
-      level: form.level
+      level: form.level,
     });
   }
 
-  saveCourse(form: any): Observable<any>{
-    return this.httpClient.post(`${this.url}`, form)
+  saveCourse(form: any): Observable<any> {
+    return this.httpClient.post(`${this.url}`, form);
   }
 
-  deleteCourse(id: string): Observable<any>{
+  deleteCourse(id: string): Observable<any> {
     return this.httpClient.delete(`${this.url}delete`, {
       body: {
-        id: id
-      }
-    })
+        id: id,
+      },
+    });
+  }
+
+  getCoursesByLevel(level: number): Observable<any> {
+    return this.httpClient.get(`${this.url}level/${level}`);
+  }
+
+  getCoursesByName(name: string): Observable<any> {
+    return this.httpClient.get(`${this.url}name/${name}`);
+  }
+
+  getCoursesByCoach(coach: string): Observable<any> {
+    return this.httpClient.get(`${this.url}coach/${coach}`);
   }
 }
