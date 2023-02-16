@@ -63,7 +63,7 @@ export class CourseFormComponent implements OnInit {
     } else if (this.courseForm.value.coach === '') {
       alert("You have write a coach's name to " + action + ' the course');
       return false;
-    } else if (this.courseForm.value.level === '') {
+    } else if (this.courseForm.value.level === null || this.courseForm.value.level === '') {
       alert('You have write a level to ' + action + ' the course');
       return false;
     } else if (

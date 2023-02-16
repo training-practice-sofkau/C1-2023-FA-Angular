@@ -1,14 +1,24 @@
-<form [formGroup] = "courseForm" ngClass="save">
-  <mat-form-field appearance="fill" >
-      <mat-label>Name: </mat-label>  <input matInput placeholder="Insert course name" formControlName="name"/>
+<form [formGroup]="courseForm" ngClass="save">
+  <mat-form-field appearance="fill">
+    <mat-label>Name: </mat-label>
+    <input matInput placeholder="Insert course name" formControlName="name" />
   </mat-form-field>
-  <mat-form-field appearance="fill" >
-      <mat-label>Coach: </mat-label> <input matInput placeholder="Insert coach name" formControlName="coach"/>
+  <mat-form-field appearance="fill">
+    <mat-label>Coach: </mat-label>
+    <input matInput placeholder="Insert coach name" formControlName="coach" />
   </mat-form-field>
-  <mat-form-field appearance="fill" >
-      <mat-label>Level: </mat-label> <input type="number" matInput placeholder="Insert level" formControlName="level"/>
+  <mat-form-field appearance="fill">
+    <mat-label>Level: </mat-label>
+    <input
+      type="number"
+      matInput
+      placeholder="Insert level"
+      formControlName="level"
+    />
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="onSave()">Save</button>
-  <button mat-raised-button color="primary" (click)="onCreate()">{{this.courseForm.value.courseId===""?"Create":"Duplicate"}}</button>
+  <button mat-raised-button color="primary" (click)="onCreate()">
+    {{ this.courseForm.value.courseId === "" ? "Create" : "Duplicate" }}
+  </button>
   <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
 </form>
