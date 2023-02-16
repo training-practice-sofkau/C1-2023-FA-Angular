@@ -2,13 +2,13 @@
   <app-course-card *ngFor="let course of l_courses" [course]="course"></app-course-card>
 </div>
 
-<ng-container *ngIf="total > 0; else noStudentsFound">
+<ng-container *ngIf="total > 0; else noCourseFound">
   <br/>
   <div [ngStyle]="{marginLeft:'10px'}">
     <h4 >Founded:{{ total }}</h4>
   </div>
 </ng-container>
-<ng-template #noStudentsFound>
+<ng-template #noCourseFound>
   <div [ngStyle]="{marginLeft:'10px'}">
     <h4>There is no students, start adding one</h4>
   </div>
