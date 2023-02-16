@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Course } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
 
 @Component({
@@ -36,14 +37,48 @@ export class CourseFormComponent implements OnInit {
     });
   }
 
+  setFormValues(course: Course) {
+    this.courseForm.setValue({
+      courseId: course.courseId,
+      name: course.name,
+      coach: course.coach,
+      level: course.level,
+    });
+  }
+
   onSave() {
-    if(this.checkData("save")){
-      console.log(this.courseForm.value);
+    if (this.checkData('save')) {
+      this.courseService.saveNew(this.courseForm.value).subscribe({
+        next: (course) => {
+          this.setFormValues(course);
+        },
+        error: console.log,
+        complete: console.log,
+      });
+    }
+  }
+  update() {
+    if (this.checkData('save')) {
+      this.courseService.update(this.courseForm.value).subscribe({
+        next: (course) => {
+          this.setFormValues(course);
+        },
+        error: console.log,
+        complete: console.log,
+      });
     }
   }
   onCreate() {
-    if(this.checkData(this.courseForm.value.courseId===""?"create":"duplicate")){
-      console.log(this.courseForm.value);
+    if (
+      this.checkData(
+        this.courseForm.value.courseId === '' ? 'create' : 'duplicate'
+      )
+    ) {
+      if(this.courseForm.value.courseId === ''){
+        this.onSave();
+      }else{
+        this.update();
+      }
     }
   }
 
@@ -63,7 +98,10 @@ export class CourseFormComponent implements OnInit {
     } else if (this.courseForm.value.coach === '') {
       alert("You have write a coach's name to " + action + ' the course');
       return false;
-    } else if (this.courseForm.value.level === null || this.courseForm.value.level === '') {
+    } else if (
+      this.courseForm.value.level === null ||
+      this.courseForm.value.level === ''
+    ) {
       alert('You have write a level to ' + action + ' the course');
       return false;
     } else if (

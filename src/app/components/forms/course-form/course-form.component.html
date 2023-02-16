@@ -16,9 +16,16 @@
       formControlName="level"
     />
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
   <button mat-raised-button color="primary" (click)="onCreate()">
-    {{ this.courseForm.value.courseId === "" ? "Create" : "Duplicate" }}
+    {{ this.courseForm.value.courseId === "" ? "Save" : "Edit" }}
+  </button>
+  <button
+    *ngIf="!(this.courseForm.value.courseId === '')"
+    mat-raised-button
+    color="primary"
+    (click)="onSave()"
+  >
+    Duplicate
   </button>
   <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
 </form>
