@@ -8,6 +8,6 @@
     <mat-form-field appearance="fill" >
         <mat-label>Level: </mat-label> <input type="number" matInput placeholder="Insert age" formControlName="level"/>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="sendCourse()">Save</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="this.courseForm.getRawValue()">Save</button>
  
 </form>
