@@ -4,26 +4,18 @@
     <input matInput placeholder="Insert name" formControlName="name" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Identification: </mat-label>
-    <input
-      matInput
-      placeholder="Insert Identification"
-      formControlName="idNumber"
-    />
+    <mat-label>Coach: </mat-label>
+    <input matInput placeholder="Insert Coach" formControlName="coach" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Age: </mat-label>
-    <input matInput placeholder="Insert age" formControlName="age" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Mail: </mat-label>
-    <input matInput placeholder="Insert mail" formControlName="mail" />
+    <mat-label>Level: </mat-label>
+    <input matInput placeholder="Insert level" formControlName="level" />
   </mat-form-field>
   <div class="buttons-container">
     <button mat-raised-button color="primary" (click)="onSubmit()">
       Submit
     </button>
-    <button mat-raised-button color="warn" routerLink="/students">
+    <button mat-raised-button color="warn" routerLink="/courses">
       Go Back
     </button>
   </div>
