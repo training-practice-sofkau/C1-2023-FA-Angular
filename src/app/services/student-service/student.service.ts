@@ -16,7 +16,7 @@ export class StudentService {
   }
 
   getByIdentificationNumber(idNumber: string): Observable<any> {
-    return this.http.get(this.api + '/' + idNumber);
+    return this.http.get(this.api + '/idNumber/' + idNumber);
   }
 
   getByName(name: string): Observable<any> {
@@ -28,7 +28,7 @@ export class StudentService {
   }
 
   putStudent(student: Student): Observable<any> {
-    return this.http.post(this.api, student);
+    return this.http.put(this.api, student);
   }
 
   deleteStudent(id: string) {
