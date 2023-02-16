@@ -29,5 +29,13 @@ export class StudentService{
     return this.http.delete(this.api+`/delete?studentId=${id}`,{responseType: 'text'})
   }
 
+  getStudentsByName(name:string):Observable<any>{
+    return this.http.get(this.api+`/nonpunctualn?name=${name}`)
+  }
+
+  getStudentsByIdNum(idNum:string):Observable<any>{
+    return this.http.get(this.api+`/punctualn?idNum=${idNum}`)
+  }
+
 
 }

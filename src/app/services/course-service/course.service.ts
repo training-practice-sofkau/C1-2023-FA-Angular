@@ -29,4 +29,16 @@ export class CourseService{
     return this.http.delete(this.api+`/delete?courseId=${id}`,{responseType: 'text'})
   }
 
+  getCoursesByName(name:string):Observable<any>{
+    return this.http.get(this.api+`/nonpunctualn?name=${name}`)
+  }
+
+  getCoursesByCoach(name:string):Observable<any>{
+    return this.http.get(this.api+`/nonpunctualc?name=${name}`)
+  }
+
+  getCoursesByLevel(name:number):Observable<any>{
+    return this.http.get(this.api+`/punctuall?level=${name}`)
+  }
+
 }
