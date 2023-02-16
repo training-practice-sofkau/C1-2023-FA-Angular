@@ -1,7 +1,6 @@
-import { Component, Input, KeyValueDiffers, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Student } from 'src/app/models/student.model';
+import { ActivatedRoute } from '@angular/router';
 import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
