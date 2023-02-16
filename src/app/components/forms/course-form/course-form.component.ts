@@ -45,7 +45,7 @@ export class CourseFormComponent {
 
       this.courseInitialization();
 
-      //Form setting values
+      //Setting values of the form
       if (this.course){
         this.courseForm.setValue({
           name: this.course.name,
