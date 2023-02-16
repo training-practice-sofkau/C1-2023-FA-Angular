@@ -10,6 +10,6 @@ export class StudentListComponent {
   s_founded: Student[] = [];
   founded: number = 0;
   searchingBy: string = '';
-
+  p: number = 0;
 
 }
