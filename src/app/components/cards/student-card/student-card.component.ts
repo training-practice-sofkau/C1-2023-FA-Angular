@@ -9,7 +9,7 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-card.component.scss'],
 })
 export class StudentCardComponent {
-  constructor(private router: Router) {}
+
   @Input() student: Student = {
     id: '',
     name: '',
@@ -17,13 +17,17 @@ export class StudentCardComponent {
     age: 0,
     mail: '',
     course: {
-      id: 'test',
+      id: '',
       name: '',
       coach: '',
       level: 0,
       lastUpdated: new Date(),
     },
   };
+
+  constructor(
+    private router: Router
+  ) {}
 
   goToForm() {
     this.router.navigate(['students/edit'], {

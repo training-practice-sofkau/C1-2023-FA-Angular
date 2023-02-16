@@ -49,10 +49,7 @@ export class StudentFormComponent implements OnInit {
           idNum: JSON.parse(info['data']).idNum,
           age: JSON.parse(info['data']).age,
           mail: JSON.parse(info['data']).mail,
-          course: { 
-            id: JSON.parse(info['data']).course.id, 
-            name: JSON.parse(info['data']).course.name 
-          }
+          course: JSON.parse(info['data']).course
         });
       }
     });
