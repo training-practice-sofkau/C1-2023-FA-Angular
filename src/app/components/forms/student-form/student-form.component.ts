@@ -28,7 +28,6 @@ export class StudentFormComponent implements OnInit{
         mail: ''
       }
     );
-    //this.studentForm.valueChanges.subscribe(console.log);
 
     this.route.queryParams.subscribe((info) => {
       if(JSON.stringify(info) !== JSON.stringify({})){

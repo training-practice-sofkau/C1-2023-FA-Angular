@@ -23,11 +23,7 @@ export class StudentCardComponent {
     this.router.navigate(['students/edit'],{
       queryParams:{
         data: JSON.stringify(this.student)
-
       }
-      
     })
   }
-
-
 }
