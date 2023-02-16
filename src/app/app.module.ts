@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialsModule } from './modules/material/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { StudentFormComponent } from './components/forms/student-form/student-form.component';
@@ -18,6 +18,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { StudentCardComponent } from './components/cards/student-card/student-card.component';
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
+
 
 @NgModule({
   declarations: [
@@ -33,14 +34,14 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
-    CourseCardComponent
+    CourseCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule,
+    MaterialsModule,
     FormsModule,
   ],
   providers: [],

@@ -1,0 +1,68 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$pink-color: mat.$pink-palette;
+$blue-gray-color: mat.$blue-gray-palette;
+$gray-color: mat.$gray-palette;
+
+
+.welcomeContainer{
+  display: flex;
+  height: 44vh;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.backImage{
+  background-image: url("https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 150%;
+}
+
+.welcomeBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  width: 150px;
+  height: 150px;
+  background: #00000080;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #FFFFFF80;
+  animation: breathing 3s ease-in-out infinite normal;
+}
+
+.ccText{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.noMargin{
+  margin: 0;
+}
+
+/*Animation*/
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
