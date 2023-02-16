@@ -26,23 +26,29 @@ export class StudentFormComponent implements OnInit{
         mail: ''
       }
     );
-    //this.studentForm.valueChanges.subscribe(console.log);
+    this.studentForm.valueChanges.subscribe(console.log);
 
     this.route.queryParams.subscribe((info) => {
-      if(JSON.stringify(info) !== JSON.stringify({})){
-        this.studentForm.setValue({
-          name: JSON.parse(info['data']).name,
-          idNum: JSON.parse(info['data']).idNum,
-          age: JSON.parse(info['data']).age,
-          mail: JSON.parse(info['data']).mail,
-         })
+        if(JSON.stringify(info) !== JSON.stringify({})){
+            this.studentForm.setValue({
+                name: JSON.parse(info['data']).name,
+                idNum: JSON.parse(info['data']).idNum,
+                age: JSON.parse(info['data']).age,
+                mail: JSON.parse(info['data']).mail,
+            })
 
-      }
-        
+        }
 
-    } )
-
+    })
 
   }
+
+  onSubmit(){
+      this.service.postStudent(this.studentForm.value).subscribe(()=> {
+          alert("Student created");
+      });
+
+  }
+
 
 }
