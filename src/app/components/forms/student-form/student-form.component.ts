@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
-import { Student } from 'src/app/models/student.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
 import { StudentService } from 'src/app/services/student-service/student.service';
 
@@ -12,8 +11,8 @@ import { StudentService } from 'src/app/services/student-service/student.service
   styleUrls: ['./student-form.component.scss'],
 })
 export class StudentFormComponent implements OnInit {
+  
   studentForm: FormGroup = new FormGroup({});
-  selectedCourse: string = '';
   l_course: Course[] = [];
 
   constructor(
@@ -40,7 +39,7 @@ export class StudentFormComponent implements OnInit {
       idNum: '',
       age: 0,
       mail: '',
-      course: {}
+      course: null
     });
 
     this.route.queryParams.subscribe((info) => {
@@ -50,9 +49,14 @@ export class StudentFormComponent implements OnInit {
           idNum: JSON.parse(info['data']).idNum,
           age: JSON.parse(info['data']).age,
           mail: JSON.parse(info['data']).mail,
+          course: { 
+            id: JSON.parse(info['data']).course.id, 
+            name: JSON.parse(info['data']).course.name 
+          }
         });
       }
     });
+
   }
 
   ngSaveStudent() {
@@ -63,7 +67,6 @@ export class StudentFormComponent implements OnInit {
       },
       complete: () => {},
     });
-    //this.router.navigate(['/students']);
-    console.log(this.studentForm.value);
+    this.router.navigate(['/students']);
   }
 }

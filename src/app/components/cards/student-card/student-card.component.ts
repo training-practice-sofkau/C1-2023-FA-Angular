@@ -1,15 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
-import { StudentFormComponent } from '../../forms/student-form/student-form.component';
+
 
 @Component({
   selector: 'app-student-card',
   templateUrl: './student-card.component.html',
-  styleUrls: ['./student-card.component.scss']
+  styleUrls: ['./student-card.component.scss'],
 })
 export class StudentCardComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
   @Input() student: Student = {
     id: '',
     name: '',
@@ -22,18 +22,14 @@ export class StudentCardComponent {
       coach: '',
       level: 0,
       lastUpdated: new Date(),
-    }
+    },
+  };
+
+  goToForm() {
+    this.router.navigate(['students/edit'], {
+      queryParams: {
+        data: JSON.stringify(this.student),
+      },
+    });
   }
-
-  goToForm(){
-    this.router.navigate(['students/edit'],{
-      queryParams:{
-        data: JSON.stringify(this.student)
-
-      }
-      
-    })
-  }
-
-
 }

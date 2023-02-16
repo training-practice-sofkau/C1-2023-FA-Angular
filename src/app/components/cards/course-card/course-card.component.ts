@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Course } from 'src/app/models/course.model';
 
 @Component({
   selector: 'app-course-card',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-card.component.scss']
 })
 export class CourseCardComponent {
+  
+  @Input() course: Course = {
+    id: '',
+    name: '',
+    coach: '',
+    level: 0,
+    lastUpdated: new Date()
+  }
 
+  goToForm(){}
 }
