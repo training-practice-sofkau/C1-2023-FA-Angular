@@ -12,9 +12,12 @@ import { StudentService } from 'src/app/services/student-service/student.service
 export class StudentFormComponent implements OnInit{
  
   studentForm: FormGroup = new FormGroup({});
+  hiddeCreateButton: boolean = false;
+  hiddeUpdateButton: boolean = false;
 
   constructor(private builder: FormBuilder, 
     private service: StudentService, 
+    private router: Router,
     private route: ActivatedRoute){
      
     }
@@ -41,6 +44,10 @@ export class StudentFormComponent implements OnInit{
          })
       }
     } )
+
+    this.studentForm.controls['idDTO'].value === ''?
+    this.hiddeUpdateButton=true:
+    this.hiddeCreateButton=true;
   }
 
   ngUpdateStudent(): void{
@@ -50,5 +57,15 @@ export class StudentFormComponent implements OnInit{
         console.log(answer);
       }
     )
+  }
+
+  ngSaveStudent(): void{
+    this.service.postStudent(this.studentForm.value).subscribe(
+    (answer) => {
+      alert("Student was added successfully");
+      console.log(answer);
+      this.router.navigate(["/students"]);
+    }
+  )
   }
 }
