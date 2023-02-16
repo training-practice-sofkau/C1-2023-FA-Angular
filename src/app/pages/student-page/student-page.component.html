@@ -1,5 +1,5 @@
 <div *ngIf="totalResults > 0" class="card-cointainer">
-<app-student-card *ngFor="let student of students" [student]="student"></app-student-card>
+<app-student-card *ngFor="let student of students" [student]="student" (reload)="getAll()"></app-student-card>
 </div>
 <ng-container *ngIf="totalResults > 0; else noStudentsFound">
     <br/>

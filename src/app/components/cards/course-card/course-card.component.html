@@ -1,15 +1,31 @@
-<div [ngStyle]="{display: 'flex', flexDirection: 'column'}">
+<div [ngStyle]="{ display: 'flex', flexDirection: 'column' }">
   <mat-card>
-      <mat-card-header>
-        <mat-card-title>{{course.name}}</mat-card-title>
-        <mat-card-subtitle>coach: {{course.coach}}</mat-card-subtitle>
-        <mat-card-subtitle>level: {{course.level}}</mat-card-subtitle>
-        <mat-card-subtitle>last update: {{course.lastUpdated}}</mat-card-subtitle>
+    <mat-card-header>
+      <div class="card-info">
+        <mat-card-title>{{ course.name }}</mat-card-title>
+        <mat-card-subtitle>coach: {{ course.coach }}</mat-card-subtitle>
+        <mat-card-subtitle>level: {{ course.level }}</mat-card-subtitle>
+        <mat-card-subtitle
+          >last update: {{ course.lastUpdated }}</mat-card-subtitle
+        >
         <!-- <mat-card-subtitle>No. Courses: {{course.numCourses}}</mat-card-subtitle> -->
-      </mat-card-header>
-      <mat-card-actions align="start">
-        <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
-        <button mat-button mat-raised-button color="accent" (click)="onDelete()">Delete</button>
-      </mat-card-actions>
+      </div>
+      <div class="relations">
+        <mat-card-title>Students</mat-card-title>
+        <div class="objects">
+          <div *ngFor="let student of course.studentListDTO">
+            <mat-card-subtitle>○ {{ student.name }}</mat-card-subtitle>
+          </div>
+        </div>
+      </div>
+    </mat-card-header>
+    <mat-card-actions align="start">
+      <button mat-button mat-raised-button color="primary" (click)="goToForm()">
+        Edit
+      </button>
+      <button mat-button mat-raised-button color="accent" (click)="onDelete()">
+        Delete
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
