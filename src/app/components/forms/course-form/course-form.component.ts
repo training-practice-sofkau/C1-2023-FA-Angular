@@ -15,7 +15,7 @@ export class CourseFormComponent {
 
   constructor(private builder: FormBuilder,
     private service: CourseService,
-    private courseRoute: ActivatedRoute){
+    private route: ActivatedRoute){
 
     }
   ngOnInit(): void {
@@ -24,11 +24,11 @@ export class CourseFormComponent {
         name: '',
         coach: '',
         level: 0,
-        studentsList: []
+        studentsList: ""
       }
     );
 
-    this.courseRoute.queryParams.subscribe((info) => {
+    this.route.queryParams.subscribe((info) => {
       if(JSON.stringify(info) !== JSON.stringify({})){
         this.courseFromUpdate = true;
 
@@ -36,7 +36,7 @@ export class CourseFormComponent {
           name: JSON.parse(info['data']).name,
           coach: JSON.parse(info['data']).coach,
           level: JSON.parse(info['data']).level,
-          studentsList: JSON.parse(info['data']).studentsList,
+          studentsList: "",
          })
       }
     })
