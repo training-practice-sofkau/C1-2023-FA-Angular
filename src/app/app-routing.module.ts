@@ -22,22 +22,15 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    component: StudentPageComponent
-  },
-  {
-    path: 'courses',
-    component: CoursePageComponent
-  },
-  {
-    path: 'students',
-    
+    component: StudentPageComponent,
     children: [
+      {
+        path: '',
+        component: StudentListComponent},
       {
         path: 'new',
         component: StudentFormComponent},
-      {
-        path: 'search',
-        component: StudentListComponent},
+      
       {
         path: 'edit',
         component: StudentFormComponent}  
@@ -45,8 +38,11 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-   
+    component: CoursePageComponent,
     children: [
+      {
+        path: '',
+        component: CourseListComponent},
       {
         path: 'new',
         component: CourseFormComponent},

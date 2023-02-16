@@ -18,6 +18,10 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { StudentCardComponent } from './components/cards/student-card/student-card.component';
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EditCourseButtonComponent } from './components/modals/edit-course-button/edit-course-button.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditCourseFormComponent } from './components/forms/edit-course-form/edit-course-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,9 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    EditCourseButtonComponent,
+    EditCourseFormComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,8 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
