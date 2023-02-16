@@ -22,9 +22,34 @@ export class StudentPageComponent {
     age: 55,
     mail: "sarah.vargas@hotmail.com",
     numCourses: 2
-  }];
-  
+  },
+  {
+    id: "3",
+    name: "Andrés Camilo",
+    idNum: "0987654321",
+    age: 55,
+    mail: "sarah.vargas@hotmail.com",
+    numCourses: 2
+  },
+  {
+    id: "4",
+    name: "Ricardo Milos",
+    idNum: "0987654321",
+    age: 55,
+    mail: "sarah.vargas@hotmail.com",
+    numCourses: 2
+  },
+  {
+    id: "5",
+    name: "Jorge Pastor",
+    idNum: "0987654321",
+    age: 55,
+    mail: "sarah.vargas@hotmail.com",
+    numCourses: 2
+  }
+];
+
   total: number = this.l_students.length;
-  
+
 
 }
