@@ -10,6 +10,7 @@ import { StudentService } from 'src/app/services/student-service/student.service
 export class StudentPageComponent implements OnInit{
 
   l_students: Student[] = [];
+  p: number = 1;
 
   /* l_students: Student[] = [{
     id: "1",
