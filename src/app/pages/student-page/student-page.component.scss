@@ -9,3 +9,16 @@
 .student-card{
     display: flex;
 }
+
+@media only screen and (max-width: 600px) {
+    .student-card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .student-page{
+        margin-top: 6rem;
+    }
+
+}
+
