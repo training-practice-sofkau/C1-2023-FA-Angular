@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$pink-color: mat.$pink-palette;
+$blue-gray-color: mat.$blue-gray-palette;
+$gray-color: mat.$gray-palette;
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  margin: 10px;
+}

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
-import { StudentFormComponent } from '../../forms/student-form/student-form.component';
 
 @Component({
   selector: 'app-student-card',
@@ -23,9 +22,7 @@ export class StudentCardComponent {
     this.router.navigate(['students/edit'],{
       queryParams:{
         data: JSON.stringify(this.student)
-
       }
-      
     })
   }
 
