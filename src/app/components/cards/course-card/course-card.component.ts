@@ -12,6 +12,8 @@ export class CourseCardComponent {
   constructor(private router: Router) {
   }
 
+  public pageName: string = "coursePage";
+
   @Input() course: Course = {
     id: "",
     name: "",

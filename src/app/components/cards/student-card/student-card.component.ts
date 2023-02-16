@@ -9,6 +9,9 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentCardComponent {
   constructor(private router: Router) { }
+
+  @Input() father: string = "";
+
   @Input() student: Student = {
     id: '',
     name: '',

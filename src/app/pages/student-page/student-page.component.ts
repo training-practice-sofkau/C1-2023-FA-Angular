@@ -7,6 +7,9 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-page.component.scss']
 })
 export class StudentPageComponent {
+
+  public pageName: string = "studentPage";
+
   l_students: Student[] = [{
     id: "1",
     name: "Mary Rojas",
