@@ -1,14 +1,8 @@
-import {
-  Component,
-  Input,
-  KeyValueDiffers,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
@@ -39,7 +33,6 @@ export class StudentFormComponent implements OnInit {
       age: 0,
       mail: '',
     });
-    //this.studentForm.valueChanges.subscribe(console.log);
 
     this.route.queryParams.subscribe((info) => {
       if (JSON.stringify(info) !== JSON.stringify({})) {
