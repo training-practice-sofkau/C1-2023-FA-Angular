@@ -57,6 +57,10 @@ const routes: Routes = [
         path: 'search',
         component: CourseListComponent,
       },
+      {
+        path: 'edit',
+        component: CourseFormComponent,
+      },
     ],
   },
   {
