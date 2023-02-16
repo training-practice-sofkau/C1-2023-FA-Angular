@@ -10,13 +10,14 @@ import { StudentService } from 'src/app/services/student-service/student.service
   styleUrls: ['./student-form.component.scss']
 })
 export class StudentFormComponent implements OnInit{
- 
-  studentForm: FormGroup = new FormGroup({});
 
-  constructor(private builder: FormBuilder, 
-    private service: StudentService, 
+  studentForm: FormGroup = new FormGroup({});
+  studentFromUpdate = false;
+
+  constructor(private builder: FormBuilder,
+    private service: StudentService,
     private route: ActivatedRoute){
-     
+
     }
   ngOnInit(): void {
     this.studentForm = this.builder.group(
@@ -31,19 +32,15 @@ export class StudentFormComponent implements OnInit{
 
     this.route.queryParams.subscribe((info) => {
       if(JSON.stringify(info) !== JSON.stringify({})){
+        this.studentFromUpdate = true;
+
         this.studentForm.setValue({
           name: JSON.parse(info['data']).name,
           idNum: JSON.parse(info['data']).idNum,
           age: JSON.parse(info['data']).age,
           mail: JSON.parse(info['data']).mail,
          })
-
       }
-        
-
-    } )
-
-
+    })
   }
-
 }
