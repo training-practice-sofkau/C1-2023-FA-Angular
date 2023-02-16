@@ -3,3 +3,48 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    //color: #333;
+    box-sizing: border-box;
+    //-webkit-font-smoothing: antialiased;
+    //-moz-osx-font-smoothing: grayscale;
+    display: flex;
+    padding: 0 16px 0px 16px;
+    //width: 100%;
+    height: 88%;
+    //margin: 40px 0px 0px 10px;
+    align-items: center;
+      justify-content: center;
+  }
+  .mat-mdc-card {
+    position: relative;
+    border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 4px));
+    background-color: #ec84ae;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--mdc-elevated-card-container-color, transparent);
+}
+  .cardContains{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mat-mdc-card-header {
+    //display: flex;
+    padding: 16px 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mat-mdc-card-title{
+  text-align: center;
+}
+.btn {
+  margin-right: 20pt;
+  margin-left: 20pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
