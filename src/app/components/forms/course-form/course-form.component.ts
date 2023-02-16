@@ -5,42 +5,43 @@ import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 
 @Component({
-  selector: 'app-course-form',
-  templateUrl: './course-form.component.html',
-  styleUrls: ['./course-form.component.scss']
+    selector: 'app-course-form',
+    templateUrl: './course-form.component.html',
+    styleUrls: ['./course-form.component.scss']
 })
-export class CourseFormComponent implements OnInit{
+export class CourseFormComponent implements OnInit {
 
-  constructor(
-    private builder: FormBuilder,
-    private service: StudentService,
-    private route: ActivatedRoute,
-    private location: Location
-  ) {
-  }
-  courseForm: FormGroup = new FormGroup({});
+    constructor(
+        private builder: FormBuilder,
+        private service: StudentService,
+        private route: ActivatedRoute,
+        private location: Location
+    ) {
+    }
 
-  ngOnInit(): void {
-    this.courseForm = this.builder.group({
-      name: '',
-      coach: '',
-      level: 0,
-    });
-    //this.studentForm.valueChanges.subscribe(console.log);
+    courseForm: FormGroup = new FormGroup({});
 
-    this.route.queryParams.subscribe((info) => {
-      if(JSON.stringify(info) !== JSON.stringify({})){
-        this.courseForm.setValue({
-          name: JSON.parse(info['data']).name,
-          coach: JSON.parse(info['data']).coach,
-          level: JSON.parse(info['data']).level,
-        })
-      }
-    });
-  }
+    ngOnInit(): void {
+        this.courseForm = this.builder.group({
+            name: '',
+            coach: '',
+            level: 0,
+        });
+        //this.studentForm.valueChanges.subscribe(console.log);
 
-  backButton(){
-    this.location.back();
-  }
+        this.route.queryParams.subscribe((info) => {
+            if (JSON.stringify(info) !== JSON.stringify({})) {
+                this.courseForm.setValue({
+                    name: JSON.parse(info['data']).name,
+                    coach: JSON.parse(info['data']).coach,
+                    level: JSON.parse(info['data']).level,
+                });
+            }
+        });
+    }
+
+    backButton() {
+        this.location.back();
+    }
 
 }

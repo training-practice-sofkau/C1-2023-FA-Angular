@@ -10,19 +10,19 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-    declarations: [],
-    exports: [
-      MatToolbarModule,
-      MatListModule,
-      MatButtonModule,
-      MatIconModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatSidenavModule,
-      MatExpansionModule,
-      MatCardModule
-    ]
-  }
+        declarations: [],
+        exports: [
+            MatToolbarModule,
+            MatListModule,
+            MatButtonModule,
+            MatIconModule,
+            MatFormFieldModule,
+            MatInputModule,
+            MatSidenavModule,
+            MatExpansionModule,
+            MatCardModule
+        ]
+    }
 )
 export class MaterialsModule {
 }

@@ -1,33 +1,45 @@
-import { Component } from '@angular/core';
-import { Student } from 'src/app/models/student.model';
+import {Component} from '@angular/core';
+import {Student} from 'src/app/models/student.model';
 
 @Component({
-  selector: 'app-student-page',
-  templateUrl: './student-page.component.html',
-  styleUrls: ['./student-page.component.scss']
+    selector: 'app-student-page',
+    templateUrl: './student-page.component.html',
+    styleUrls: ['./student-page.component.scss']
 })
 export class StudentPageComponent {
 
-  public pageName: string = "studentPage";
+    public pageName: string = "studentPage";
 
-  l_students: Student[] = [{
-    id: "1",
-    name: "Mary Rojas",
-    idNum: "1234567890",
-    age: 25,
-    mail: "mary.rojas@hotmail.com",
-    numCourses: 1
-  },
-  {
-    id: "2",
-    name: "Sarah Vargas",
-    idNum: "0987654321",
-    age: 55,
-    mail: "sarah.vargas@hotmail.com",
-    numCourses: 0
-  }];
+    l_students: Student[] = [{
+        id: "1",
+        name: "Mary Rojas",
+        idNum: "1234567890",
+        age: 25,
+        mail: "mary.rojas@hotmail.com",
+        numCourses: 1
+    },
+        {
+            id: "2",
+            name: "Sarah Vargas",
+            idNum: "0987654321",
+            age: 55,
+            mail: "sarah.vargas@hotmail.com",
+            numCourses: 0
+        },
+        {
+            id: "3",
+            name: "Nicolas Pinilla",
+            idNum: "12345678928",
+            age: 20,
+            mail: "nico.pinilla@hotmail.com",
+            numCourses: 1
+        }];
 
-  total: number = this.l_students.length;
+    total: number = this.l_students.length;
+
+    getAll() {
+
+    }
 
 
 }

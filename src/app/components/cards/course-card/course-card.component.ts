@@ -3,32 +3,32 @@ import {Course} from "../../../models/course.model";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-course-card',
-  templateUrl: './course-card.component.html',
-  styleUrls: ['./course-card.component.scss']
+    selector: 'app-course-card',
+    templateUrl: './course-card.component.html',
+    styleUrls: ['./course-card.component.scss']
 })
 export class CourseCardComponent {
 
-  constructor(private router: Router) {
-  }
+    constructor(private router: Router) {
+    }
 
-  public pageName: string = "coursePage";
+    public pageName: string = "coursePage";
 
-  @Input() course: Course = {
-    id: "",
-    name: "",
-    coach: "",
-    level: 0,
-    lastUpdated: new Date(),
-    studentList: []
-  }
+    @Input() course: Course = {
+        id: "",
+        name: "",
+        coach: "",
+        level: 0,
+        lastUpdated: new Date(),
+        studentList: []
+    };
 
-  goToForm(){
-    this.router.navigate(['courses/edit'],{
-      queryParams:{
-        data: JSON.stringify(this.course)
-      }
-    })
-  }
+    goToForm() {
+        this.router.navigate(['courses/edit'], {
+            queryParams: {
+                data: JSON.stringify(this.course)
+            }
+        });
+    }
 
 }
