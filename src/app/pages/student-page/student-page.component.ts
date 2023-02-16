@@ -13,7 +13,7 @@ export class StudentPageComponent {
     idNum: "1234567890",
     age: 25,
     mail: "mary.rojas@hotmail.com",
-    numCourses: 0
+    numCourses: 1
   },
 {
     id: "2",
@@ -21,10 +21,10 @@ export class StudentPageComponent {
     idNum: "0987654321",
     age: 55,
     mail: "sarah.vargas@hotmail.com",
-    numCourses: 2
+    numCourses: 0
   }];
-  
+
   total: number = this.l_students.length;
-  
+
 
 }

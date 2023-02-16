@@ -1,14 +1,15 @@
-<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-<app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
+<div *ngIf="total > 0" class="flexContainer">
+  <app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
 </div>
+
 <ng-container *ngIf="total > 0; else noStudentsFound">
-    <br/>
-    <div>
-      <h4 class="result_text">Founded: {{ total }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 class="result_text">There is no students, start adding one</h4>
-    </div>
+  <br/>
+  <div [ngStyle]="{marginLeft:'10px'}">
+    <h4 >Founded:{{ total }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div [ngStyle]="{marginLeft:'10px'}">
+    <h4>There is no students, start adding one</h4>
+  </div>
 </ng-template>
