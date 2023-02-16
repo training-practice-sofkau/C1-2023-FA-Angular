@@ -38,7 +38,7 @@ export class StudentService{
   }
 
   putStudent(studentDTO: Student): Observable<any>{
-    return this.http.post(this.api,studentDTO);
+    return this.http.put(this.api,studentDTO);
   }
 
   deleteStudent(studentId: string): Observable<any>{
