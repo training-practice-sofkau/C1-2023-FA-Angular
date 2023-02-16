@@ -10,23 +10,21 @@ import { StudentService } from 'src/app/services/student-service/student.service
   styleUrls: ['./student-form.component.scss']
 })
 export class StudentFormComponent implements OnInit{
- 
+
   studentForm: FormGroup = new FormGroup({});
 
-  constructor(private builder: FormBuilder, 
-    private service: StudentService, 
+  constructor(private builder: FormBuilder,
+    private service: StudentService,
     private route: ActivatedRoute){
-     
+
     }
   ngOnInit(): void {
-    this.studentForm = this.builder.group(
-      {
+    this.studentForm = this.builder.group({
         name: '',
         idNum: '',
         age: 0,
         mail: ''
-      }
-    );
+      });
     //this.studentForm.valueChanges.subscribe(console.log);
 
     this.route.queryParams.subscribe((info) => {
@@ -37,13 +35,8 @@ export class StudentFormComponent implements OnInit{
           age: JSON.parse(info['data']).age,
           mail: JSON.parse(info['data']).mail,
          })
-
       }
-        
-
-    } )
-
-
+    });
   }
 
 }

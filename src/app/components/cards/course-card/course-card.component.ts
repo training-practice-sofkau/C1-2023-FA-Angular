@@ -26,7 +26,6 @@ export class CourseCardComponent {
       queryParams:{
         data: JSON.stringify(this.course)
       }
-
     })
   }
 
