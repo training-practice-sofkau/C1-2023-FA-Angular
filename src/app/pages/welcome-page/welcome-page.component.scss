@@ -1,0 +1,57 @@
+.background-image{
+  //background-color: aqua;
+  min-height: 250px;
+  max-height: 250px;
+  align-items: center;
+}
+
+.small-image-container{
+  display: grid;
+  justify-content: center;
+}
+
+.sofka-background{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sofka-background-min{
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 905px) {
+  .big-image-container{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 905px) {
+  .small-image-container{
+    display: none;
+  }
+}
+
+.horizontal-division{
+  border: 5px solid rgb(37, 62, 170);
+  border-radius: 20px;
+  width: 90%;
+}
+
+.cards-container{
+  justify-content: center;
+}
+
+.card-container{
+  margin: 5px;
+}
+
+.card-title{
+  text-align: center;
+}
+
+.text-container{
+  text-align: center;
+}
