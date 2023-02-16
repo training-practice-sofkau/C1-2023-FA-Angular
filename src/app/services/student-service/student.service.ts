@@ -19,5 +19,10 @@ export class StudentService{
   postStudent(student: Student){
     return this.http.post(this.api, student)
   }
+  
+  deleteStudent(id: number){
+      return this.http.delete(`${this.api}/${id}`, { responseType: 'text' })
+  }
+
 
 }

@@ -32,6 +32,14 @@ export class StudentPageComponent implements OnInit {
         })
     }
 
+    deleteArtist(param: number){
+        if(confirm("Do you really want to delete?"))
+            {
+                this.service.deleteStudent(param).subscribe(() => this.ngOnInit())
+            }
+    }
+
+
 
 
 }
