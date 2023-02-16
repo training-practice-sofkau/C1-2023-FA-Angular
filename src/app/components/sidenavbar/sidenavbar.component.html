@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <mat-toolbar color = "primary"> 
     <mat-toolbar-row> 
         <button mat-icon-button (click)="sidenav.toggle();">
@@ -5,7 +6,7 @@
         </button> Sofka Catalog
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-sidenav-container>
+  <mat-sidenav-container class="mat-sidenav-container">
     <mat-sidenav  #sidenav opened mode="side" >
         <mat-nav-list>
             <a mat-list-item routerLink="/home"> <mat-icon>home</mat-icon> Home</a>  
@@ -32,3 +33,4 @@
         </div>
     </mat-sidenav-content>       
 </mat-sidenav-container>
+</div>
