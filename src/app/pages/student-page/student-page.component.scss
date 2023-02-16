@@ -1,0 +1,23 @@
+@media screen and (max-width: 40em){
+  .students-container {
+    display: flex;
+    flex-direction: column;
+    app-student-card {
+      padding: 15px;
+    }
+  }
+}
+
+@media screen and (min-width: 40em){
+  .students-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    app-student-card {
+      padding: 15px;
+    }
+  }
+}
+
+.students-results-details {
+  margin-left: 15px;
+}
