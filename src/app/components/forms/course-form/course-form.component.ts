@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {StudentService} from "../../../services/student-service/student.service";
 import {ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-course-form',
@@ -13,7 +14,8 @@ export class CourseFormComponent implements OnInit{
   constructor(
     private builder: FormBuilder,
     private service: StudentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
   }
   courseForm: FormGroup = new FormGroup({});
@@ -35,6 +37,10 @@ export class CourseFormComponent implements OnInit{
         })
       }
     });
+  }
+
+  backButton(){
+    this.location.back();
   }
 
 }

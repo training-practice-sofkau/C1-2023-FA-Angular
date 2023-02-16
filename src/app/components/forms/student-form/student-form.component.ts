@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student-service/student.service';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-student-form',
@@ -15,7 +16,9 @@ export class StudentFormComponent implements OnInit{
 
   constructor(private builder: FormBuilder,
     private service: StudentService,
-    private route: ActivatedRoute){
+    private route: ActivatedRoute,
+    private location: Location
+  ){
 
     }
   ngOnInit(): void {
@@ -37,6 +40,10 @@ export class StudentFormComponent implements OnInit{
          })
       }
     });
+  }
+
+  backButton(){
+    this.location.back();
   }
 
 }
