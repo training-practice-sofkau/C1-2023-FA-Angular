@@ -4,5 +4,5 @@ export interface Student {
     idNumDTO: string,
     ageDTO: number,
     mailDTO: string,
-    numCoursesDTO: number
+    //numCoursesDTO: number
 }
