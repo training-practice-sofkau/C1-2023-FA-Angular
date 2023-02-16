@@ -1,22 +1,44 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
-        <button mat-raised-button color="primary" >Search</button>
-
+<div class="placeholder--container">
+  <div>
+    <input
+      class="student-input"
+      matInput
+      placeholder="Enter text"
+      [(ngModel)]="searchingBy"
+    />
+  </div>
+  <form>
+    <select name="searchTypes" [(ngModel)]="typeSearch">
+      <option value="">Select a type</option>
+      <option *ngFor="let type of typeSearchList" [ngValue]="type">
+        {{ type }}
+      </option>
+    </select>
+  </form>
+  <div>
+    <button
+      class="search-btn"
+      mat-raised-button
+      color="primary"
+      (click)="onSearch()"
+    >
+      Search
+    </button>
+  </div>
 </div>
-
-<div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
+<div *ngIf="total > 0">
+  <app-student-card
+    *ngFor="let student of students"
+    [student]="student"
+  ></app-student-card>
 </div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
-    <div>
-      <h4 >Founded: {{ founded }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 >No student(s) were found</h4>
-    </div>
+<ng-container *ngIf="total > 0; else noStudentsFound">
+  <div>
+    <h4>Founded: {{ total }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div>
+    <h4>No student(s) were found</h4>
+  </div>
 </ng-template>
