@@ -1,8 +1,8 @@
 export interface Student {
-    id: string,
-    name: string,
-    idNum: string,
-    age: number,
-    mail: string,
-    numCourses: number
+    idDTO: string,
+    nameDTO: string,
+    idNumDTO: string,
+    ageDTO: number,
+    mailDTO: string,
+    numCoursesDTO: number
 }

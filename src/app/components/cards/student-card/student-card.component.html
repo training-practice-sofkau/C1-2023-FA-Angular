@@ -3,12 +3,12 @@
     <mat-card [ngStyle]="{margin: '5px 0px 5px 0px'}">
       <div [ngStyle]="{backgroundColor: '#ec84ae', display: 'flex',  flexDirection: 'column'}">
         <mat-card-header>
-          <mat-card-title>{{student.name}}</mat-card-title>
+          <mat-card-title>{{student.nameDTO}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <mat-card-subtitle><b>Age:</b> {{student.age}}</mat-card-subtitle>
-          <mat-card-subtitle><b>Identification:</b> {{student.idNum}}</mat-card-subtitle>
-          <mat-card-subtitle><b>Email:</b> {{student.mail}}</mat-card-subtitle>
+          <mat-card-subtitle><b>Age:</b> {{student.ageDTO}}</mat-card-subtitle>
+          <mat-card-subtitle><b>Identification:</b> {{student.idNumDTO}}</mat-card-subtitle>
+          <mat-card-subtitle><b>Email:</b> {{student.mailDTO}}</mat-card-subtitle>
         </mat-card-content>
         <mat-card-actions align="start">
           <button mat-mini-fab  color="primary" (click)="goToForm()"><mat-icon>update</mat-icon></button>
