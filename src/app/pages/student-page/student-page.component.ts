@@ -7,22 +7,51 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-page.component.scss']
 })
 export class StudentPageComponent {
-  l_students: Student[] = [{
-    id: "1",
-    name: "Mary Rojas",
-    idNum: "1234567890",
-    age: 25,
-    mail: "mary.rojas@hotmail.com",
-    numCourses: 0
-  },
-{
-    id: "2",
-    name: "Sarah Vargas",
-    idNum: "0987654321",
-    age: 55,
-    mail: "sarah.vargas@hotmail.com",
-    numCourses: 2
-  }];
+
+ page: number = 1;
+
+  l_students: Student[] = [
+      {
+          id: "1",
+          name: "Mary Rojas",
+          idNum: "1234567890",
+          age: 25,
+          mail: "mary.rojas@hotmail.com",
+          numCourses: 0
+      },
+      {
+          id: "2",
+          name: "Sarah Vargas",
+          idNum: "0987654321",
+          age: 55,
+          mail: "sarah.vargas@hotmail.com",
+          numCourses: 2
+      },
+      {
+          id: "3",
+          name: "Sarah Vargas",
+          idNum: "0987654321",
+          age: 55,
+          mail: "sarah.vargas@hotmail.com",
+          numCourses: 2
+      },
+      {
+          id: "4",
+          name: "Sarah Vargas",
+          idNum: "0987654321",
+          age: 55,
+          mail: "sarah.vargas@hotmail.com",
+          numCourses: 2
+      },
+      {
+          id: "5",
+          name: "Sarah Vargas",
+          idNum: "0987654321",
+          age: 55,
+          mail: "sarah.vargas@hotmail.com",
+          numCourses: 2
+      }
+];
   
   total: number = this.l_students.length;
   
