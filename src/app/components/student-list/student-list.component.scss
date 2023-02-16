@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: 100%;
+  }
+  
+  .title--container {
+    width: 60%;
+    min-height: 5%;
+    margin: 2% 0% 2% 0%;
+    text-align: center;
+  }
+  
+  .info--container {
+    width: 90%;
+    height: 90vh;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cards--container{
+    width: 90%;
+    height: 90%;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }

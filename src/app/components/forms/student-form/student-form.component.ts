@@ -14,8 +14,8 @@ export class StudentFormComponent implements OnInit{
   studentForm: FormGroup = new FormGroup({});
 
   constructor(private builder: FormBuilder, 
-    private service: StudentService, 
-    private route: ActivatedRoute){
+    private service: StudentService,
+    private router:Router){
      
     }
   ngOnInit(): void {
@@ -27,23 +27,22 @@ export class StudentFormComponent implements OnInit{
         mail: ''
       }
     );
-    //this.studentForm.valueChanges.subscribe(console.log);
+  }
 
-    this.route.queryParams.subscribe((info) => {
-      if(JSON.stringify(info) !== JSON.stringify({})){
-        this.studentForm.setValue({
-          name: JSON.parse(info['data']).name,
-          idNum: JSON.parse(info['data']).idNum,
-          age: JSON.parse(info['data']).age,
-          mail: JSON.parse(info['data']).mail,
-         })
-
-      }
-        
-
-    } )
-
-
+  sendStudent(){
+    this.service.saveStudent(this.studentForm.getRawValue()).subscribe({
+      next: (res) => {
+        if (res == null) {
+          alert("We can't save this course");
+        } else {
+          alert('Course save');
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['./students']));
+        }
+      },
+      error: console.log,
+    });
   }
 
 }

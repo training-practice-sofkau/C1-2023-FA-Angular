@@ -1,22 +1,26 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
-        <button mat-raised-button color="primary" >Search</button>
-
-</div>
-
-<div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
-</div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
-    <div>
-      <h4 >Founded: {{ founded }}</h4>
+<div class="container">
+  <div class="title--container"><h1>Sofka Students</h1></div>
+  <div class="info--container">
+    <div class="cards--container">
+      <app-student-card
+      *ngFor="let i_student of l_students"
+      [student]="i_student"
+      (editStudent)="updateStudent($event)"
+      (idStudent)="deleteStudent($event)"
+    ></app-student-card>
     </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 >No student(s) were found</h4>
-    </div>
-</ng-template>
+      
+      <ng-container *ngIf="total > 0; else noStudentsFound">
+        <br />
+        <div>
+          <h4 class="result_text">Found: {{ total }}</h4>
+        </div>
+      </ng-container>
+    
+    <ng-template #noStudentsFound>
+      <div>
+        <h4 class="result_text">There is no students, start adding one</h4>
+      </div>
+    </ng-template>
+  </div>
+</div>
