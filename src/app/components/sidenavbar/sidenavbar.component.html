@@ -1,34 +1,33 @@
-<mat-toolbar color = "primary"> 
-    <mat-toolbar-row> 
+<mat-toolbar color = "primary">
+    <mat-toolbar-row>
         <button mat-icon-button (click)="sidenav.toggle();">
             <mat-icon >menu</mat-icon>
         </button> Sofka Catalog
     </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-sidenav-container>
-    <mat-sidenav  #sidenav opened mode="side" >
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav closed mode="side" >
+    <mat-nav-list>
+        <a mat-list-item routerLink="/home"> <mat-icon>home</mat-icon> Home</a>
+    </mat-nav-list>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header><a mat-list-item routerLink="/students"> <mat-icon>people</mat-icon>  Students</a></mat-expansion-panel-header>
         <mat-nav-list>
-            <a mat-list-item routerLink="/home"> <mat-icon>home</mat-icon> Home</a>  
+        <a mat-list-item routerLink="/students/new"> <mat-icon>person_add</mat-icon> New student</a>
+        <a mat-list-item routerLink="/students/search"> <mat-icon>search</mat-icon> Search</a>
         </mat-nav-list>
-        <mat-expansion-panel> 
-            <mat-expansion-panel-header><a mat-list-item routerLink="/students"> <mat-icon>people</mat-icon>  Students</a></mat-expansion-panel-header>
-            <mat-nav-list>
-            <a mat-list-item routerLink="/students/new"> <mat-icon>person_add</mat-icon> New student</a>
-            <a mat-list-item routerLink="/students/search"> <mat-icon>search</mat-icon> Search</a>
-            </mat-nav-list>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header ><a mat-list-item routerLink="/courses"> <mat-icon>library_books</mat-icon> Courses</a></mat-expansion-panel-header>
-            <mat-nav-list>
-            <a mat-list-item routerLink="/courses/new"> <mat-icon>library_add</mat-icon> New course</a>
-            <a mat-list-item routerLink="/courses/search"> <mat-icon>search</mat-icon> Search</a>
-            </mat-nav-list>
-        </mat-expansion-panel>
-        
-    </mat-sidenav>
-    <mat-sidenav-content >
-        <div style ="height: 88vh;">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>       
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header ><a mat-list-item routerLink="/courses"> <mat-icon>library_books</mat-icon> Courses</a></mat-expansion-panel-header>
+        <mat-nav-list>
+        <a mat-list-item routerLink="/courses/new"> <mat-icon>library_add</mat-icon> New course</a>
+        <a mat-list-item routerLink="/courses/search"> <mat-icon>search</mat-icon> Search</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-sidenav>
+  <mat-sidenav-content >
+      <div style ="height: 88vh;">
+          <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
