@@ -1,22 +1,30 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
-        <button mat-raised-button color="primary" >Search</button>
-
+<div [ngStyle]="{ display: 'flex' }">
+  <input matInput placeholder="Enter text" [(ngModel)]="searchParams" />
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="''">seach by</option>
+    <option [value]="'name'">name</option>
+    <option [value]="'idNum'">id number</option>
+  </select>
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
 </div>
-
-<div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
-</div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
+<div *ngIf="isSearch">
+  <div *ngIf="totalResults > 0">
+    <app-student-card
+      *ngFor="let student of students"
+      [student]="student"
+    ></app-student-card>
+  </div>
+  <ng-container *ngIf="totalResults > 0; else noStudentsFound">
     <div>
-      <h4 >Founded: {{ founded }}</h4>
+      <h4>Total Results: {{ totalResults }}</h4>
     </div>
   </ng-container>
   <ng-template #noStudentsFound>
     <div>
-      <h4 >No student(s) were found</h4>
+      <h4>No student(s) were found</h4>
     </div>
-</ng-template>
+  </ng-template>
+</div>
+<div *ngIf="!isSearch">
+  <h4>Search something to see the results</h4>
+</div>

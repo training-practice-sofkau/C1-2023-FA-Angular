@@ -14,4 +14,11 @@ export class StudentService{
   getAll() : Observable<any>  {
     return this.http.get(this.api);
   }
+  getByName(param : string): Observable<any>  {
+    return this.http.get(`${this.api}name/${param}`);
+  }
+  getByIdNum(param : string): Observable<any>  {
+    return this.http.get(`${this.api}idnum/${param}`);
+  }
+
 }
