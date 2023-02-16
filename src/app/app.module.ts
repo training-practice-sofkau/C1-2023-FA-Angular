@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditCourseButtonComponent } from './components/modals/edit-course-button/edit-course-button.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditCourseFormComponent } from './components/forms/edit-course-form/edit-course-form.component';
+import { EditStudentComponent } from './components/forms/edit-student/edit-student.component';
+import { EditStudentButtonComponent } from './components/modals/edit-student-button/edit-student-button.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { EditCourseFormComponent } from './components/forms/edit-course-form/edi
     StudentCardComponent,
     CourseCardComponent,
     EditCourseButtonComponent,
-    EditCourseFormComponent
+    EditCourseFormComponent,
+    EditStudentComponent,
+    EditStudentButtonComponent
   ],
   imports: [
     BrowserModule,
