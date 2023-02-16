@@ -6,6 +6,7 @@ import { CourseService } from 'src/app/services/course-service/course.service';
 import {MatDialog} from '@angular/material/dialog';
 import { StudentCardComponent } from '../student-card/student-card.component';
 import { StudentInfoComponent } from '../../pop-ups/student-info/student-info.component';
+import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
   selector: 'app-course-card',
@@ -16,6 +17,7 @@ export class CourseCardComponent {
 
   constructor(private router: Router,
     private service: CourseService,
+    private serviceStudent: StudentService,
     private dialog:MatDialog) { }
 
   showStudents: boolean = false;
@@ -61,5 +63,13 @@ export class CourseCardComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  onUnregisterStudent(student:Student): void {
+    this.serviceStudent.update(<string>student.studentId,student
+      ).subscribe((answer)=>{
+        console.log(answer)
+        alert(`Student with ID: ${answer.data.studentId} has been updated!`)
+      })
   }
 }

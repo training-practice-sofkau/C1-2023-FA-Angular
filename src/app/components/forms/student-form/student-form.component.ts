@@ -30,6 +30,7 @@ export class StudentFormComponent implements OnInit {
         idNum: JSON.parse(info['data']).idNum,
         mail: JSON.parse(info['data']).mail,
         age: JSON.parse(info['data']).age,
+        course: JSON.parse(info['data']).course
       }
     }
     console.log(this.student)
@@ -42,7 +43,8 @@ export class StudentFormComponent implements OnInit {
         name: '',
         idNum: '',
         age: 0,
-        mail: ''
+        mail: '',
+        course: {}
       }
     );
     //this.studentForm.valueChanges.subscribe(console.log);
@@ -56,6 +58,7 @@ export class StudentFormComponent implements OnInit {
         idNum: this.student.idNum,
         age: this.student.age,
         mail: this.student.mail,
+        course: this.student.course
       })
     }
 

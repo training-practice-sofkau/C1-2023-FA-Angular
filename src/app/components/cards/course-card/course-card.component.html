@@ -12,7 +12,7 @@
           <div ngClass="student-container">
             <li ngClass="student-name">{{student.name}}</li>
             <mat-icon (click)="openDialog(student)">search</mat-icon>
-            <mat-icon>clear</mat-icon>
+            <mat-icon (click)="onUnregisterStudent(student)">clear</mat-icon>
           </div>
         </div>
       </ul>

@@ -37,7 +37,7 @@ export class StudentPageComponent implements OnInit{
     this.service.getAll().subscribe({
       next: (students) => {
         this.l_students = students.data,
-        //console.log(students.data)
+        console.log(students.data)
         this.total = this.l_students.length;
       },
       error: (console.log),
