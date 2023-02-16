@@ -1,1 +1,44 @@
-<p>course-list works!</p>
+<div class="placeholder--container">
+  <div>
+    <input
+      class="course-input"
+      matInput
+      placeholder="Enter text"
+      [(ngModel)]="searchingBy"
+    />
+  </div>
+  <form>
+    <select name="searchTypes" [(ngModel)]="typeSearch">
+      <option value="">Select a type</option>
+      <option *ngFor="let type of typeSearchList" [ngValue]="type">
+        {{ type }}
+      </option>
+    </select>
+  </form>
+  <div>
+    <button
+      class="search-btn"
+      mat-raised-button
+      color="primary"
+      (click)="onSearch()"
+    >
+      Search
+    </button>
+  </div>
+</div>
+<div *ngIf="total > 0">
+  <app-course-card
+    *ngFor="let course of courses"
+    [course]="course"
+  ></app-course-card>
+</div>
+<ng-container *ngIf="total > 0; else noStudentsFound">
+  <div>
+    <h4>Founded: {{ total }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div>
+    <h4>No course(s) were found</h4>
+  </div>
+</ng-template>
