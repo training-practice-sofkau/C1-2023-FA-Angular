@@ -7,6 +7,7 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-page.component.scss']
 })
 export class StudentPageComponent {
+  p: number = 0;
   l_students: Student[] = [{
     id: "1",
     name: "Mary Rojas",
