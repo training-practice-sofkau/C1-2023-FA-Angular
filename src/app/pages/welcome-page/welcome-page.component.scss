@@ -38,4 +38,12 @@
   }
 }
 
+@media screen and (max-width: 40em){
+  .training-leagues-container{
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+
 
