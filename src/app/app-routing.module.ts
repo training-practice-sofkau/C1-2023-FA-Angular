@@ -7,6 +7,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'courses',
     component: CoursePageComponent
+  },
+  {
+    path: '404',
+    component: NotFoundComponent
   },
   {
     path: 'students',
