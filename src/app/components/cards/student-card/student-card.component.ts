@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student-service/student.service';
@@ -13,8 +13,6 @@ export class StudentCardComponent {
 
   constructor(private router: Router, private service: StudentService) { }
 
-  @Input() param: number = 0;
-
   @Input() student: Student = {
     id: 0,
     name: '',
@@ -22,6 +20,9 @@ export class StudentCardComponent {
     age: 0,
     mail: '',
   }
+
+  @Output()
+ someEvent = new EventEmitter();
 
   goToForm(){
     this.router.navigate(['students/edit'],{
@@ -33,11 +34,19 @@ export class StudentCardComponent {
     })
   }
 
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+    sendNotification() {
+        this.notifyParent.emit('Some value to send to the parent');
+    }
+
+
   deleteArtist(param: number){
       if(confirm("Do you really want to delete?"))
           {
-              this.service.deleteStudent(param).subscribe();
+              this.service.deleteStudent(param).subscribe(() => this.someEvent.emit(null));
           }
+
+     // this.notifyParent.emit("event-name")
   }
 
 
