@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 import { Student } from 'src/app/models/student.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
+import {MatDialog} from '@angular/material/dialog';
+import { StudentCardComponent } from '../student-card/student-card.component';
+import { StudentInfoComponent } from '../../pop-ups/student-info/student-info.component';
 
 @Component({
   selector: 'app-course-card',
@@ -11,7 +14,11 @@ import { CourseService } from 'src/app/services/course-service/course.service';
 })
 export class CourseCardComponent {
 
-  constructor(private router: Router, private service: CourseService) { }
+  constructor(private router: Router,
+    private service: CourseService,
+    private dialog:MatDialog) { }
+
+  showStudents: boolean = false;
 
   @Input() course: Course = {
     courseId: '',
@@ -42,5 +49,17 @@ export class CourseCardComponent {
       }
 
     })
+  }
+
+  onShowStudents(): void {
+    this.showStudents= !this.showStudents;
+  }
+
+  openDialog(student:Student) {
+    const dialogRef = this.dialog.open(StudentInfoComponent,{data: student});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
