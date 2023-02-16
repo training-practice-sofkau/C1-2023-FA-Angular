@@ -18,7 +18,7 @@ export class CoursePageComponent implements OnInit {
     this.service.getAll().subscribe({
       next: (courses) => {
         this.l_courses = courses.data,
-        console.log(courses.data)
+        //console.log(courses.data)
         this.total = this.l_courses.length;
       },
       error: (console.log),

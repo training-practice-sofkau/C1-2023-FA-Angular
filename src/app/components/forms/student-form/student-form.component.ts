@@ -49,6 +49,7 @@ export class StudentFormComponent implements OnInit {
 
     this.studentInitialization();
 
+    //Setting values of the form
     if (this.student){
       this.studentForm.setValue({
         name: this.student.name,
