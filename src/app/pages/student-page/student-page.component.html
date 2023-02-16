@@ -1,14 +1,18 @@
 <div *ngIf="totalResults > 0" class="card-cointainer">
-<app-student-card *ngFor="let student of students" [student]="student" (reload)="getAll()"></app-student-card>
+  <app-student-card
+    *ngFor="let student of students"
+    [student]="student"
+    (reload)="getAll()"
+  ></app-student-card>
 </div>
 <ng-container *ngIf="totalResults > 0; else noStudentsFound">
-    <br/>
-    <div>
-      <h4 class="result_text">Founded: {{ totalResults }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 class="result_text">There is no students, start by adding one</h4>
-    </div>
+  <br />
+  <div>
+    <h4 class="result_text">Founded: {{ totalResults }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div>
+    <h4 class="result_text">There is no students, start by adding one</h4>
+  </div>
 </ng-template>

@@ -1,3 +1,20 @@
-mat-sidenav{
-  background-color: aqua;
+mat-toolbar-row{
+  background-color: rgb(48, 48, 48);
 }
+mat-sidenav{
+  background: linear-gradient(rgb(48, 48, 48), 10%, rgb(29, 29, 29));
+  border: solid 1px gray;
+}
+mat-sidenav-content{
+  background: linear-gradient(rgb(48, 48, 48), 10%, rgb(29, 29, 29));
+  border: solid 1px gray;
+}
+mat-nav-list{
+  background-color: rgb(78, 145, 145);
+}
+mat-expansion-panel{
+  background-color: rgb(78, 145, 145);
+
+}
+
+

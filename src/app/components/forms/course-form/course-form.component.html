@@ -1,31 +1,69 @@
 <form [formGroup]="courseForm" ngClass="save">
-  <mat-form-field appearance="fill">
-    <mat-label>Name: </mat-label>
-    <input matInput placeholder="Insert course name" formControlName="name" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Coach: </mat-label>
-    <input matInput placeholder="Insert coach name" formControlName="coach" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Level: </mat-label>
-    <input
-      type="number"
-      matInput
-      placeholder="Insert level"
-      formControlName="level"
-    />
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onCreate()">
-    {{ this.courseForm.value.courseId === "" ? "Save" : "Edit" }}
-  </button>
-  <button
-    *ngIf="!(this.courseForm.value.courseId === '')"
-    mat-raised-button
-    color="primary"
-    (click)="onSave()"
-  >
-    Duplicate
-  </button>
-  <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
+  <div class="edit-content">
+    <div class="information">
+      <div class="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Name: </mat-label>
+          <input
+            matInput
+            placeholder="Insert course name"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Coach: </mat-label>
+          <input
+            matInput
+            placeholder="Insert coach name"
+            formControlName="coach"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Level: </mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Insert level"
+            formControlName="level"
+          />
+        </mat-form-field>
+      </div>
+      <div class="list current">
+        <h2>Inscribed students</h2>
+        <div class="objects">
+          <div class="student object card" *ngFor="let course of related">
+            <h2>{{ course.name }}</h2>
+            <h3>{{ course.idNum }}</h3>
+            <h3>{{ course.age }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="list all">
+        <h2>All students</h2>
+        <div class="objects">
+          <div class="student object card" *ngFor="let course of notRelated">
+            <h2>{{ course.name }}</h2>
+            <h3>{{ course.idNum }}</h3>
+            <h3>{{ course.age }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="onCreate()">
+        {{ this.courseForm.value.courseId === "" ? "Save" : "Edit" }}
+      </button>
+      <button
+        *ngIf="!(this.courseForm.value.courseId === '')"
+        mat-raised-button
+        color="primary"
+        (click)="onSave()"
+      >
+        Duplicate
+      </button>
+      <button mat-raised-button color="warn" routerLink="/courses">
+        Go Back
+      </button>
+    </div>
+  </div>
 </form>

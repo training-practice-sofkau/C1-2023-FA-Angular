@@ -1,40 +1,71 @@
 <form [formGroup]="studentForm" ngClass="save">
-  <mat-form-field appearance="fill">
-    <mat-label>Name: </mat-label>
-    <input matInput placeholder="Insert name" formControlName="name" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label> Id number: </mat-label>
-    <input
-      type="number"
-      matInput
-      placeholder="Insert Identification"
-      formControlName="idNum"
-    />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Age: </mat-label>
-    <input
-      type="number"
-      matInput
-      placeholder="Insert age"
-      formControlName="age"
-    />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Mail: </mat-label>
-    <input matInput placeholder="Insert mail" formControlName="mail" />
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onCreate()">
-    {{ this.studentForm.value.studentId === "" ? "Save" : "Edit" }}
-  </button>
-  <button
-    *ngIf="!(this.studentForm.value.studentId === '')"
-    mat-raised-button
-    color="primary"
-    (click)="onSave()"
-  >
-  Duplicate
-  </button>
-  <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
+  <div class="edit-content">
+    <div class="information">
+      <div class="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Name: </mat-label>
+          <input matInput placeholder="Insert name" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label> Id number: </mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Insert Identification"
+            formControlName="idNum"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Age: </mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Insert age"
+            formControlName="age"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Mail: </mat-label>
+          <input matInput placeholder="Insert mail" formControlName="mail" />
+        </mat-form-field>
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="onCreate()">
+            {{ this.studentForm.value.studentId === "" ? "Save" : "Edit" }}
+          </button>
+          <button
+            *ngIf="!(this.studentForm.value.studentId === '')"
+            mat-raised-button
+            color="primary"
+            (click)="onSave()"
+          >
+            Duplicate
+          </button>
+          <button mat-raised-button color="warn" routerLink="/students">
+            Go Back
+          </button>
+        </div>
+      </div>
+      <div class="list current">
+        <h2>Inscribed courses</h2>
+        <div class="objects">
+          <div class="course object card" *ngFor="let course of related">
+            <h2>{{ course.name }}</h2>
+            <h3>coach: <br>{{ course.coach }}</h3>
+            <h3>level: {{ course.level }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="list all">
+        <h2>All courses</h2>
+        <div class="objects">
+          <div class="course object card" *ngFor="let course of notRelated">
+            <h2>{{ course.name }}</h2>
+            <h3>coach: <br>{{ course.coach }}</h3>
+            <h3>level: {{ course.level }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </form>

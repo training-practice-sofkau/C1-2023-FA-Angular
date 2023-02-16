@@ -8,7 +8,10 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Course } from 'src/app/models/course.model';
 import { Student } from 'src/app/models/student.model';
+import { CourseService } from 'src/app/services/course-service/course.service';
+import { RelationService } from 'src/app/services/relation-service/relation.service';
 import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
@@ -18,15 +21,16 @@ import { StudentService } from 'src/app/services/student-service/student.service
 })
 export class StudentFormComponent implements OnInit {
   studentForm: FormGroup = new FormGroup({});
-
+  related: Course[] = [];
+  notRelated: Course[] = [];
   constructor(
     private builder: FormBuilder,
     private studentService: StudentService,
+    private courseService: CourseService,
+    private relationService: RelationService,
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-
-
     this.studentForm = this.builder.group({
       studentId: '',
       name: '',
@@ -45,6 +49,7 @@ export class StudentFormComponent implements OnInit {
         });
       }
     });
+    this.loadRelations();
   }
 
   setFormValues(student: Student) {
@@ -55,6 +60,29 @@ export class StudentFormComponent implements OnInit {
       age: student.age,
       mail: student.mail,
     });
+  }
+
+  loadRelations() {
+    if (this.studentForm.value.studentId === '') {
+      this.courseService.getAll().subscribe({
+        next: (courses) => {
+          this.notRelated = [...courses];
+        },
+        error: console.log,
+        complete: console.log,
+      });
+    } else {
+      this.relationService
+        .relationsFromStudent(this.studentForm.value.studentId)
+        .subscribe({
+          next: (relations) => {
+            this.related = [...relations[0]];
+            this.notRelated = [...relations[1]];
+          },
+          error: console.log,
+          complete: console.log,
+        });
+    }
   }
 
   onSave() {
@@ -69,7 +97,7 @@ export class StudentFormComponent implements OnInit {
     }
   }
   update() {
-    if (this.checkData('save')) {
+    if (this.checkData('update')) {
       this.studentService.update(this.studentForm.value).subscribe({
         next: (course) => {
           this.setFormValues(course);
@@ -85,9 +113,9 @@ export class StudentFormComponent implements OnInit {
         this.studentForm.value.studentId === '' ? 'create' : 'duplicate'
       )
     ) {
-      if(this.studentForm.value.studentId === ''){
+      if (this.studentForm.value.studentId === '') {
         this.onSave();
-      }else{
+      } else {
         this.update();
       }
     }
@@ -107,10 +135,16 @@ export class StudentFormComponent implements OnInit {
     } else if (this.studentForm.value.name === '') {
       alert('You have write a name to ' + action + ' the course');
       return false;
-    } else if (this.studentForm.value.idNum === null || this.studentForm.value.idNum === '') {
+    } else if (
+      this.studentForm.value.idNum === null ||
+      this.studentForm.value.idNum === ''
+    ) {
       alert('You have write an id number to ' + action + ' the course');
       return false;
-    } else if (this.studentForm.value.age === null || this.studentForm.value.age === '') {
+    } else if (
+      this.studentForm.value.age === null ||
+      this.studentForm.value.age === ''
+    ) {
       alert('You have write an age to ' + action + ' the course');
       return false;
     } else if (this.studentForm.value.mail === '') {
@@ -122,6 +156,7 @@ export class StudentFormComponent implements OnInit {
       this.studentForm.value.level != '' &&
       this.studentForm.value.mail != ''
     ) {
+      alert('Course ' + action + 'd');
       return true;
     } else {
       alert(
