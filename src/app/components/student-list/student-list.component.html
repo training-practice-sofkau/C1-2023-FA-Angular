@@ -1,15 +1,15 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
-        <button mat-raised-button color="primary" >Search</button>
-
+<div id="searchBar" class="flexContainer">
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Enter text" [(ngModel)]="searchingBy"/>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="fill()">Search</button>
 </div>
 
-<div *ngIf="founded > 0">
+<div *ngIf="founded > 0"  class="flexContainer">
     <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
 </div>
+
 <ng-container *ngIf="founded > 0; else noStudentsFound">
     <div>
       <h4 >Founded: {{ founded }}</h4>

@@ -15,7 +15,7 @@ export class StudentPageComponent {
     mail: "mary.rojas@hotmail.com",
     numCourses: 1
   },
-{
+  {
     id: "2",
     name: "Sarah Vargas",
     idNum: "0987654321",

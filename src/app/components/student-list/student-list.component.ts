@@ -11,5 +11,16 @@ export class StudentListComponent {
   founded: number = 0;
   searchingBy: string = '';
 
+  fill(){
+    this.s_founded = [{
+      id: "2",
+      name: "Sarah Vargas",
+      idNum: "0987654321",
+      age: 55,
+      mail: "sarah.vargas@hotmail.com",
+      numCourses: 0
+    }];
 
+    this.founded = 1;
+  }
 }
