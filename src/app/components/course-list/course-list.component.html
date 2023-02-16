@@ -1,1 +1,31 @@
-<p>course-list works!</p>
+<div [ngStyle]="{ display: 'flex' }">
+  <input matInput placeholder="Enter text" [(ngModel)]="searchParams" />
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="''">seach by</option>
+    <option [value]="'name'">name</option>
+    <option [value]="'coach'">coach</option>
+    <option [value]="'level'">level</option>
+  </select>
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+</div>
+<div *ngIf="isSearch">
+  <div *ngIf="totalResults > 0">
+    <app-course-card
+      *ngFor="let course of courses"
+      [course]="course"
+    ></app-course-card>
+  </div>
+  <ng-container *ngIf="totalResults > 0; else noStudentsFound">
+    <div>
+      <h4>Total Results: {{ totalResults }}</h4>
+    </div>
+  </ng-container>
+  <ng-template #noStudentsFound>
+    <div>
+      <h4>No courses(s) were found</h4>
+    </div>
+  </ng-template>
+</div>
+<div *ngIf="!isSearch">
+  <h4>Search something to see the results</h4>
+</div>

@@ -3,22 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class StudentService{
+export class StudentService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http : HttpClient) { }
+  private api: string = 'http://localhost:8080/sofkau/students/';
 
-  private api : string = "http://localhost:8080/sofkau/students/";
-
-  getAll() : Observable<any>  {
+  getAll(): Observable<any> {
     return this.http.get(this.api);
   }
-  getByName(param : string): Observable<any>  {
+  getByName(param: string): Observable<any> {
     return this.http.get(`${this.api}name/${param}`);
   }
-  getByIdNum(param : string): Observable<any>  {
+  getByIdNum(param: string): Observable<any> {
     return this.http.get(`${this.api}idnum/${param}`);
   }
-
 }
