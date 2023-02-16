@@ -11,6 +11,7 @@ export class CoursePageComponent implements OnInit {
 
   l_courses: Course[] = [];
   total: number = this.l_courses.length;
+  p: number = 1;
 
   constructor(private service: CourseService) { }
 

@@ -1,5 +1,8 @@
 <div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-  <app-course-card *ngFor="let i_course of l_courses" [course]="i_course"></app-course-card>
+  <app-course-card *ngFor="let i_course of l_courses | paginate: { itemsPerPage: 3, currentPage: p }" [course]="i_course"></app-course-card>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
   </div>
   <ng-container *ngIf="total > 0; else noStudentsFound">
       <br/>
