@@ -1,1 +1,66 @@
-<p>course-form works!</p>
+<div *ngIf="type == 'save'">
+  <form [formGroup] = "courseForm" ngClass="save">
+    <mat-form-field appearance="fill" >
+        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Coach: </mat-label> <input matInput placeholder="Insert coach" formControlName="coach" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Level: </mat-label> <input matInput type="number" placeholder="Insert level" formControlName="level" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div [ngStyle]="{display: 'grid', margin: '5px', 'grid-template-columns': 'repeat(auto-fit, 150px)', gap: '5px'}">
+      <button mat-raised-button color="primary" [disabled]="courseForm.invalid" (click)="onSubmit()">Save</button>
+      <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="type == 'update'">
+  <form [formGroup] = "courseForm" ngClass="save">
+    <mat-form-field appearance="fill" >
+        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Coach: </mat-label> <input matInput placeholder="Insert coach" formControlName="coach" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Level: </mat-label> <input matInput type="number" placeholder="Insert level" formControlName="level" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select a student</mat-label>
+        <mat-select placeholder="Select Student" formControlName="studentListDTO" [(value)]="student_selected" >
+         <mat-option> None </mat-option>
+          <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let student of studentListDTO">
+        <mat-option [value]='student.id' >{{ student.name }}</mat-option>
+      </div>
+        </mat-select>
+    </mat-form-field>
+      <div [ngStyle]="{display: 'grid', margin: '5px', 'grid-template-columns': 'repeat(auto-fit, 200px)', gap: '5px'}">
+      <button mat-raised-button color="primary" [disabled]="courseForm.invalid" (click)="onUpdate()">Save</button>
+      <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
+      <button mat-raised-button color="primary" (click)="toogleButton()" > Add student to course </button>
+      <button mat-raised-button color="accent" (click)="removeStudent()" > Remove student from course </button>
+    </div>
+  </form>
+  <div *ngIf="addStudentStatus">
+    <mat-form-field>
+      <mat-label>Select a student</mat-label>
+        <mat-select placeholder="Select Student" [(value)]="student_to_add" >
+        <mat-option> None </mat-option>
+          <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let student of allStudents">
+        <mat-option [value]='student.id' >{{ student.name }}</mat-option>
+      </div>
+        </mat-select>
+    </mat-form-field>
+    <button [ngStyle]="{ 'margin-left': '10px' }" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="addStudent()">
+      <mat-icon>library_add</mat-icon>
+    </button>
+  </div>
+</div>

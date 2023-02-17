@@ -7,6 +7,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
+import { PagenotfoundComponent } from './components/page-not-found/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: WelcomePageComponent,
-    
+
   },
   {
     path: 'students',
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    
+
     children: [
       {
         path: 'new',
@@ -40,21 +41,28 @@ const routes: Routes = [
         component: StudentListComponent},
       {
         path: 'edit',
-        component: StudentFormComponent}  
+        component: StudentFormComponent}
     ]
   },
   {
     path: 'courses',
-   
+
     children: [
       {
         path: 'new',
         component: CourseFormComponent},
       {
         path: 'search',
-        component: CourseListComponent}
+        component: CourseListComponent},
+      {
+        path: 'edit',
+        component: CourseFormComponent}
     ]
-  }
+  },
+  {
+    path: '**', pathMatch: 'full',
+    component: PagenotfoundComponent
+  },
 ];
 
 @NgModule({

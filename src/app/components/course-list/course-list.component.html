@@ -1,1 +1,50 @@
-<p>course-list works!</p>
+<div
+  [ngStyle]="{
+    display: 'grid',
+    'grid-template-columns': 'repeat(auto-fit, 200px)',
+    gap: '30px',
+    margin: '10px'
+  }"
+>
+  <div>
+    <h4>Select filter type</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selected_option">
+        <mat-option>None</mat-option>
+        <mat-optgroup>
+          Punctual
+          <mat-option value="level"> Level </mat-option>
+        </mat-optgroup>
+        <mat-optgroup>
+          Non-Punctual
+          <mat-option value="name"> Name </mat-option>
+          <mat-option value="coach"> Coach </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div
+    [ngStyle]="{
+      display: 'grid',
+      'align-content': 'center',
+      'padding-top': '15px'
+    }"
+  >
+    <input
+      matInput
+      [ngStyle]="{ height: '50px' }"
+      placeholder="Enter text"
+      [(ngModel)]="searchingBy"
+      (keyup)="ngSearchByParam($event)"
+    />
+  </div>
+</div>
+
+<div *ngIf="5 > 0">
+  <app-course-card
+    *ngFor="let i_course of c_founded | async"
+    [course]="i_course"
+  ></app-course-card>
+</div>
+
