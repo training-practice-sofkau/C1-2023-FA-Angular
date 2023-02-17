@@ -18,6 +18,8 @@ export class StudentFormComponent implements OnInit{
     private service: StudentService, 
     private route: ActivatedRoute){}
 
+    newPath: boolean = false;
+
     ngOnInit(): void {
         this.studentForm = this.builder.group(
             {
@@ -40,6 +42,11 @@ export class StudentFormComponent implements OnInit{
             }
 
         })
+
+        if(this.route.routeConfig?.path === 'new'){
+           this.newPath = true; 
+        }
+
     }
 
     onSubmit(){

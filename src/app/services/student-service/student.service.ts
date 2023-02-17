@@ -24,7 +24,7 @@ export class StudentService{
       return this.http.delete(`${this.api}/${id}`, { responseType: 'text' })
   }
 
-  updateStudent(id: number, data: any){
+  updateStudent(id: string, data: any){
     return this.http.put(`${this.api}/${id}`, data)
   }
 
