@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, filter, map, reduce, zip } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 
 @Injectable({
@@ -28,6 +28,12 @@ export class CourseService{
     return this.http.get(this.api+"/byLevel/"+level);
   }
 
+  getBystring(param: string): Observable<any>{
+    let obsCourses: Observable<any> = zip(this.getByCoach(param), this.getByName(param)).pipe(map(x=>{x[0].concat(x[1])}));
+    obsCourses = obsCourses.pipe(map((courses: Course[])=> courses.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v) === JSON.stringify(v2)))===i)));
+   return obsCourses;
+  }
+  
   saveCourse(course: Course): Observable<any>{
     return this.http.post(this.api,course);
   }
