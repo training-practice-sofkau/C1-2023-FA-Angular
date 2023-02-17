@@ -100,16 +100,10 @@ export class CourseFormComponent implements OnInit {
     }
   }
   onCreate() {
-    if (
-      this.checkData(
-        this.courseForm.value.courseId === '' ? 'create' : 'duplicate'
-      )
-    ) {
-      if (this.courseForm.value.courseId === '') {
-        this.onSave();
-      } else {
-        this.update();
-      }
+    if (this.courseForm.value.courseId === '') {
+      this.onSave();
+    } else {
+      this.update();
     }
   }
 
@@ -140,7 +134,7 @@ export class CourseFormComponent implements OnInit {
       this.courseForm.value.coach != '' &&
       this.courseForm.value.level != ''
     ) {
-      alert('Student ' + action + 'd');
+      alert('Course ' + action + 'd');
       return true;
     } else {
       alert(

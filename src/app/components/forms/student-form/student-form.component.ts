@@ -99,8 +99,8 @@ export class StudentFormComponent implements OnInit {
   update() {
     if (this.checkData('update')) {
       this.studentService.update(this.studentForm.value).subscribe({
-        next: (course) => {
-          this.setFormValues(course);
+        next: (student) => {
+          this.setFormValues(student);
         },
         error: console.log,
         complete: console.log,
@@ -108,16 +108,10 @@ export class StudentFormComponent implements OnInit {
     }
   }
   onCreate() {
-    if (
-      this.checkData(
-        this.studentForm.value.studentId === '' ? 'create' : 'duplicate'
-      )
-    ) {
-      if (this.studentForm.value.studentId === '') {
-        this.onSave();
-      } else {
-        this.update();
-      }
+    if (this.studentForm.value.studentId === '') {
+      this.onSave();
+    } else {
+      this.update();
     }
   }
 
@@ -156,7 +150,7 @@ export class StudentFormComponent implements OnInit {
       this.studentForm.value.level != '' &&
       this.studentForm.value.mail != ''
     ) {
-      alert('Course ' + action + 'd');
+      alert('Student ' + action + 'd');
       return true;
     } else {
       alert(

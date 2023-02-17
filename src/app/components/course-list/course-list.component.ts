@@ -15,6 +15,18 @@ export class CourseListComponent {
   courses: Course[] = [];
   totalResults: number = 0;
   searchParams: string = '';
+  totalPages: number = 1;
+  currentPage: number = 1;
+
+  calculatePages() {
+    this.totalPages =
+    this.totalResults % 3 > 0
+      ? (this.totalResults - (this.totalResults % 3)) / 3 + 1
+      : this.totalResults / 3;
+  }
+  passPage(index: number) {
+    this.currentPage = index;
+  }
 
   onSearch() {
     if (this.searchParams != '' && this.searchBy != '') {
@@ -25,6 +37,7 @@ export class CourseListComponent {
             next: (courses) => {
               this.courses = [...courses];
               this.totalResults = courses.length;
+              this.calculatePages();
             },
             error: console.log,
             complete: console.log,
@@ -35,6 +48,7 @@ export class CourseListComponent {
             next: (courses) => {
               this.courses = [...courses];
               this.totalResults = courses.length;
+              this.calculatePages();
             },
             error: console.log,
             complete: console.log,
@@ -45,6 +59,7 @@ export class CourseListComponent {
               next: (courses) => {
                 this.courses = [...courses];
                 this.totalResults = courses.length;
+                this.calculatePages();
               },
               error: console.log,
               complete: console.log,
