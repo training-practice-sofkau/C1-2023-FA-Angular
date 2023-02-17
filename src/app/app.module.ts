@@ -24,6 +24,16 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { EditCourseFormComponent } from './components/forms/edit-course-form/edit-course-form.component';
 import { EditStudentComponent } from './components/forms/edit-student/edit-student.component';
 import { EditStudentButtonComponent } from './components/modals/edit-student-button/edit-student-button.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SearchBarComponent } from './components/search/search-bar/search-bar.component';
+import { SearchCourseComponent } from './pages/search-course/search-course.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ShowCoursesComponent } from './components/list/show-courses/show-courses.component';
+import { ShowStudentsComponent } from './components/list/show-students/show-students.component';
+import { SearchStudentComponent } from './pages/search-student/search-student.component';
+import { ShowStudentsButtonComponent } from './components/modals/show-students-button/show-students-button.component';
+import { StudentsSuscribedComponent } from './components/students-suscribed/students-suscribed.component';
+
 
 @NgModule({
   declarations: [
@@ -43,8 +53,16 @@ import { EditStudentButtonComponent } from './components/modals/edit-student-but
     EditCourseButtonComponent,
     EditCourseFormComponent,
     EditStudentComponent,
-    EditStudentButtonComponent
-  ],
+    EditStudentButtonComponent,
+    NotFoundComponent,
+    SearchBarComponent,
+    SearchCourseComponent,
+    ShowCoursesComponent,
+    ShowStudentsComponent,
+    SearchStudentComponent,
+    ShowStudentsButtonComponent,
+    StudentsSuscribedComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,7 +71,9 @@ import { EditStudentButtonComponent } from './components/modals/edit-student-but
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,11 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { CourseFormComponent } from './components/forms/course-form/course-form.component';
 import { StudentFormComponent } from './components/forms/student-form/student-form.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SearchCourseComponent } from './pages/search-course/search-course.component';
+import { SearchStudentComponent } from './pages/search-student/search-student.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
@@ -12,13 +16,17 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
-
+    redirectTo: 'home',
   },
   {
     path: 'home',
     component: WelcomePageComponent,
-    
+    children: [
+      {
+        path: '',
+        component: WelcomeComponent,
+      },
+    ]
   },
   {
     path: 'students',
@@ -26,15 +34,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: StudentListComponent},
+        component: StudentListComponent,
+      },
       {
         path: 'new',
-        component: StudentFormComponent},
-      
+        component: StudentFormComponent,
+      },
+
       {
-        path: 'edit',
-        component: StudentFormComponent}  
-    ]
+        path: 'search',
+        component: SearchStudentComponent,
+      },
+    ],
   },
   {
     path: 'courses',
@@ -42,19 +53,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: CourseListComponent},
+        component: CourseListComponent,
+      },
       {
         path: 'new',
-        component: CourseFormComponent},
+        component: CourseFormComponent,
+      },
       {
         path: 'search',
-        component: CourseListComponent}
-    ]
-  }
+        component: SearchCourseComponent,
+      },
+    ],
+  },
+  { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
