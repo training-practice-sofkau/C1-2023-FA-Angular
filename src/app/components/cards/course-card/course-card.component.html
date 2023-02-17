@@ -7,6 +7,7 @@
       <mat-card-subtitle>Last update: {{course.lastUpdated}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
+      <h3>Students: </h3>
       <div class="mat-elevation-z0 scrollable">
         <app-student-card *ngFor="let i_student of students" [student]="i_student" [father]="pageName"></app-student-card>
       </div>
