@@ -5,6 +5,7 @@
           <mat-card-subtitle>Age: {{student?.age}}</mat-card-subtitle>
           <mat-card-subtitle>Identification: {{student?.idNum}}</mat-card-subtitle>
           <mat-card-subtitle>Mail: {{student?.mail}}</mat-card-subtitle>
+          <mat-card-subtitle>Course: {{student?.course?.name || 'No have course'}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="start">
           <app-edit-student-button (editStudent)="sendStudent($event)" [student]="student"></app-edit-student-button>

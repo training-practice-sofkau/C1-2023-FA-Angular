@@ -13,7 +13,7 @@ export class EditStudentComponent {
 
   studentForm: FormGroup = new FormGroup({});
   optionCourse: Course[] = []
-  selected = this.data.student.course.name
+  selected = this.data.student.course?.name || ''
 
   constructor(private builder: FormBuilder,
     private courseService:CourseService,
@@ -31,6 +31,8 @@ export class EditStudentComponent {
       next: res => this.optionCourse=res
     })
 
+    console.log(this.data.student);
+
     this.studentForm= this.builder.group(
       {
         id:this.data?.student?.id || '',
@@ -44,7 +46,7 @@ export class EditStudentComponent {
       ],
         idNum:this.data?.student?.idNum|| '',
         mail:this.data?.student?.mail || '',
-        course:this.data?.student?.course
+        course:this.data?.student?.course || ''
       }
     );
   }

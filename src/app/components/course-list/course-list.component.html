@@ -1,25 +1,5 @@
 <div class="container">
     <div class="title--container"><h1>Sofka Courses</h1></div>
-    <div class="info--container">
-        <div class="cards--container">
-            <app-course-card *ngFor="let course of myCourses" [course]="course" (idCourse)="deleteCourse($event)" (editCourse)="updateCourse($event)" (idStudent)="updateAll($event)"></app-course-card>
-
-        </div>
-        
-        <ng-container *ngIf="total > 0; else noStudentsFound">
-            <br />
-            <div>
-              <h4 class="result_text">Found: {{ total }}</h4>
-            </div>
-          </ng-container>
-        
-        <ng-template #noStudentsFound>
-          <div>
-            <h4 class="result_text">There is no courses, start adding one</h4>
-          </div>
-        </ng-template>
-      </div>
-
-    
+    <app-show-courses [myCourses]="myCourses" (idCourse)="deleteCourse($event)" (editCourse)="updateCourse($event)"></app-show-courses>
 </div>
 

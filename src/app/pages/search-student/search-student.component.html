@@ -1,4 +1,9 @@
-<div>
-    <app-search-bar [filterBy]="dataSelector" (toSearch)="searchBy($event)"></app-search-bar>
-    <app-show-students [l_students]="studentSearch" (idStudent)="deleteStudent($event)" (editStudent)="updateStudent($event)" *ngIf="studentSearch.length>0"></app-show-students>
+<div class="container">
+    <app-search-bar [filterBy]="dataSelector" (toSearch)="searchBy($event)" title="Students"></app-search-bar>
+    <app-show-students [l_students]="studentSearch" (idStudent)="deleteStudent($event)" (editStudent)="updateStudent($event)" *ngIf="studentSearch.length>0; else iconCourse"></app-show-students>
+    <ng-template #iconCourse>
+        <div class="noinfo--container">
+            <img src="https://cdn-icons-png.flaticon.com/512/2436/2436837.png" width="15%">
+        </div>
+    </ng-template>
 </div>

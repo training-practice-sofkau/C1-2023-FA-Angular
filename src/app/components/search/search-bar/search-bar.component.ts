@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class SearchBarComponent {
 
   @Input() filterBy:string[] = [];
+  @Input() title:string = '';
   @Output() toSearch = new EventEmitter<any>();
 
   searchForm: FormGroup = new FormGroup({});

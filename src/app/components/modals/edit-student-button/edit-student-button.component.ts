@@ -19,7 +19,7 @@ export class EditStudentButtonComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EditStudentComponent, {
-      data: {student:this.student,isEdit:this.isEdit},
+      data: {student:this.student},
       height: '80%',
       minWidth: '40%',
     });

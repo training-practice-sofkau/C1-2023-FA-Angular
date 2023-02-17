@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
 import { filterCourse } from 'src/app/utils/dataForHtml';
@@ -12,7 +13,7 @@ export class SearchCourseComponent {
   dataSelector: string[] = filterCourse;
   courseSearch: Course[] = [];
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService,private router:Router) {}
 
   searchBy(search: any) {
     switch (search?.myFilter) {
@@ -33,7 +34,9 @@ export class SearchCourseComponent {
   getByNameFilter(name: string) {
     this.courseService.getCoursesByName(name).subscribe({
       next: (res) => {this.courseSearch = res
-        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)},
+        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)
+        if(this.courseSearch.length<1) alert('There is no courses')
+      },
       error: console.log,
       complete: console.log,
     });
@@ -42,7 +45,9 @@ export class SearchCourseComponent {
   getByCoachFilter(name:string){
     this.courseService.getCoursesByCoach(name).subscribe({
       next: (res) => {this.courseSearch = res
-        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)},
+        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)
+        if(this.courseSearch.length<1) alert('There is no courses')
+      },
       error: console.log,
       complete: console.log,
     });
@@ -51,7 +56,9 @@ export class SearchCourseComponent {
   getByLevelFilter(name:number){
     this.courseService.getCoursesByLevel(name).subscribe({
       next: (res) => {this.courseSearch = res
-        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)},
+        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)
+        if(this.courseSearch.length<1) alert('There is no courses')
+      },
       error: console.log,
       complete: console.log,
     });
@@ -70,6 +77,9 @@ export class SearchCourseComponent {
     this.courseService.updateCourse(editCourse).subscribe({
       next: (res) => {
         alert('Course updated');
+        this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['./courses']));
       },
       error: console.log,
     });

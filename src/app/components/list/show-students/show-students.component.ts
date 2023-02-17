@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
 import { Student } from 'src/app/models/student.model';
 
@@ -7,9 +7,15 @@ import { Student } from 'src/app/models/student.model';
   templateUrl: './show-students.component.html',
   styleUrls: ['./show-students.component.scss']
 })
-export class ShowStudentsComponent {
+export class ShowStudentsComponent implements OnChanges {
 
   constructor() {}
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.l_students=changes['l_students'].currentValue;
+    this.updateStateData()
+  }
 
   @Input() l_students: Student[] = [];
   @Output() idStudent = new EventEmitter<string>();
@@ -40,7 +46,6 @@ export class ShowStudentsComponent {
   paginationList(): Student[] {
     let start = this.rows * (this.currentPage - 1);
     let end = start + this.rows;
-    console.log(this.l_students.slice(start, end));
     return this.l_students.slice(start, end);
   }
 
@@ -51,6 +56,11 @@ export class ShowStudentsComponent {
       this.currentPage--;
     }
     this.pagination_students= this.paginationList();
+  }
+
+  updateStateData(){
+    this.total=this.l_students.length
+    this.pagination_students=this.paginationList()
   }
 
 }
