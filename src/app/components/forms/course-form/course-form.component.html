@@ -1,1 +1,22 @@
-<p>course-form works!</p>
+<div>
+<form [formGroup] = "courseForm" ngClass="save" [ngStyle]="{display: 'flex', padding: '10px'}">
+  <mat-form-field appearance="fill" >
+      <mat-label>Name: </mat-label>  <input matInput placeholder="Insert Course name" formControlName="name"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+      <mat-label>Coach: </mat-label> <input matInput placeholder="Insert coach's name" formControlName="coach"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+      <mat-label>Level: </mat-label> <input matInput placeholder="Insert Course level" formControlName="level"/>
+  </mat-form-field>
+  <mat-card *ngFor="let student of this.studentList?.getRawValue()" [ngStyle]="{width:'200px'}">
+    <mat-label >Student: {{student.name}}</mat-label>
+    <button mat-raised-button color="warn" (click)="ngDelete(student.id)" [ngStyle]="{padding:'20px',margin: '5px 40px 5px 40px'}">Delete</button>
+  </mat-card>
+</form>
+
+
+  <button mat-raised-button color="primary" (click)="onSubmit()" [ngStyle]="{margin: '5px 5px 0px 10px'}">Save</button>
+  <button mat-raised-button color="warn" routerLink="/courses" [ngStyle]="{margin: '5px 0px 0px 0px'}">Go Back</button>
+
+</div>
