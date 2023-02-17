@@ -13,15 +13,19 @@ export class StudentService{
   api: string = "http://localhost:8080/students"
 
   getAll(): Observable<any> {
-    return this.http.get(this.api);
+      return this.http.get(this.api);
   }
 
   postStudent(student: Student){
-    return this.http.post(this.api, student)
+      return this.http.post(this.api, student)
   }
-  
+
   deleteStudent(id: number){
       return this.http.delete(`${this.api}/${id}`, { responseType: 'text' })
+  }
+
+  updateStudent(id: number, data: any){
+    return this.http.put(`${this.api}/${id}`, data)
   }
 
 

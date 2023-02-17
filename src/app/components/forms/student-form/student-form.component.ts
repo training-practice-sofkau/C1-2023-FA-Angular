@@ -27,7 +27,6 @@ export class StudentFormComponent implements OnInit{
                 mail: ''
             }
         );
-        this.studentForm.valueChanges.subscribe(console.log);
 
         this.route.queryParams.subscribe((info) => {
             if(JSON.stringify(info) !== JSON.stringify({})){
@@ -41,11 +40,17 @@ export class StudentFormComponent implements OnInit{
             }
 
         })
-
     }
 
     onSubmit(){
         this.service.postStudent(this.studentForm.value).subscribe(() => this.router.navigate(['students']));
     };
 
+
+    update(){
+      this.route.queryParams
+      .subscribe(params => {
+         this.service.updateStudent(JSON.parse(params['data']).id, this.studentForm.value).subscribe(() => this.router.navigate(['students']))
+      })
+    };
 }

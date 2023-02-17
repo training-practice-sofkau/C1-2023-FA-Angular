@@ -46,7 +46,6 @@ export class StudentCardComponent {
               this.service.deleteStudent(param).subscribe(() => this.someEvent.emit(null));
           }
 
-     // this.notifyParent.emit("event-name")
   }
 
 
