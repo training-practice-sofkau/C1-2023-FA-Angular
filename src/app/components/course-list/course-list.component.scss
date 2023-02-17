@@ -1,5 +1,5 @@
 .placeholder--container {
-  margin-top: 5%;
+  margin-top: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,4 +54,9 @@ select {
   border: 1px solid #eee;
   border-radius: 5px;
   text-shadow: none;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
 }

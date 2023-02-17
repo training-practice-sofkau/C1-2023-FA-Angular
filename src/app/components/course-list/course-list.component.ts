@@ -8,6 +8,7 @@ import { CourseService } from 'src/app/services/course-service/course.service';
   styleUrls: ['./course-list.component.scss'],
 })
 export class CourseListComponent {
+  page: number = 1;
   total: number = 0;
   typeSearch: string = '';
   searchingBy: string = '';
@@ -16,38 +17,64 @@ export class CourseListComponent {
 
   constructor(private service: CourseService) {}
 
+  ngOnInit(): void {
+    this.service.getAllCourses().subscribe({
+      next: (course) => {
+        (this.courses = course), (this.total = this.courses.length);
+      },
+      error: console.log,
+      complete: console.log,
+    });
+  }
+
   onSearch(): void {
-    switch (this.typeSearch) {
-      case 'Name': {
-        this.getByName();
-        break;
-      }
+    if (this.searchingBy != '') {
+      switch (this.typeSearch) {
+        case 'Name': {
+          this.getByName();
+          break;
+        }
 
-      case 'Coach': {
-        this.getByCoach();
-        break;
-      }
+        case 'Coach': {
+          this.getByCoach();
+          break;
+        }
 
-      case 'Level': {
-        this.getByLevel();
-        break;
+        case 'Level': {
+          this.getByLevel();
+          break;
+        }
+        default: {
+          this.getAllCourses();
+          break;
+        }
       }
+    } else {
+      this.getAllCourses();
     }
+  }
+
+  getAllCourses(): void {
+    this.service.getAllCourses().subscribe({
+      next: (course) => {
+        (this.courses = course), (this.total = this.courses.length);
+      },
+      error: console.log,
+      complete: console.log,
+    });
   }
 
   getByName(): void {
     if (this.searchingBy) {
       this.service.getByName(this.searchingBy).subscribe({
         next: (course) => {
-          this.courses = [course];
+          this.courses = course;
           this.total = this.courses.length;
         },
         error: console.log,
         complete: console.log,
       });
     } else {
-      this.courses = [];
-      this.total = this.courses.length;
       alert('Please, enter a name');
     }
   }
@@ -63,8 +90,6 @@ export class CourseListComponent {
         complete: console.log,
       });
     } else {
-      this.courses = [];
-      this.total = this.courses.length;
       alert('Please, enter a coach');
     }
   }
@@ -80,8 +105,6 @@ export class CourseListComponent {
         complete: console.log,
       });
     } else {
-      this.courses = [];
-      this.total = this.courses.length;
       alert('Please, enter a level');
     }
   }
