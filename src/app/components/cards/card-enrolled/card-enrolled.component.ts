@@ -13,7 +13,7 @@ export class CardEnrolledComponent {
       private router: Router, 
       private service: CourseService,
       private route: ActivatedRoute,
-  ) { }
+  ){}
 
   @Input() student: Student = {
     id: 0,
