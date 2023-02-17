@@ -35,9 +35,9 @@ export class StudentFormComponent implements OnInit{
 
         this.studentForm.setValue({
           name: JSON.parse(info['data']).name,
-          idNum: JSON.parse(info['data']).idNum,
+          dni: JSON.parse(info['data']).dni,
           age: JSON.parse(info['data']).age,
-          mail: JSON.parse(info['data']).mail,
+          email: JSON.parse(info['data']).email,
          })
       }
     })
