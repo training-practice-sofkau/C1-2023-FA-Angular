@@ -4,20 +4,12 @@
         <!-- <button mat-raised-button color="primary" >Search</button> -->
     </div>
 
-        <div class="results-container">
-            <div *ngIf="founded > 0">
-                <app-course-card *ngFor="let i_course of s_founded | filter: searchingBy" [course]="i_course"></app-course-card>
-            </div>
-            <ng-container *ngIf="founded > 0; else noStudentsFound">
-                <div>
-                    <h4 >Founded: {{ founded }}</h4>
-                </div>
-            </ng-container>
-            <ng-template #noStudentsFound>
-                <div>
-                    <h4 >No student(s) were found</h4>
-                </div>
-            </ng-template>
+    <div>
+        <div  class="results-container" *ngIf="founded > 0">
+            <app-course-card *ngFor="let i_course of s_founded | filter: searchingBy | paginate : { itemsPerPage: 3,
+            currentPage: page}" [course]="i_course"></app-course-card>
         </div>
+    </div>
 
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>

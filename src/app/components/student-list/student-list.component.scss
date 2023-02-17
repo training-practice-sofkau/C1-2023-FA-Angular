@@ -2,28 +2,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100%;
+    justify-content: center;
+}
 
-    .input-button{
-        input{
-            margin: 1rem;
-        }
+.results-container{
 
-        button{
-            margin: 1rem;
-        }
-    }
-
-    .results-container{
-        margin: 1rem;
-    }
+    display: flex;
 }
 
 @media only screen and (max-width: 600px) {
-    .search-student-page{
-        align-items: center;
-        text-align: center;
+    .student-card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .student-page{
+        margin-top: 6rem;
     }
 
 }
+

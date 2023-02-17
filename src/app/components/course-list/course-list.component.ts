@@ -14,6 +14,7 @@ export class CourseListComponent {
     s_founded: Course[] = [];
     founded: number = 0;
     searchingBy!: string;
+    page: number = 1;
 
 
     ngOnInit(): void {
