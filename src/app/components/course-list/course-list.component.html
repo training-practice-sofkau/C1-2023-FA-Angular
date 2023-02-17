@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="search-container" >
   
-      <input  class="inp" matInput placeholder="Enter text" [(ngModel)]="searchingBy" />
-      <button mat-mini-fab color="primary"><mat-icon>search</mat-icon></button>
+      <input  class="inp" matInput placeholder="Enter text" [(ngModel)]="searchingBy" (keydown.backspace)="ngOnInit()"/>
+      <button mat-mini-fab color="primary" (click)="findCourse(searchingBy)"><mat-icon>search</mat-icon></button>
   
     </div>
   
