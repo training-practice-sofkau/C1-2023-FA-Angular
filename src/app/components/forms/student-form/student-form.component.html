@@ -13,10 +13,10 @@
       <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
     </mat-form-field>
     <mat-form-field appearance="fill" *ngIf="father != '/students/new'">
-      <mat-label>courseId: </mat-label> <input matInput placeholder="Insert mail" [(ngModel)]="course" [ngModelOptions]="{standalone: true}"/>
+      <mat-label>courseId: </mat-label> <input matInput placeholder="Insert course id 0 if want to unsubscribe" [(ngModel)]="course" [ngModelOptions]="{standalone: true}"/>
     </mat-form-field>
     <div>
-      <button mat-raised-button color="primary" *ngIf="father != '/students/new'">Edit</button>
+      <button mat-raised-button color="primary" *ngIf="father != '/students/new'" (click)="updateStudent()">Edit</button>
       <button mat-raised-button color="primary" *ngIf="father == '/students/new'" (click)="saveNew()">Save</button>
       <button mat-raised-button color="warn" (click)="backButton()">Go Back</button>
     </div>

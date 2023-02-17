@@ -30,7 +30,6 @@ export class StudentCardComponent {
     };
 
     goToForm() {
-        console.log(this.student);
         this.router.navigate(['students/edit'], {
             queryParams: {
                 data: JSON.stringify(this.student)

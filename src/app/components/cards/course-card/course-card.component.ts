@@ -3,6 +3,7 @@ import {Course} from "../../../models/course.model";
 import {Router} from "@angular/router";
 import {Student} from "../../../models/student.model";
 import {StudentService} from "../../../services/student-service/student.service";
+import {CourseService} from "../../../services/course-service/course.service";
 
 @Component({
     selector: 'app-course-card',
@@ -13,7 +14,8 @@ export class CourseCardComponent implements OnInit{
 
     constructor(
         private router: Router,
-        private studentService: StudentService
+        private studentService: StudentService,
+        private courseService: CourseService
     ) {
     }
 
@@ -45,6 +47,10 @@ export class CourseCardComponent implements OnInit{
                 data: JSON.stringify(this.course)
             }
         });
+    }
+
+    deleteCourse(){
+        this.courseService.deleteCourse(this.course.id);
     }
 
 }

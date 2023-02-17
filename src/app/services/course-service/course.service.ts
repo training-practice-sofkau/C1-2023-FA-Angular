@@ -18,6 +18,10 @@ export class CourseService {
         return this.http.get(this.api);
     }
 
+    getById(id: string): Observable<any> {
+        return this.http.get(this.api + `/byid/${id}`);
+    }
+
     getByName(name: string): Observable<any> {
         return this.http.get(this.api + `/byname/${name}`);
     }

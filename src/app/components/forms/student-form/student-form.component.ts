@@ -6,6 +6,7 @@ import {StudentService} from 'src/app/services/student-service/student.service';
 import {Location} from "@angular/common";
 import {filter, pairwise} from "rxjs";
 import {Course} from "../../../models/course.model";
+import {CourseService} from "../../../services/course-service/course.service";
 
 @Component({
     selector: 'app-student-form',
@@ -23,9 +24,11 @@ export class StudentFormComponent implements OnInit {
                 private service: StudentService,
                 private route: ActivatedRoute,
                 private location: Location,
-                private router: Router
+                private router: Router,
+                private courseService: CourseService
     ) {
     }
+
     ngOnInit(): void {
         this.father = this.router.url;
         this.studentForm = this.builder.group({
@@ -49,7 +52,7 @@ export class StudentFormComponent implements OnInit {
                     courseDTO: JSON.parse(info['data']).courseDTO,
                 });
                 this.studentForm.get('courseDTO')?.value != null ?
-                    this.course = this.studentForm.get('courseDTO')?.value.id:
+                    this.course = this.studentForm.get('courseDTO')?.value.id :
                     this.course = "";
             }
         });
@@ -59,25 +62,35 @@ export class StudentFormComponent implements OnInit {
         this.location.back();
     }
 
-    saveNew(){
+    saveNew() {
         this.service.saveNewStudent(this.studentForm.value).subscribe({
             next: (answer) => console.log(answer),
             error: error => console.log(error),
-            complete: (console.log)
-        })
+            complete: () => this.router.navigateByUrl("/home")
+        });
     }
 
-    unsubscribeStudent(course: string){
-        this.studentForm.setValue({
-            courseDTO: {
-                id: course,
-            }
-        })
+    updateStudent() {
+        this.course == "" ?
+            this.studentForm.patchValue({
+                courseDTO: null
+            }):
+            this.courseService.getById(this.course).subscribe({
+                next: course => {
+                    console.log(course);
+                    this.studentForm.patchValue({
+                        courseDTO: course
+                    });
+                    console.log(this.studentForm.value);
+                },
+                error: error => console.log(error),
+                complete: () => console.log("Get course")
+            });
         this.service.updateStudent(this.studentForm.value).subscribe({
             next: (answer) => console.log(answer),
             error: error => console.log(error),
-            complete: (console.log)
-        })
+            complete: () => this.router.navigateByUrl("/home")
+        });
     }
 
 }

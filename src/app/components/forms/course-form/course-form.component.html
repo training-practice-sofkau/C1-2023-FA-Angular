@@ -12,7 +12,8 @@
       <mat-label>Level: </mat-label> <input matInput placeholder="Insert age" formControlName="level"/>
     </mat-form-field>
     <div>
-      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="primary"(click)="saveNew()" *ngIf="father=='/courses/new'">Save</button>
+      <button mat-raised-button color="primary"(click)="updateCourse()" *ngIf="father!='/courses/new'">Edit</button>
       <button mat-raised-button color="accent" (click)="backButton()">Go Back</button>
     </div>
   </form>
