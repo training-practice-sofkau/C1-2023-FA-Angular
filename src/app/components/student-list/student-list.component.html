@@ -1,13 +1,17 @@
 <div id="searchBar" class="flexContainer">
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Search</mat-label>
-    <input matInput placeholder="Enter text" [(ngModel)]="searchingBy"/>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="fill()">Search</button>
+    <mat-form-field appearance="outline" color="accent">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Enter text" [(ngModel)]="searchingBy"/>
+    </mat-form-field>
+    <mat-radio-group aria-label="Select the type of search">
+        <mat-radio-button (click)="typeOf='name'" value="name">Name</mat-radio-button>
+        <mat-radio-button (click)="typeOf='idnum'" value="coach">Id Number</mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button (click)="search(searchingBy,typeOf)">search</button>
 </div>
 
 <div *ngIf="founded > 0"  class="flexContainer">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
+    <app-student-card [student]="s_founded"></app-student-card>
 </div>
 
 <ng-container *ngIf="founded > 0; else noStudentsFound">

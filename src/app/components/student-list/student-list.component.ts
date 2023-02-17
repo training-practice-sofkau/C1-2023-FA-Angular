@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Student} from 'src/app/models/student.model';
+import {StudentService} from "../../services/student-service/student.service";
 
 @Component({
     selector: 'app-student-list',
@@ -7,19 +8,51 @@ import {Student} from 'src/app/models/student.model';
     styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent {
-    s_founded: Student[] = [];
+
+    constructor(private studentService: StudentService) {
+    }
+
+    s_founded: Student = {
+        id: "",
+        name: "",
+        idNum: "",
+        age: 0,
+        mail: "",
+    };
     founded: number = 0;
     searchingBy: string = '';
 
-    fill() {
-        this.s_founded = [{
-            id: "2",
-            name: "Sarah Vargas",
-            idNum: "0987654321",
-            age: 55,
-            mail: "sarah.vargas@hotmail.com",
-        }];
+    typeOf: string = '';
 
-        this.founded = 1;
+    search(searchingBy: string, typeOf: string) {
+        this.s_founded = {
+            id: "",
+            name: "",
+            idNum: "",
+            age: 0,
+            mail: "",
+        };
+        this.founded = 0;
+        if (typeOf == "name") {
+            return this.studentService.getByName(searchingBy).subscribe({
+                next: student => {
+                    this.s_founded = student;
+                    this.founded = 1;
+                },
+                error: error => console.log(error),
+                complete: (console.log)
+            });
+        } else if (typeOf == "idnum") {
+            return this.studentService.getByIdNum(searchingBy).subscribe({
+                next: student => {
+                    this.s_founded = student;
+                    this.founded = 1;
+                },
+                error: error => console.log(error),
+                complete: (console.log)
+            });
+        }
+        return this.founded = 0;
+
     }
 }

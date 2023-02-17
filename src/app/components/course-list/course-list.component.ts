@@ -21,12 +21,10 @@ export class CourseListComponent {
     search(searchingBy: string, typeOf: string) {
         this.c_founded = [];
         this.founded = 0;
-        console.log(searchingBy);
-        console.log(typeOf);
         if (typeOf === "name") {
             return this.courseService.getByName(searchingBy).subscribe({
-                next: students => {
-                    this.c_founded.push(students);
+                next: courses => {
+                    this.c_founded.push(courses);
                     this.founded = 1;
                     console.log(this.c_founded);
                 },
@@ -35,8 +33,8 @@ export class CourseListComponent {
             });
         } else if (typeOf === "coach") {
             return this.courseService.getByCoach(searchingBy).subscribe({
-                next: students => {
-                    this.c_founded = students;
+                next: courses => {
+                    this.c_founded = courses;
                     this.founded = 1;
                     console.log(this.c_founded);
                 },
@@ -45,8 +43,8 @@ export class CourseListComponent {
             });
         } else if (typeOf === "level") {
             return this.courseService.getByLevel(Number(searchingBy)).subscribe({
-                next: students => {
-                    this.c_founded = students;
+                next: courses => {
+                    this.c_founded = courses;
                     this.founded = 1;
                     console.log(this.c_founded);
                 },
