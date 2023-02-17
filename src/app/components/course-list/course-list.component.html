@@ -1,1 +1,27 @@
-<p>course-list works!</p>
+<div [ngStyle]="{display: 'flex', padding: '10px'}">
+
+  <input matInput [style.width.px]=200 [style.height.px]=25 placeholder="Enter text" [(ngModel)]="param"/>
+  <mat-form-field appearance="fill" [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px'}">
+          <mat-select [(value)]="searchingBy" placeholder="Filter settings">
+            <mat-option value="name">Name</mat-option>
+            <mat-option value="coach">Coach Name</mat-option>
+            <mat-option value="level">Level</mat-option>
+          </mat-select>
+        </mat-form-field>
+  <button mat-raised-button color="primary" (click)="ngSearch()" [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '10px'}">Search</button>
+
+</div>
+
+<div *ngIf="found > 0">
+  <app-course-card *ngFor="let i_course of c_found" [course]="i_course"></app-course-card>
+</div>
+<ng-container *ngIf="found > 0; else noCoursesFound">
+  <div [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '5px'}">
+    <h4 >Found: {{ found }}</h4>
+  </div>
+</ng-container>
+<ng-template #noCoursesFound>
+  <div [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '5px'}">
+    <h4 >No course(s) were found</h4>
+  </div>
+</ng-template>
