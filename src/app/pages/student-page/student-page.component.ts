@@ -13,12 +13,13 @@ export class StudentPageComponent implements OnInit {
   ) {}
 
   students: Student[] = [];
-  pageSlice: Student[] = this.students.slice(0, 6);
+  pageSlice: Student[] = [];
 
   ngOnInit(): void {
     this.studentService.getAll().subscribe({
       next: (students) => {
         this.students = students;
+        this.pageSlice = this.students.slice(0,6);
       },
       error: (console.log),
       complete: (console.log)
@@ -28,6 +29,5 @@ export class StudentPageComponent implements OnInit {
 
   updateStudentsSlice(students: Student[]){
     this.pageSlice = students;
-    console.log
   }
 }

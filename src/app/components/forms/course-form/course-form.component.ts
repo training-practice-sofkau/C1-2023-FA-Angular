@@ -24,7 +24,7 @@ export class CourseFormComponent {
         name: '',
         coach: '',
         level: 0,
-        students: ""
+        lastUpdate: ""
       }
     );
 
@@ -36,7 +36,7 @@ export class CourseFormComponent {
           name: JSON.parse(info['data']).name,
           coach: JSON.parse(info['data']).coach,
           level: JSON.parse(info['data']).level,
-          studentsList: "",
+          lastUpdate: JSON.parse(info['data']).lastUpdated
          })
       }
     })

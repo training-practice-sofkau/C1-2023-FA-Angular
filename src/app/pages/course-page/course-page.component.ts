@@ -1,85 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
-import { Student } from 'src/app/models/student.model';
+import { CourseService } from 'src/app/services/course-service/course.service';
 
 @Component({
   selector: 'app-course-page',
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.scss']
 })
-export class CoursePageComponent {
+export class CoursePageComponent implements OnInit{
 
-  l_courses: Course[] = [{
-    courseId: "1",
-    name: "Development [English]",
-    coach: "Mishell",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-{
-    courseId: "2",
-    name: "Development",
-    coach: "Ricardo Milos",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-  {
-    courseId: "3",
-    name: "Testing",
-    coach: "Another Ricardo Milos",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-  {
-    courseId: "4",
-    name: "Project Management",
-    coach: "Ricarda Milan",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-  {
-    courseId: "5",
-    name: "UI/UX",
-    coach: "Richard Milos",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-  {
-    courseId: "3",
-    name: "Testing",
-    coach: "Another Ricardo Milos",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-  {
-    courseId: "4",
-    name: "Project Management",
-    coach: "Ricarda Milan",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-  {
-    courseId: "5",
-    name: "UI/UX",
-    coach: "Richard Milos",
-    level: 1,
-    lastUpdated: new Date("2023-05-16"),
-    studentsDTO: []
-  },
-];
-  pageSlice = this.l_courses.slice(0, 6);
+  constructor(
+    private courseService: CourseService
+  ){}
 
-  total: number = this.l_courses.length;
+  courses: Course[] = [];
+  pageSlice: Course[] = [];
+
+  ngOnInit(): void {
+    this.courseService.getAll().subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.pageSlice = this.courses.slice(0,6);
+      },
+      error: (console.log),
+      complete: (console.log)
+    })
+  }
 
   updateCoursesSlice(courses: Course[]){
     this.pageSlice = courses;
   }
-
 }

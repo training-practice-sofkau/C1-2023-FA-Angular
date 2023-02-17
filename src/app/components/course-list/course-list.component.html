@@ -7,13 +7,13 @@
           <button mat-raised-button color="primary" >Search</button>
         </div>
   </div>
-  <div *ngIf="founded > 0" class="results-found">
+  <div *ngIf="courses.length > 0" class="results-found">
       <app-course-card *ngFor="let course of pageSlice" [course]="course"></app-course-card>
   </div>
   <div class="results-details">
-    <ng-container *ngIf="founded > 0; else noCoursesFound">
+    <ng-container *ngIf="courses.length > 0; else noCoursesFound">
       <div>
-        <h4 >Founded: {{ founded }}</h4>
+        <h4 >Founded: {{ courses.length }}</h4>
       </div>
     </ng-container>
     <ng-template #noCoursesFound>
@@ -24,7 +24,7 @@
   </ng-template>
   </div>
   <div>
-    <app-paginator [courses]="coursesFound"
+    <app-paginator [courses]="courses"
                    (courseSliceUpdated)="updateCoursesSlice($event)">
     </app-paginator>
   </div>
