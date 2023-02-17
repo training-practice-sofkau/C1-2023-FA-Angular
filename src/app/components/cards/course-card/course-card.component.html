@@ -1,1 +1,22 @@
-<p>course-card works!</p>
+<div [ngStyle]="{display: 'flex', flexDirection: 'column', padding: '10px'}">
+  <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{course.name}}</mat-card-title>
+        <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
+        <mat-card-subtitle>Level: {{course.level}}</mat-card-subtitle>
+        <mat-card-subtitle>Last Update: {{course.lastUpdated}}</mat-card-subtitle>
+
+
+
+      </mat-card-header>
+      <mat-card-actions align="start">
+        <button mat-button mat-raised-button color="primary" (click)="goToForm()" [ngStyle]="{display: 'flex', flexDirection: 'column', padding: '10px'}">Edit</button>
+        <button mat-button mat-raised-button color="accent" (click)="onDelete()" [ngStyle]="{display: 'flex', margin: '0px 0px 0px 10px'}">Delete</button>
+      </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #listEmpty>
+  <div [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '5px'}">
+    <h4 >No Students enrolled</h4>
+  </div>
+</ng-template>
