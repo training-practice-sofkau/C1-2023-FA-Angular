@@ -18,6 +18,14 @@ export class StudentListComponent {
         idNum: "",
         age: 0,
         mail: "",
+        courseDTO: {
+            id: "",
+            name: "",
+            coach: "",
+            level: 0,
+            lastUpdated: new Date(),
+            studentListDTO: []
+        }
     };
     founded: number = 0;
     searchingBy: string = '';
@@ -31,6 +39,14 @@ export class StudentListComponent {
             idNum: "",
             age: 0,
             mail: "",
+            courseDTO: {
+                id: "",
+                name: "",
+                coach: "",
+                level: 0,
+                lastUpdated: new Date(),
+                studentListDTO: []
+            }
         };
         this.founded = 0;
         if (typeOf == "name") {

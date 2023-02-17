@@ -19,9 +19,18 @@ export class StudentCardComponent {
         idNum: '',
         age: 0,
         mail: '',
+        courseDTO: {
+            id: "",
+            name: "",
+            coach: "",
+            level: 0,
+            lastUpdated: new Date(),
+            studentListDTO: []
+        }
     };
 
     goToForm() {
+        console.log(this.student);
         this.router.navigate(['students/edit'], {
             queryParams: {
                 data: JSON.stringify(this.student)

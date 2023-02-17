@@ -1,18 +1,34 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Course} from "../../../models/course.model";
 import {Router} from "@angular/router";
+import {Student} from "../../../models/student.model";
+import {StudentService} from "../../../services/student-service/student.service";
 
 @Component({
     selector: 'app-course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.scss']
 })
-export class CourseCardComponent {
+export class CourseCardComponent implements OnInit{
 
-    constructor(private router: Router) {
+    constructor(
+        private router: Router,
+        private studentService: StudentService
+    ) {
     }
 
+    students: Student[] = [];
     public pageName: string = "coursePage";
+
+    ngOnInit() {
+        this.course.studentListDTO.forEach( s => {
+            this.studentService.getByIdNum(s.idNum).subscribe({
+                next: student => this.students.push(student),
+                error: error => console.log(error),
+                complete: (console.log)
+            });
+        })
+    }
 
     @Input() course: Course = {
         id: "",
