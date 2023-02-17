@@ -28,11 +28,17 @@
 </div>
 <div *ngIf="total > 0">
   <app-student-card
-    *ngFor="let student of students"
+    *ngFor="
+      let student of students
+        | paginate : { itemsPerPage: 2, currentPage: page }
+    "
     [student]="student"
   ></app-student-card>
 </div>
 <ng-container *ngIf="total > 0; else noStudentsFound">
+  <div class="paginator">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
   <div>
     <h4>Founded: {{ total }}</h4>
   </div>

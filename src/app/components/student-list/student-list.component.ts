@@ -8,6 +8,7 @@ import { StudentService } from 'src/app/services/student-service/student.service
   styleUrls: ['./student-list.component.scss'],
 })
 export class StudentListComponent {
+  page: number = 1;
   total: number = 0;
   typeSearch: string = '';
   searchingBy: string = '';
@@ -16,18 +17,46 @@ export class StudentListComponent {
 
   constructor(private service: StudentService) {}
 
-  onSearch(): void {
-    switch (this.typeSearch) {
-      case 'Name': {
-        this.getByName();
-        break;
-      }
+  ngOnInit(): void {
+    this.service.getAllStudents().subscribe({
+      next: (student) => {
+        (this.students = student), (this.total = this.students.length);
+      },
+      error: console.log,
+      complete: console.log,
+    });
+  }
 
-      case 'Identification Number': {
-        this.getByIdentificationNumber();
-        break;
+  onSearch(): void {
+    if (this.searchingBy != '') {
+      switch (this.typeSearch) {
+        case 'Name': {
+          this.getByName();
+          break;
+        }
+
+        case 'Identification Number': {
+          this.getByIdentificationNumber();
+          break;
+        }
+
+        default: {
+          this.getAllStudents();
+        }
       }
+    } else {
+      this.getAllStudents();
     }
+  }
+
+  getAllStudents(): void {
+    this.service.getAllStudents().subscribe({
+      next: (student) => {
+        (this.students = student), (this.total = this.students.length);
+      },
+      error: console.log,
+      complete: console.log,
+    });
   }
 
   getByIdentificationNumber(): void {
@@ -41,8 +70,6 @@ export class StudentListComponent {
         complete: console.log,
       });
     } else {
-      this.students = [];
-      this.total = this.students.length;
       alert('Please, enter an identification number');
     }
   }
@@ -51,15 +78,13 @@ export class StudentListComponent {
     if (this.searchingBy) {
       this.service.getByName(this.searchingBy).subscribe({
         next: (student) => {
-          this.students = [student];
+          this.students = student;
           this.total = this.students.length;
         },
         error: console.log,
         complete: console.log,
       });
     } else {
-      this.students = [];
-      this.total = this.students.length;
       alert('Please, enter a name');
     }
   }
