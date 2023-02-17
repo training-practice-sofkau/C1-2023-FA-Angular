@@ -21,6 +21,8 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AddStudentComponent } from './components/add-student/add-student.component';
+import { CardEnrolledComponent } from './components/cards/card-enrolled/card-enrolled.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ErrorComponent } from './components/error/error.component';
     StudentCardComponent,
     CourseCardComponent,
     ErrorPageComponent,
-    ErrorComponent
+    ErrorComponent,
+    AddStudentComponent,
+    CardEnrolledComponent
   ],
   imports: [
     BrowserModule,

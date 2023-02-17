@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { CourseFormComponent } from './components/forms/course-form/course-form.component';
 import { StudentFormComponent } from './components/forms/student-form/student-form.component';
@@ -56,7 +57,10 @@ const routes: Routes = [
         component: CourseListComponent},
       {
         path: 'edit',
-        component: CourseFormComponent}  
+        component: CourseFormComponent},
+      {
+        path: 'add-student',
+        component: AddStudentComponent},
     ]
   },
   {path: '**', component: ErrorPageComponent }

@@ -28,7 +28,12 @@ export class CourseService{
     return this.http.put(`${this.api}/${id}`, data)
   }
 
+  enrollStudent(courseId: number, studentId: number){
+    return this.http.put(`${this.api}/${courseId}/students/${studentId}`, {});
+  }
+
   removeStudent(courseId: number, studentId: number){
     return this.http.put(`${this.api}/${courseId}/students/remove/${studentId}`, {});
   }
+
 }

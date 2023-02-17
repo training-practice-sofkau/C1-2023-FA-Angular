@@ -1,0 +1,26 @@
+.student-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.student-card{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+    .student-card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .student-page{
+        margin-top: 6rem;
+    }
+
+}
+

@@ -1,14 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
-  selector: 'app-student-page',
-  templateUrl: './student-page.component.html',
-  styleUrls: ['./student-page.component.scss']
+  selector: 'app-add-student',
+  templateUrl: './add-student.component.html',
+  styleUrls: ['./add-student.component.scss']
 })
-export class StudentPageComponent implements OnInit {
-
+export class AddStudentComponent {
     constructor(private service: StudentService){}
 
     @Input() param: string = "";

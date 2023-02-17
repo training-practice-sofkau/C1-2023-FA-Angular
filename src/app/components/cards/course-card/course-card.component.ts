@@ -35,6 +35,16 @@ export class CourseCardComponent {
       })
   }
 
+  goToAddStudent(){
+      this.router.navigate(['courses/add-student'],{
+          queryParams:{
+              data: JSON.stringify(this.course.id)
+
+          }
+
+      })
+  }
+
   deleteCourse(param: number){
       if(confirm("Do you really want to delete?"))
           {
