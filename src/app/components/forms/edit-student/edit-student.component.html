@@ -1,3 +1,4 @@
+<div class="form--container">
 <form [formGroup] = "studentForm" ngClass="save">
     <mat-form-field appearance="fill" >
         <mat-label>Nombre: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
@@ -11,6 +12,15 @@
     <mat-form-field appearance="fill" >
         <mat-label>Mail: </mat-label> <input type="email" matInput placeholder="Insert age" formControlName="mail"/>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Course</mat-label>
+      <mat-select matNativeControl required formControlName="course">
+        <mat-option *ngFor="let ex of optionCourse" [value]="ex">
+          {{ex.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button color="primary" [mat-dialog-close]="this.studentForm.getRawValue()">Save</button>
  
 </form>
+</div>

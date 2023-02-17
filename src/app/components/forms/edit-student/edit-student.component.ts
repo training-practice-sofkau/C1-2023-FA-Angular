@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Course } from 'src/app/models/course.model';
+import { CourseService } from 'src/app/services/course-service/course.service';
 
 @Component({
   selector: 'app-edit-student',
@@ -10,8 +12,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class EditStudentComponent {
 
   studentForm: FormGroup = new FormGroup({});
+  optionCourse: Course[] = []
+  selected = this.data.student.course.name
 
   constructor(private builder: FormBuilder,
+    private courseService:CourseService,
     public dialogRef: MatDialogRef<EditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     ){}
@@ -21,6 +26,11 @@ export class EditStudentComponent {
   }
 
   ngOnInit(): void {
+    console.log(this.selected);
+    this.courseService.getAll().subscribe({
+      next: res => this.optionCourse=res
+    })
+
     this.studentForm= this.builder.group(
       {
         id:this.data?.student?.id || '',
@@ -34,6 +44,7 @@ export class EditStudentComponent {
       ],
         idNum:this.data?.student?.idNum|| '',
         mail:this.data?.student?.mail || '',
+        course:this.data?.student?.course
       }
     );
   }

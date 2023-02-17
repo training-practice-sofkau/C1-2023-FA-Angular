@@ -22,6 +22,7 @@ export class StudentListComponent implements OnInit {
     this.studentService.getAll().subscribe(
       {
         next: res => {this.l_students=res
+          this.l_students.sort((a,b) => a.name>b.name ? 1 : -1)
         this.total=this.l_students.length
         },
         error: console.log
