@@ -21,7 +21,8 @@ export class CourseCardComponent {
   goToForm(){
     this.router.navigate(['courses/edit'],{
       queryParams:{
-        data: JSON.stringify(this.course)
+        data: JSON.stringify(this.course),
+        courseId: this.course.courseId
       }
     })
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course-service/course.service';
@@ -12,6 +12,7 @@ export class CourseFormComponent {
 
   courseForm: FormGroup = new FormGroup({});
   courseFromUpdate = false;
+  courseIdFromUpdate = "";
 
   constructor(private builder: FormBuilder,
     private service: CourseService,
@@ -31,6 +32,7 @@ export class CourseFormComponent {
     this.route.queryParams.subscribe((info) => {
       if(JSON.stringify(info) !== JSON.stringify({})){
         this.courseFromUpdate = true;
+        this.courseIdFromUpdate = info['courseId'];
 
         this.courseForm.setValue({
           name: JSON.parse(info['data']).name,
@@ -40,5 +42,16 @@ export class CourseFormComponent {
          })
       }
     })
+  }
+
+  OnSubmit(){
+    this.courseForm.value.studentsDTO = [];
+    this.service.postCourse(this.courseForm.value).subscribe((answer)=>console.log(answer));
+    window.alert("The user was created successfully.")
+  }
+  onUpdate(){
+    this.courseForm.value.studentsDTO = [];
+    this.service.updateCourse(this.courseForm.value, this.courseIdFromUpdate).subscribe((answer)=>console.log(answer));
+    window.alert("The user was updated successfully.")
   }
 }
