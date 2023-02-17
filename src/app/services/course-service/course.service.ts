@@ -27,4 +27,8 @@ export class CourseService{
   updateCourse(id: string, data: any){
     return this.http.put(`${this.api}/${id}`, data)
   }
+
+  removeStudent(courseId: number, studentId: number){
+    return this.http.put(`${this.api}/${courseId}/students/remove/${studentId}`, {});
+  }
 }

@@ -42,4 +42,13 @@ export class CourseCardComponent {
           }
 
   }
+
+  removeStudent(courseId: number, studentId: number ){
+      if(confirm("Do you really want to delete?"))
+          {
+              this.service.removeStudent(courseId, studentId).subscribe();
+          }
+      console.log(courseId)
+      console.log(studentId)
+  }
 }

@@ -6,7 +6,11 @@
             <mat-card-subtitle>level: {{course.level}}</mat-card-subtitle>
             <mat-card-subtitle>Last Updated: {{course.lastUpdated}}</mat-card-subtitle>
             <mat-card-subtitle>Studet List: <ul *ngFor="let student of course.enrolledStudents">
-                    <li>{{student['name']}}</li>
+                    <li>
+                        {{student['name']}} 
+                        <button mat-button mat-raised-button color="primary" 
+                            (click)="removeStudent(course.id, student['id'])">Remove</button>
+                    </li>
                 </ul>
             </mat-card-subtitle>
         </mat-card-header>
