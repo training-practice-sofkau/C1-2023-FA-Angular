@@ -8,7 +8,7 @@
         </div>
   </div>
   <div *ngIf="founded > 0" class="results-found">
-      <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
+      <app-student-card *ngFor="let i_student of pageSlice" [student]="i_student"></app-student-card>
   </div>
   <div class="results-details">
     <ng-container *ngIf="founded > 0; else noStudentsFound">
@@ -21,7 +21,13 @@
         <h4 >No student(s) were found
         </h4>
       </div>
-  </ng-template>
+    </ng-template>
+    <div>
+      <app-paginator [students]="s_found"
+                 (studentSliceUpdated)="updateStudentsSlice($event)">
+      </app-paginator>
+    </div>
   </div>
+
 </div>
 

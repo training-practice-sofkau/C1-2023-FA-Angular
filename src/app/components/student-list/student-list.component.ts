@@ -9,7 +9,12 @@ import { StudentPageComponent } from 'src/app/pages/student-page/student-page.co
 })
 export class StudentListComponent {
   student: StudentPageComponent = new StudentPageComponent();
-  s_founded: Student[] = this.student.l_students;
-  founded: number = this.s_founded.length;
+  s_found: Student[] = this.student.l_students;
+  founded: number = this.s_found.length;
   searchingBy: string = '';
+  pageSlice: Student[] = this.s_found.slice(0, 6);
+
+  updateStudentsSlice(students: Student[]){
+    this.pageSlice = students;
+  }
 }

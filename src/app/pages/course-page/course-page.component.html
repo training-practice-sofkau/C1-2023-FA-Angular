@@ -1,5 +1,5 @@
 <div class="courses-container" *ngIf="total > 0">
-  <app-course-card *ngFor="let i_course of l_courses" [course]="i_course"></app-course-card>
+  <app-course-card *ngFor="let i_course of pageSlice" [course]="i_course"></app-course-card>
 </div>
 <div class="courses-results-details">
   <ng-container *ngIf="total > 0; else noCoursesFound">
@@ -13,4 +13,9 @@
       <h4 class="result_text">There is no courses, start adding one</h4>
     </div>
   </ng-template>
+  <div>
+    <app-paginator [courses]="l_courses"
+                 (courseSliceUpdated)="updateCoursesSlice($event)">
+    </app-paginator>
+  </div>
 </div>

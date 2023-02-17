@@ -49,8 +49,37 @@ export class CoursePageComponent {
     lastUpdated: new Date("2023-05-16"),
     studentList: []
   },
+  {
+    id: "3",
+    name: "Testing",
+    coach: "Another Ricardo Milos",
+    level: 1,
+    lastUpdated: new Date("2023-05-16"),
+    studentList: []
+  },
+  {
+    id: "4",
+    name: "Project Management",
+    coach: "Ricarda Milan",
+    level: 1,
+    lastUpdated: new Date("2023-05-16"),
+    studentList: []
+  },
+  {
+    id: "5",
+    name: "UI/UX",
+    coach: "Richard Milos",
+    level: 1,
+    lastUpdated: new Date("2023-05-16"),
+    studentList: []
+  },
 ];
+  pageSlice = this.l_courses.slice(0, 6);
 
   total: number = this.l_courses.length;
+
+  updateCoursesSlice(courses: Course[]){
+    this.pageSlice = courses;
+  }
 
 }
