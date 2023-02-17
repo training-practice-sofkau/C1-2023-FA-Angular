@@ -20,6 +20,7 @@ export class CoursePageComponent implements OnInit {
     this.courseService.getAll().subscribe({
       next: (data) => {
         this.l_courses = data.data;
+        this.l_courses.sort((a, b) => a.name.localeCompare(b.name));
         this.total = this.l_courses.length;
       },
       error: (err) => {console.error("Error on getting student data" + err);},
