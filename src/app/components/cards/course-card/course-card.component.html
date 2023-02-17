@@ -1,1 +1,13 @@
-<p>course-card works!</p>
+<div class="card-list">
+    <mat-card fxLayout="row">
+        <mat-card-header>
+          <mat-card-title>{{course.name}}</mat-card-title>
+          <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
+          <mat-card-subtitle>Level: {{course.level}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions fxLayoutGap="0.5rem">
+          <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
+          <button mat-button mat-raised-button color="accent" (click)="delete()">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

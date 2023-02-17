@@ -6,20 +6,20 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container>
-    <mat-sidenav  #sidenav opened mode="side" >
+    <mat-sidenav  #sidenav [opened]="!isHandset" mode="side" >
         <mat-nav-list>
             <a mat-list-item routerLink="/home"> <mat-icon>home</mat-icon> Home</a>  
         </mat-nav-list>
-        <mat-expansion-panel> 
-            <mat-expansion-panel-header><a mat-list-item routerLink="/students"> <mat-icon>people</mat-icon>  Students</a></mat-expansion-panel-header>
-            <mat-nav-list>
-            <a mat-list-item routerLink="/students/new"> <mat-icon>person_add</mat-icon> New student</a>
+        <mat-expansion-panel class="students-title"> 
+            <mat-expansion-panel-header ><a mat-list-item routerLink="/students"> <mat-icon>people</mat-icon>  Students</a></mat-expansion-panel-header>
+            <mat-nav-list class="students-title-list">
+            <a mat-list-item routerLink="/students/new"> <mat-icon>person_add</mat-icon > New student</a>
             <a mat-list-item routerLink="/students/search"> <mat-icon>search</mat-icon> Search</a>
             </mat-nav-list>
         </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header ><a mat-list-item routerLink="/courses"> <mat-icon>library_books</mat-icon> Courses</a></mat-expansion-panel-header>
-            <mat-nav-list>
+        <mat-expansion-panel class="course-title">
+            <mat-expansion-panel-header ><a mat-list-item routerLink="/courses"> <mat-icon>library_books</mat-icon> Courses</a></mat-expansion-panel-header >
+            <mat-nav-list class="course-title-list">
             <a mat-list-item routerLink="/courses/new"> <mat-icon>library_add</mat-icon> New course</a>
             <a mat-list-item routerLink="/courses/search"> <mat-icon>search</mat-icon> Search</a>
             </mat-nav-list>

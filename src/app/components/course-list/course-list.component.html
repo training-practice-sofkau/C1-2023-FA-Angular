@@ -1,1 +1,32 @@
-<p>course-list works!</p>
+<div class="search-container">
+    <div  fxLayoutGap="1rem" fxLayout="row inline" style="width: 90%;">
+  
+      <mat-select [(value)]="selected" style="width: 30%;">
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="coach">Coach</mat-option>
+        <mat-option value="level">Level</mat-option>
+      </mat-select>
+  
+      <mat-form-field  style="width: 40%;">
+        <input matInput  placeholder="Search" [(ngModel)]="searchingBy" (keyup)="ngOnSearch()"/>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" (click)="ngOnSearch()">Search</button>
+    </div>
+  
+    <div *ngIf="founded > 0">
+      <app-course-card *ngFor="let i_course of c_founded" [course]="i_course"></app-course-card>
+    </div>
+  
+    <ng-container *ngIf="founded > 0; else noCoursesFound">
+      <div>
+        <h4 >Founded: {{ founded }}</h4>
+      </div>
+    </ng-container>
+  
+    <ng-template #noCoursesFound>
+      <div>
+        <h4 >No course(s) were found</h4>
+      </div>
+    </ng-template>
+  </div>

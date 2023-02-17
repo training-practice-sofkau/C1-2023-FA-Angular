@@ -1,22 +1,31 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
+<div class="search-container">
+  <div  fxLayoutGap="1rem" fxLayout="row inline" style="width: 90%;">
 
+    <mat-select [(value)]="selected" style="width: 30%;">
+      <mat-option value="n_ident">ID Number</mat-option>
+      <mat-option value="name">Name</mat-option>
+    </mat-select>
 
-        <button mat-raised-button color="primary" >Search</button>
+    <mat-form-field  style="width: 40%;">
+      <input matInput  placeholder="Search" [(ngModel)]="searchingBy" (keyup)="ngOnSearch()"/>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" (click)="ngOnSearch()">Search</button>
+  </div>
 
-</div>
-
-<div *ngIf="founded > 0">
+  <div *ngIf="founded > 0">
     <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
-</div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
+  </div>
+
+  <ng-container *ngIf="founded > 0; else noStudentsFound">
     <div>
       <h4 >Founded: {{ founded }}</h4>
     </div>
   </ng-container>
+
   <ng-template #noStudentsFound>
     <div>
       <h4 >No student(s) were found</h4>
     </div>
-</ng-template>
+  </ng-template>
+</div>

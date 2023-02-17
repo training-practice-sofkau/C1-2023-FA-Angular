@@ -5,6 +5,5 @@ export interface Course {
     name: string,
     coach: string,
     level: number,
-    lastUpdated: Date,
-    studentList: Student[]
+    lastUpdated: Date
 }
