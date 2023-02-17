@@ -1,3 +1,4 @@
+<div ngClass="form-container">
 <form [formGroup] = "courseForm" ngClass="save">
   <mat-form-field appearance="fill" >
       <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
@@ -10,5 +11,5 @@
   </mat-form-field>
   <button mat-raised-button color="primary" style="margin: 5px" (click)="onSubmit()">Save</button>
   <button mat-raised-button color="warn" style="margin: 5px" routerLink="/students">Go Back</button>
-
 </form>
+</div>

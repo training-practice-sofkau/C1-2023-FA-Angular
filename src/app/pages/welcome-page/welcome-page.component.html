@@ -6,8 +6,7 @@
   </div>
 
   <div ngClass="small-image-container">
-    <img ngClass="sofka-background-min" src="https://avatars.githubusercontent.com/u/70767641?v=4"
-    width="200" />
+    <img ngClass="sofka-background-min" src="https://avatars.githubusercontent.com/u/70767641?v=4" width="200" />
   </div>
 </div>
 
@@ -24,14 +23,18 @@
   <div ngClass="cards-container" [ngStyle]="{display: 'flex', flexDirection: 'row'}">
     <mat-card ngClass="card-container">
       <mat-card-header>
+        <div ngClass="card-title">
           <mat-card-title>Courses</mat-card-title>
-        <mat-card-subtitle>Courses list</mat-card-subtitle>
+          <mat-card-subtitle>{{courses}} courses available</mat-card-subtitle>
+        </div>
       </mat-card-header>
     </mat-card>
     <mat-card ngClass="card-container">
       <mat-card-header>
+        <div ngClass="card-title">
           <mat-card-title>Students</mat-card-title>
-        <mat-card-subtitle>Number of enrolled students</mat-card-subtitle>
+          <mat-card-subtitle>{{students}} students enrolled</mat-card-subtitle>
+        </div>
       </mat-card-header>
     </mat-card>
   </div>

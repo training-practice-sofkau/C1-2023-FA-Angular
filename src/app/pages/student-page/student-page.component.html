@@ -1,3 +1,4 @@
+<div ngClass="student-page-container">
 <div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
 <app-student-card *ngFor="let i_student of l_students | paginate: { itemsPerPage: 3, currentPage: p }" [student]="i_student"></app-student-card>
 
@@ -15,3 +16,4 @@
       <h4 class="result_text">There is no students, start adding one</h4>
     </div>
 </ng-template>
+</div>
