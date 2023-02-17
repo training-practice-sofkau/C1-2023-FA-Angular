@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable, map } from 'rxjs';
 import { Student } from 'src/app/models/student.model';
 
 @Injectable({
@@ -12,26 +12,37 @@ export class StudentService{
 
   api: string = "http://localhost:8080/students"
   
-
+  organizeListByName(studentList: Observable<Student[]>):
+  Observable<Student[]>{
+    return studentList.pipe(map(
+      results => results.sort(
+        (a,b) => (a.nameDTO > b.nameDTO) ? 1 :
+        ((b.nameDTO > a.nameDTO)?-1:0)
+      )
+    ))
+  }
   getAll(): Observable<any>{
     return this.http.get(this.api);
   }
 
   getByIdNum(idNum: string): Observable<any>{
-    return this.http.get(this.api+"/"+idNum);
+    return this.http.get(this.api+"/byIdNumber/"+idNum);
   }
 
   getById(Id: string): Observable<any>{
-    return this.http.get(this.api+"/"+Id);
+    let x = this.http.get(this.api+"/"+Id);
+    return x ==null?
+    EMPTY: x
+     ;
   }
 
   getByName(name: string): Observable<any>{
-    return this.http.get(this.api+"/"+name);
+    return this.http.get(this.api+"/byName/"+name);
   }
 
-  getByCourseId(courseId: string): Observable<any>{
+  /*getByCourseId(courseId: string): Observable<any>{
     return this.http.get(this.api+"/"+courseId);
-  }
+  }*/
 
   postStudent(studentDTO: Student): Observable<any>{
     return this.http.post(this.api,studentDTO);
