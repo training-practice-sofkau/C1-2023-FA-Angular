@@ -1,6 +1,6 @@
-import { Component, Input, KeyValueDiffers, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute} from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student-service/student.service';
 
@@ -10,40 +10,54 @@ import { StudentService } from 'src/app/services/student-service/student.service
   styleUrls: ['./student-form.component.scss']
 })
 export class StudentFormComponent implements OnInit{
- 
+
   studentForm: FormGroup = new FormGroup({});
+  input = new FormControl('', [Validators.required]);
 
-  constructor(private builder: FormBuilder, 
-    private service: StudentService, 
-    private route: ActivatedRoute){
-     
-    }
-  ngOnInit(): void {
-    this.studentForm = this.builder.group(
-      {
-        name: '',
-        idNum: '',
-        age: 0,
-        mail: ''
-      }
-    );
-    //this.studentForm.valueChanges.subscribe(console.log);
+  constructor(private builder: FormBuilder,
+    private service: StudentService,
+    private route: ActivatedRoute){}
 
-    this.route.queryParams.subscribe((info) => {
-      if(JSON.stringify(info) !== JSON.stringify({})){
-        this.studentForm.setValue({
-          name: JSON.parse(info['data']).name,
-          idNum: JSON.parse(info['data']).idNum,
-          age: JSON.parse(info['data']).age,
-          mail: JSON.parse(info['data']).mail,
-         })
+    type: string = '';
 
-      }
-        
+    ngOnInit(): void {
+      this.type = this.service.getType();
+      this.studentForm = this.builder.group(
+        {
+          id: '',
+          name: '',
+          idNum: '',
+          age: 0,
+          mail: ''
+        });
 
-    } )
-
-
+      this.route.queryParams.subscribe((info) => {
+        if(JSON.stringify(info) !== JSON.stringify({})){
+          this.studentForm.setValue({
+            id: JSON.parse(info['data']).id,
+            name: JSON.parse(info['data']).name,
+            idNum: JSON.parse(info['data']).idNum,
+            age: JSON.parse(info['data']).age,
+            mail: JSON.parse(info['data']).mail,
+          })
+        }
+      })
   }
+
+  getErrorMessage() {
+    return 'You must enter a value';
+  }
+
+  onSubmit(){
+    this.service.postStudent(this.studentForm.value).subscribe(
+      (answer) => console.log(answer)
+      );
+  }
+
+  onUpdate() {
+    this.service.updateStudent(this.studentForm.value);
+  }
+
+
 
 }
