@@ -34,7 +34,6 @@ export class StudentService{
 
 
   getByName(param: string, strategy:string): Observable<any> {
-    console.log("this is the api url", this.api+"/name/"+strategy+"/"+param)
     return this.http.get(this.api+"/name/"+strategy+"/"+param);
   }
 

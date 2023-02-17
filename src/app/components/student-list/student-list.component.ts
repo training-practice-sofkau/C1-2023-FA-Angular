@@ -78,7 +78,6 @@ export class StudentListComponent implements OnInit {
         break;
       }
     }
-    console.log(this.l_students)
     this.total = this.l_students.length;
   }
 }

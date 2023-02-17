@@ -32,4 +32,17 @@ export class CourseService{
   deleteByID(param: string):  Observable<any> {
     return this.http.delete(this.api+"/"+param);
   }
+
+  getByName(param: string, strategy:string): Observable<any> {
+    return this.http.get(this.api+"/name/"+strategy+"/"+param);
+  }
+
+  getByCoach(param: string, strategy:string): Observable<any> {
+    return this.http.get(this.api+"/coach/"+strategy+"/"+param);
+  }
+
+  getByLevel(param: string): Observable<any> {
+    return this.http.get(this.api+"/level/"+param);
+  }
+
 }
