@@ -43,7 +43,7 @@ export class CourseService {
     }
 
     deleteCourse(id: string) {
-        this.http.delete(this.api + `${id}`);
+        this.http.delete(this.api + `/${id}`);
     }
 
     deleteStudentFromCourse(id: string) {
