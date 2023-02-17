@@ -20,7 +20,7 @@ export class CourseCardComponent {
         coach: "",
         level: 0,
         lastUpdated: new Date(),
-        studentList: []
+        studentListDTO: []
     };
 
     goToForm() {
