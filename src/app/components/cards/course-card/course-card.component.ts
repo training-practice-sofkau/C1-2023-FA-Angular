@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { StudentCardComponent } from '../student-card/student-card.component';
 import { StudentInfoComponent } from '../../pop-ups/student-info/student-info.component';
 import { StudentService } from 'src/app/services/student-service/student.service';
+import { AvailableStudentsComponent } from '../../pop-ups/available-students/available-students.component';
 
 @Component({
   selector: 'app-course-card',
@@ -59,6 +60,14 @@ export class CourseCardComponent {
 
   openDialog(student:Student) {
     const dialogRef = this.dialog.open(StudentInfoComponent,{data: student});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openAllStudentsDialog() {
+    const dialogRef = this.dialog.open(AvailableStudentsComponent, {data: this.course});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

@@ -22,6 +22,7 @@ import { StudentCardComponent } from './components/cards/student-card/student-ca
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { StudentInfoComponent } from './components/pop-ups/student-info/student-info.component';
+import { AvailableStudentsComponent } from './components/pop-ups/available-students/available-students.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { StudentInfoComponent } from './components/pop-ups/student-info/student-
     CourseCardComponent,
     NotFoundComponent,
     StudentInfoComponent,
+    AvailableStudentsComponent,
 
   ],
   imports: [

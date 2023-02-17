@@ -14,6 +14,7 @@ export class StudentFormComponent implements OnInit {
   studentForm: FormGroup = new FormGroup({});
 
   student: Student|undefined;
+ /*  updateCourse:boolean = false; */
 
   constructor(private builder: FormBuilder,
     private service: StudentService,
@@ -74,7 +75,10 @@ export class StudentFormComponent implements OnInit {
       }
     }) */
   }
-
+ /*  onUpdateCourse(): void {
+    this.updateCourse = !this.updateCourse;
+  }
+ */
   onSubmit(): void{
      console.log(this.student?.name)
      //Put

@@ -19,9 +19,10 @@
     </mat-card-content>
     <mat-card-actions align="start">
       <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="goToForm()">Edit</button>
+      <button mat-button mat-raised-button color="accent" style="margin: 5px" (click)="onDelete()">Delete</button>
       <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="onShowStudents()">Show
         students</button>
-      <button mat-button mat-raised-button color="accent" style="margin: 5px" (click)="onDelete()">Delete</button>
+      <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="openAllStudentsDialog()">Add students</button>
     </mat-card-actions>
   </mat-card>
 </div>
