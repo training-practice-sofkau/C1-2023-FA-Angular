@@ -1,1 +1,26 @@
-<p>course-list works!</p>
+<div class="main-container">
+  <div class="searching-bar">
+        <div>
+          <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" >Search</button>
+        </div>
+  </div>
+  <div *ngIf="founded > 0" class="results-found">
+      <app-course-card *ngFor="let course of coursesFound" [course]="course"></app-course-card>
+  </div>
+  <div class="results-details">
+    <ng-container *ngIf="founded > 0; else noCoursesFound">
+      <div>
+        <h4 >Founded: {{ founded }}</h4>
+      </div>
+    </ng-container>
+    <ng-template #noCoursesFound>
+      <div>
+        <h4 >No course(s) were found
+        </h4>
+      </div>
+  </ng-template>
+  </div>
+</div>
