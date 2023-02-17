@@ -41,4 +41,8 @@ export class CourseService{
     return this.http.get(this.api+`/punctuall?level=${name}`)
   }
 
+  getCoursesByid(id:string):Observable<any>{
+    return this.http.get(this.api+`/course?id=${id}`)
+  }
+
 }

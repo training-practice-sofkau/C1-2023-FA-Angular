@@ -37,5 +37,9 @@ export class StudentService{
     return this.http.get(this.api+`/punctualn?idNum=${idNum}`)
   }
 
+  getStudentsNoCourse():Observable<any>{
+    return this.http.get(this.api+'/noCourse')
+  }
+
 
 }
