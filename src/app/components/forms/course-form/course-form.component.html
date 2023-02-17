@@ -1,1 +1,77 @@
-<p>course-form works!</p>
+<form [formGroup]="courseForm" ngClass="save">
+  <div class="edit-content">
+    <div class="information">
+      <div class="form">
+        <h2>Course form</h2>
+        <mat-form-field appearance="fill">
+          <mat-label>Name: </mat-label>
+          <input
+            matInput
+            placeholder="Insert course name"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Coach: </mat-label>
+          <input
+            matInput
+            placeholder="Insert coach name"
+            formControlName="coach"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Level: </mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Insert level"
+            formControlName="level"
+          />
+        </mat-form-field>
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="onCreate()">
+            {{ this.courseForm.value.courseId === "" ? "Save" : "Edit" }}
+          </button>
+          <button
+            *ngIf="!(this.courseForm.value.courseId === '')"
+            mat-raised-button
+            color="primary"
+            (click)="onSave()"
+          >
+            Duplicate
+          </button>
+          <button mat-raised-button color="warn" routerLink="/courses">
+            Go Back
+          </button>
+        </div>
+      </div>
+      <div class="list current">
+        <h2>Inscribed students</h2>
+        <div class="objects">
+          <div class="student object card" *ngFor="let student of related">
+            <div class="info">
+              <h2>{{ student.name }}</h2>
+              <h3><b>Students's ID: </b> {{ student.idNum }}</h3>
+              <h3><b>Student's age: </b> {{ student.age }}</h3>
+            </div>
+            <button class="switch-rlation" (click)="unRelate(student.studentId)">></button>
+          </div>
+        </div>
+      </div>
+      <div class="list all">
+        <h2>All students</h2>
+        <div class="objects">
+          <div class="student object card" *ngFor="let student of notRelated">
+            <div class="info">
+              <h2>{{ student.name }}</h2>
+              <h3><b>Students's ID: </b> {{ student.idNum }}</h3>
+              <h3><b>Student's age: </b> {{ student.age }}</h3>
+            </div>
+            <button class="switch-rlation" (click)="relate(student.studentId)"><</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

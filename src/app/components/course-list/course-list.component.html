@@ -1,1 +1,56 @@
-<p>course-list works!</p>
+<div class="search-bar">
+  <input matInput placeholder="Enter text" [(ngModel)]="searchParams" />
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="''">seach by</option>
+    <option [value]="'name'">name</option>
+    <option [value]="'coach'">coach</option>
+    <option [value]="'level'">level</option>
+  </select>
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+</div>
+<div *ngIf="isSearch">
+  <div *ngIf="totalResults > 0" class="card-cointainer">
+    <div class="pages">
+      <div *ngFor="let course of courses; index as index">
+        <app-course-card
+          *ngIf="
+            index - 1 >= currentPage * 3 - 4 && index - 1 < currentPage * 3 - 1
+          "
+          [course]="course"
+          (reload)="onSearch()"
+        ></app-course-card>
+      </div>
+      <div class="pagination">
+        <button (click)="passPage(currentPage - 1)" *ngIf="currentPage != 1">
+          <
+        </button>
+        <button
+          (click)="passPage(index + 1)"
+          *ngFor="let i of [].constructor(totalPages); index as index"
+          [ngStyle]="{ color: currentPage == index + 1 ? 'gray' : '' }"
+        >
+          {{ index + 1 }}
+        </button>
+        <button
+          (click)="passPage(currentPage + 1)"
+          *ngIf="currentPage != totalPages"
+        >
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="totalResults > 0; else noStudentsFound">
+    <div class="results-text">
+      <h4>Total Results: {{ totalResults }}</h4>
+    </div>
+  </ng-container>
+  <ng-template #noStudentsFound>
+    <div class="results-text">
+      <h4>No courses(s) were found</h4>
+    </div>
+  </ng-template>
+</div>
+<div *ngIf="!isSearch" class="results-text">
+  <h4>Search something to see the results</h4>
+</div>

@@ -1,0 +1,23 @@
+mat-toolbar-row{
+  background-color: rgb(48, 48, 48);
+}
+mat-sidenav{
+  background: linear-gradient(rgb(48, 48, 48), 10%, rgb(29, 29, 29));
+  border: solid 1px gray;
+}
+mat-sidenav-content{
+  background: linear-gradient(rgb(48, 48, 48), 10%, rgb(29, 29, 29));
+  border: solid 1px gray;
+}
+mat-expansion-panel, mat-nav-list{
+  background: linear-gradient(rgb(193, 255, 255), 10%, rgb(78, 145, 145));
+  border-radius: 1vh;
+  margin: 1vh 1vh 0 1vh;
+}
+.options{
+  background: linear-gradient(rgba(255, 255, 255, 0.447), 10%, rgba(142, 179, 179, 0.425));
+  width: 100%;
+  margin-top: 1vh;
+}
+
+

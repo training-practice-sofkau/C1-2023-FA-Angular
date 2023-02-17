@@ -1,0 +1,28 @@
+.pagination{
+  display: flex;
+  justify-content: center;
+  button{
+    border: none;
+    background-color: transparent;
+    color: whitesmoke;
+  }
+}
+.search-bar{
+  padding: 1vh 1vh 0 1vh;
+  display: flex;
+  align-items: stretch;
+  gap: 1vh;
+  input, select, button{
+    border-radius: 1vh;
+  }
+  input{
+    padding-left: 1vh;
+  }
+}
+
+.results-text{
+  padding: 2vh;
+  h4{
+    color: whitesmoke;
+  }
+}

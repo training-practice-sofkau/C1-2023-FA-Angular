@@ -1,1 +1,42 @@
-<p>course-page works!</p>
+<div *ngIf="totalResults > 0" class="card-cointainer">
+  <div class="pages">
+    <div *ngFor="let course of courses; index as index">
+      <app-course-card
+        *ngIf="
+          index - 1 >= currentPage * 3 - 4 && index - 1 < currentPage * 3 - 1
+        "
+        [course]="course"
+        (reload)="getAll()"
+      ></app-course-card>
+    </div>
+    <div class="pagination">
+      <button (click)="passPage(currentPage - 1)" *ngIf="currentPage != 1">
+        <
+      </button>
+      <button
+        (click)="passPage(index + 1)"
+        *ngFor="let i of [].constructor(totalPages); index as index"
+        [ngStyle]="{ color: currentPage == index + 1 ? 'gray' : '' }"
+      >
+        {{ index + 1 }}
+      </button>
+      <button
+        (click)="passPage(currentPage + 1)"
+        *ngIf="currentPage != totalPages"
+      >
+        >
+      </button>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="totalResults > 0; else noStudentsFound">
+  <br />
+  <div class="results-text">
+    <h4>Founded: {{ totalResults }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div class="results-text">
+    <h4>There is no students, start by adding one</h4>
+  </div>
+</ng-template>

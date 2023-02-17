@@ -1,14 +1,42 @@
-<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-<app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
+<div *ngIf="totalResults > 0" class="card-cointainer">
+  <div class="pages">
+    <div *ngFor="let student of students; index as index">
+      <app-student-card
+        *ngIf="
+          index - 1 >= currentPage * 3 - 4 && index - 1 < currentPage * 3 - 1
+        "
+        [student]="student"
+        (reload)="getAll()"
+      ></app-student-card>
+    </div>
+    <div class="pagination">
+      <button (click)="passPage(currentPage - 1)" *ngIf="currentPage != 1">
+        <
+      </button>
+      <button
+        (click)="passPage(index + 1)"
+        *ngFor="let i of [].constructor(totalPages); index as index"
+        [ngStyle]="{ color: currentPage == index + 1 ? 'gray' : '' }"
+      >
+        {{ index + 1 }}
+      </button>
+      <button
+        (click)="passPage(currentPage + 1)"
+        *ngIf="currentPage != totalPages"
+      >
+        >
+      </button>
+    </div>
+  </div>
 </div>
-<ng-container *ngIf="total > 0; else noStudentsFound">
-    <br/>
-    <div>
-      <h4 class="result_text">Founded: {{ total }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 class="result_text">There is no students, start adding one</h4>
-    </div>
+<ng-container *ngIf="totalResults > 0; else noStudentsFound">
+  <br />
+  <div class="results-text">
+    <h4>Founded: {{ totalResults }}</h4>
+  </div>
+</ng-container>
+<ng-template #noStudentsFound>
+  <div class="results-text">
+    <h4>There is no students, start by adding one</h4>
+  </div>
 </ng-template>

@@ -1,18 +1,34 @@
-<div [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-    <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{student.name}}</mat-card-title>
-          <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
-          <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
-          <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
-          <mat-card-subtitle>No. Courses: {{student.numCourses}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions align="start">
-          <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
-          <button mat-button mat-raised-button color="accent">Delete</button>
-        </mat-card-actions>
-    </mat-card>
+<div [ngStyle]="{ display: 'flex', flexDirection: 'column' }">
+  <mat-card class="card">
+    <mat-card-header>
+      <div class="card-info">
+        <mat-card-title>{{ student.name }}</mat-card-title>
+        <mat-card-subtitle>Age: {{ student.age }}</mat-card-subtitle>
+        <mat-card-subtitle
+          >Identification: {{ student.idNum }}</mat-card-subtitle
+        >
+        <mat-card-subtitle>Mail: {{ student.mail }}</mat-card-subtitle>
+        <mat-card-subtitle
+          >No. Courses: {{ student.numCourses }}</mat-card-subtitle
+        >
+      </div>
+      <div class="relations">
+        <mat-card-title>Courses</mat-card-title>
+        <div class="objects">
+          <div *ngFor="let course of student.courseListDTO">
+            <mat-card-subtitle>○ {{ course.name }}</mat-card-subtitle>
+          </div>
+        </div>
+      </div>
+      </mat-card-header
+    >
+    <mat-card-actions align="start">
+      <button mat-button mat-raised-button color="primary" (click)="goToForm()">
+        Edit
+      </button>
+      <button mat-button mat-raised-button color="accent" (click)="onDelete()">
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>
-
-  
-
