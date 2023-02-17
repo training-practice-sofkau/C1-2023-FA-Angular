@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
@@ -12,11 +12,18 @@ import { StudentService } from 'src/app/services/student-service/student.service
 })
 export class StudentFormComponent implements OnInit {
   
-  studentForm: FormGroup = new FormGroup({});
+  studentForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    idNum: new FormControl(''),
+    age: new FormControl(0),
+    mail: new FormControl(''),
+    course: new FormControl(null)
+  });
   l_course: Course[] = [];
+  studentId: string = '';
+  selectedCourse: any = {};
 
   constructor(
-    private builder: FormBuilder,
     private studentService: StudentService,
     private courseService: CourseService,
     private route: ActivatedRoute,
@@ -34,22 +41,17 @@ export class StudentFormComponent implements OnInit {
       complete: () => {},
     });
 
-    this.studentForm = this.builder.group({
-      name: '',
-      idNum: '',
-      age: 0,
-      mail: '',
-      course: null
-    });
-
     this.route.queryParams.subscribe((info) => {
       if (JSON.stringify(info) !== JSON.stringify({})) {
-        this.studentForm.setValue({
-          name: JSON.parse(info['data']).name,
-          idNum: JSON.parse(info['data']).idNum,
-          age: JSON.parse(info['data']).age,
-          mail: JSON.parse(info['data']).mail,
-          course: JSON.parse(info['data']).course
+        this.studentId = JSON.parse(info['data']);
+        this.studentService.getStudentById(this.studentId).subscribe({
+          next: (data) => {
+            this.studentForm.patchValue(data.data);
+            this.selectedCourse = data.data.course;
+          },
+          error: (err) =>
+            console.error('Error on getting student by id: ' + err),
+          complete: () => {},
         });
       }
     });
@@ -57,13 +59,34 @@ export class StudentFormComponent implements OnInit {
   }
 
   ngSaveStudent() {
-    this.studentService.saveStudent(this.studentForm.value).subscribe({
-      next: (data) => {},
-      error: (err) => {
-        console.error('Error on create student' + err);
-      },
-      complete: () => {},
+    // Edit part
+    this.route.queryParams.subscribe((info) => {
+      if (JSON.stringify(info) !== JSON.stringify({})) {
+        this.studentService
+          .editStudent(this.studentId, this.studentForm.value)
+          .subscribe({
+            next: (data) => {},
+            error: (err) => {
+              console.error('Error on update student' + err);
+            },
+            complete: () => {},
+          });
+        alert('Student updated successfully');
+        this.router.navigate(['/students']);
+        return;
+      }
+
+      //Save part
+      this.studentService.saveStudent(this.studentForm.value).subscribe({
+        next: () => {},
+        error: (err) => {
+          console.error('Error on save student: ' + err);
+        },
+        complete: () => {},
+      });
+      alert('Student saved successfully');
+      this.router.navigate(['/students']);
+      return;
     });
-    this.router.navigate(['/students']);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
+import { StudentService } from 'src/app/services/student-service/student.service';
 
 
 @Component({
@@ -26,13 +27,29 @@ export class StudentCardComponent {
   };
 
   constructor(
-    private router: Router
+    private router: Router,
+    private studentService: StudentService
   ) {}
+
+  delete() {
+    if (confirm(`Are you sure to delete ${this.student.name}?`)) {
+      this.studentService.deleteStudent(this.student.idNum).subscribe({
+        next: (data) => {},
+        error: (err) => {
+          console.error('Error on delete student:' + err);
+        },
+        complete: () => {},
+      });
+      alert('Student deleted successfully');
+      location.reload();
+      return;
+    }
+  }
 
   goToForm() {
     this.router.navigate(['students/edit'], {
       queryParams: {
-        data: JSON.stringify(this.student),
+        data: JSON.stringify(this.student.id),
       },
     });
   }

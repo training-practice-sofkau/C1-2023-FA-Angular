@@ -12,9 +12,11 @@
         <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Select a Course: </mat-label>
-        <mat-select formControlName="course">
-            <mat-option *ngFor="let course of l_course" [value]="{ id: course.id }">{{course.name}}</mat-option>
+        <mat-label>Select a Course: {{selectedCourse.name}}</mat-label>
+        <mat-select formControlName="course" [(ngModel)]="selectedCourse">
+            <mat-option *ngFor="let i_course of l_course" [value]="{ id: i_course.id }">
+                {{i_course.name}}
+            </mat-option>
         </mat-select>
     </mat-form-field>
     <div fxLayoutGap="0.5rem">

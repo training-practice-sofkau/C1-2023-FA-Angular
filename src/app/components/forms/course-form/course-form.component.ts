@@ -12,7 +12,7 @@ export class CourseFormComponent implements OnInit {
   courseForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     coach: new FormControl(''),
-    level: new FormControl(''),
+    level: new FormControl(0),
   });
   courseId: string = '';
 
@@ -26,7 +26,6 @@ export class CourseFormComponent implements OnInit {
     this.route.queryParams.subscribe((info) => {
       if (JSON.stringify(info) !== JSON.stringify({})) {
         this.courseId = JSON.parse(info['data']);
-        console.log(this.courseId);
         this.courseService.getCourseById(this.courseId).subscribe({
           next: (data) => {
             this.courseForm.patchValue(data.data);
