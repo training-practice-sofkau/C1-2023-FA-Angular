@@ -10,7 +10,6 @@ import { StudentService } from 'src/app/services/student-service/student.service
 export class StudentPageComponent implements OnInit {
   
   p: number = 0;
-  results: number = 0;
   total: number = 0;
   l_students: Student[] = [];
   
@@ -19,12 +18,10 @@ export class StudentPageComponent implements OnInit {
   ngOnInit(): void {
     this.service.getAll().subscribe({
       next: (student) =>{
-        console.log(student)
+        
         this.l_students = student;
-        console.log(this.l_students);
-        this.results = this.l_students.length;
-        this.total = this.results;
-        console.log(this.total);
+        this.total = this.l_students.length;
+         
       },
       error: (console.log),
       complete:(console.log)

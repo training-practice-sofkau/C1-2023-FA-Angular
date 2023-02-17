@@ -13,12 +13,13 @@ export class StudentListComponent implements OnInit{
   s_founded: Student[] = [];
   founded: number = 0;
   searchingBy: string = '';
-  p: number = 0;
+  l: number = 0;
 
   constructor(private service: StudentService) { }
   ngOnInit(): void {
-    this.s_founded=[];
+    this.s_founded= [];
     this.founded = 0;
+    this.l=0;
   }
 
   isNumber(numStr: string): boolean {

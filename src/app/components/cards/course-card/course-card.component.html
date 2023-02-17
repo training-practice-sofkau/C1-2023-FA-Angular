@@ -2,16 +2,16 @@
     <mat-card [ngStyle]="{margin: '5px 0px 5px 0px'}">
         <div [ngStyle]="{backgroundColor: '#add9dd', display: 'flex',  flexDirection: 'column'}">
             <mat-card-header>
-                <mat-card-title>{{course.name}}</mat-card-title>
+                <mat-card-title>{{course.nameDTO}}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <mat-card-subtitle><b>Coach:</b> {{course.coach}}</mat-card-subtitle>
-                <mat-card-subtitle><b>Level:</b> {{course.level}}</mat-card-subtitle>
-                <mat-card-subtitle><b>LastUpdate:</b> {{course.lastUpdated}}</mat-card-subtitle>
+                <mat-card-subtitle><b>Coach:</b> {{course.coachDTO}}</mat-card-subtitle>
+                <mat-card-subtitle><b>Level:</b> {{course.levelDTO}}</mat-card-subtitle>
+                <mat-card-subtitle><b>LastUpdate:</b> {{course.lastUpdatedDTO}}</mat-card-subtitle>
             </mat-card-content>
             <mat-card-actions align="start">
                 <button mat-mini-fab color="primary" (click)="goToForm()"><mat-icon>update</mat-icon></button>
-                <button mat-mini-fab color="accent"><mat-icon>delete</mat-icon></button>
+                <button mat-mini-fab color="accent" (click)="ngdeleteById(course.idDTO, course.nameDTO)"><mat-icon>delete</mat-icon></button>
             </mat-card-actions>
         </div>
     </mat-card>

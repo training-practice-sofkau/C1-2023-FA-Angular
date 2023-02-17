@@ -9,7 +9,7 @@
   <div class="containerstudentlist">
   <div *ngIf="founded > 0" [ngStyle]="{display: 'flex', flexDirection: 'column', margin: '10px 10px 10px 13px'}">
     <app-student-card *ngFor="let i_student of s_founded 
-    | paginate:{itemsPerPage: 4, currentPage: p }" [student]="i_student"></app-student-card>
+    | paginate:{itemsPerPage: 4, currentPage: l }" [student]="i_student"></app-student-card>
   </div>
   <ng-container *ngIf="founded > 0; else noStudentsFound">
     <div class="found">
@@ -21,7 +21,7 @@
       <h4>No student(s) were found</h4>
     </div>
   </ng-template>
-  <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Previous"
+  <pagination-controls class="pagination" (pageChange)="l = $event" previousLabel="Previous"
       nextLabel="Next"></pagination-controls>
     </div>
 </div>

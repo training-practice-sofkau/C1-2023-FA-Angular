@@ -12,15 +12,7 @@ export class StudentService{
 
   api: string = "http://localhost:8080/students"
   
-  organizeListByName(studentList: Observable<Student[]>):
-  Observable<Student[]>{
-    return studentList.pipe(map(
-      results => results.sort(
-        (a,b) => (a.nameDTO > b.nameDTO) ? 1 :
-        ((b.nameDTO > a.nameDTO)?-1:0)
-      )
-    ))
-  }
+  
   getAll(): Observable<any>{
     return this.http.get(this.api);
   }
