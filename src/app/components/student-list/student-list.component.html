@@ -1,22 +1,47 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
-        <button mat-raised-button color="primary" >Search</button>
-
+<div
+  [ngStyle]="{
+    display: 'grid',
+    'grid-template-columns': 'repeat(auto-fit, 200px)',
+    gap: '30px',
+    margin: '10px'
+  }"
+>
+  <div>
+    <h4>Select filter type</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selected_option">
+        <mat-option>None</mat-option>
+        <mat-optgroup>
+          Punctual
+          <mat-option value="IdNum"> Id Number </mat-option>
+        </mat-optgroup>
+        <mat-optgroup>
+          Non-Punctual
+          <mat-option value="Name"> Name </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div
+    [ngStyle]="{
+      display: 'grid',
+      'align-content': 'center',
+      'padding-top': '15px'
+    }"
+  >
+    <input
+      matInput
+      [ngStyle]="{ height: '50px' }"
+      placeholder="Enter text"
+      [(ngModel)]="searchingBy"
+      (keyup)="ngSearchByParam($event)"
+    />
+  </div>
 </div>
 
-<div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
-</div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
-    <div>
-      <h4 >Founded: {{ founded }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 >No student(s) were found</h4>
-    </div>
-</ng-template>
+<div *ngIf="5 > 0">
+  <app-student-card
+    *ngFor="let i_student of s_founded | async "
+    [student]="i_student"
+  ></app-student-card>
