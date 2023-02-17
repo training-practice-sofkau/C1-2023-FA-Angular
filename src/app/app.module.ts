@@ -20,6 +20,8 @@ import { StudentCardComponent } from './components/cards/student-card/student-ca
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    ErrorPageComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { CourseFormComponent } from './components/forms/course-form/course-form.
 import { StudentFormComponent } from './components/forms/student-form/student-form.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
@@ -63,6 +64,10 @@ const routes: Routes = [
         component: CourseFormComponent
       }
     ]
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent
   }
 ];
 
