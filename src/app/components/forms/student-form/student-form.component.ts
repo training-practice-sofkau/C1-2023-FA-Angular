@@ -71,21 +71,36 @@ export class StudentFormComponent implements OnInit {
     }
 
     updateStudent() {
-        this.course == "" ?
+
+        if (this.course == "") {
             this.studentForm.patchValue({
-                courseDTO: null
-            }):
+                courseDTO: {}
+            });
+            this.justUpdate();
+
+        } else {
+
             this.courseService.getById(this.course).subscribe({
                 next: course => {
                     console.log(course);
                     this.studentForm.patchValue({
                         courseDTO: course
                     });
-                    console.log(this.studentForm.value);
+
                 },
                 error: error => console.log(error),
-                complete: () => console.log("Get course")
+                complete: () => {
+                    console.log("Get course =v");
+                    console.log(this.studentForm.value);
+                    this.justUpdate();
+                }
             });
+
+        }
+
+    }
+
+    justUpdate() {
         this.service.updateStudent(this.studentForm.value).subscribe({
             next: (answer) => console.log(answer),
             error: error => console.log(error),

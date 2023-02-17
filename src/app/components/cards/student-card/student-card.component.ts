@@ -48,4 +48,27 @@ export class StudentCardComponent {
             complete: () => this.router.navigateByUrl("/home")
         });
     }
+
+    unregisterStudent() {
+        this.student = {
+            id: this.student.id,
+            name: this.student.name,
+            idNum: this.student.idNum,
+            age: this.student.age,
+            mail: this.student.mail,
+            courseDTO: {
+                id: "",
+                name: "",
+                coach: "",
+                level: 0,
+                lastUpdated: new Date(),
+                studentListDTO: []
+            }
+        };
+        this.studentService.updateStudent(this.student).subscribe({
+            next: (answer) => console.log(answer),
+            error: error => console.log(error),
+            complete: () => this.router.navigateByUrl("/home")
+        });
+    }
 }
