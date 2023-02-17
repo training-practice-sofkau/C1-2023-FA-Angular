@@ -28,5 +28,12 @@ export class StudentService{
     return this.http.put(`${this.api}/${id}`, data)
   }
 
+  getStudentByname(name: string): Observable<any> {
+      return this.http.get(`${this.api}/byName/${name}`);
+  }
+
+  getCoursesByIdNum(idNum: string): Observable<any> {
+      return this.http.get(`${this.api}/byIdNum/${idNum}`);
+  }
 
 }

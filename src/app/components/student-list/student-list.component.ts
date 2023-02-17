@@ -11,9 +11,10 @@ export class StudentListComponent {
 
     constructor(private service: StudentService){}
 
-    @Input() searchingBy!: string;
+    @Input() searchingBy: string = '';
     s_founded: Student[] = [];
     founded: number = 0;
+    selected: string = "name";
     page: number = 1;
 
     ngOnInit(): void {
@@ -31,6 +32,34 @@ export class StudentListComponent {
         })
     }
 
+    onSearch() {
+        if (this.searchingBy.trim() === ""){
+            this.s_founded = [];
+            this.founded = this.s_founded.length;
+        }
+
+        if (this.selected === 'n_ident') {
+            this.service.getCoursesByIdNum(this.searchingBy).subscribe({
+                next: (data) => {
+                    this.s_founded = data;
+                    this.founded = this.s_founded.length;
+                },
+                error: (console.log),
+                complete: (console.log)
+            });
+        }
+
+        if(this.selected === "name") {
+            this.service.getStudentByname(this.searchingBy.trim()).subscribe({
+                next: (data) => {
+                    this.s_founded = data;
+                    this.founded = this.s_founded.length;
+                },
+                error: (console.log),
+                complete: (console.log)
+            });
+        }
+    }
 
 
 }
