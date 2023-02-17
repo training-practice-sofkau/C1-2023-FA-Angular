@@ -31,6 +31,15 @@ export class CourseCardComponent {
     })
   }
 
+  goToStudentList(){
+    this.router.navigate(['students/course'],{
+      queryParams:{
+        data: JSON.stringify(this.course)
+      }
+      
+    })
+  }
+
   ngdeleteById(courseId: string, courseName: string) {
     if (confirm(`do you really like delete ${courseName} from the list?`)) {
       this.service.deleteCourse(courseId).subscribe();
