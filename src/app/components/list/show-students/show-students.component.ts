@@ -40,6 +40,7 @@ export class ShowStudentsComponent {
   paginationList(): Student[] {
     let start = this.rows * (this.currentPage - 1);
     let end = start + this.rows;
+    console.log(this.l_students.slice(start, end));
     return this.l_students.slice(start, end);
   }
 

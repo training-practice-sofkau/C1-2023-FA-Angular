@@ -14,6 +14,23 @@
       <div>
         <h4 class="result_text">Found: {{ total }}</h4>
       </div>
+      <div class="paginator--container" *ngIf="pagination_students.length > 0">
+        <p
+          (click)="changePage('down')"
+          *ngIf="currentPage > 1"
+          class="pagination--button"
+        >
+          <<
+        </p>
+        <p (click)="paginationList()">Page {{ currentPage }}</p>
+        <p
+          (click)="changePage('up')"
+          *ngIf="l_students.length / rows > currentPage"
+          class="pagination--button"
+        >
+          >>
+        </p>
+      </div>
 
     </ng-container>
 
