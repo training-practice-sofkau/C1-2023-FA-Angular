@@ -1,0 +1,32 @@
+.search-container {
+    display: flex;
+    //align-items: center;
+    justify-content: center;
+    flex-direction:row;
+    margin: 10px 10px 10px 13px;
+}
+
+.inp{
+    margin-right: 1%;
+}
+
+.artistOps {
+    margin-left: 10pt;
+    margin-right: 10pt;
+
+}
+
+.containercourseslist{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.found {
+    margin: 10px 10px 10px 13px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

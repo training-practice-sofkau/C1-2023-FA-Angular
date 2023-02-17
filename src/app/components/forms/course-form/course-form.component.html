@@ -1,1 +1,26 @@
-<p>course-form works!</p>
+<div class="container-fluid">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>Course</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="cardContains">
+        <form [formGroup]="courseForm" ngClass="save">
+            <mat-form-field appearance="fill">
+                <mat-label>Name: </mat-label> <input matInput placeholder="Insert name" formControlName="nameDTO" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Coach: </mat-label> <input matInput placeholder="Insert coach"
+                    formControlName="coachDTO" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Level: </mat-label> <input matInput placeholder="Insert level" formControlName="levelDTO" />
+            </mat-form-field>
+            <div class="btn">
+                <button mat-raised-button color="primary" *ngIf="this.hiddeUpdateButton" (click)="ngSaveCourse()">Save</button>
+                <button mat-raised-button color="primary" *ngIf="this.hiddeCreateButton" (click)="ngUpdateCourse()">Update</button>
+                <button mat-raised-button color="warn" routerLink="/courses">Back</button>
+            </div>
+        </form>
+    </mat-card-content>
+    </mat-card>
+</div>

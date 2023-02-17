@@ -1,1 +1,36 @@
-<p>course-list works!</p>
+<div class="container-fluid">
+    <div class="search-container" >
+  
+      <input  class="inp" matInput placeholder="Enter text" [(ngModel)]="searchingBy" (keydown.backspace)="ngOnInit()"/>
+      <div ngClass="artistOps">
+        <select class="form-control" [(ngModel)]="typeSearch">
+            <option disable selected>Select an option</option>
+            <option selected>name</option>
+            <option selected>coach</option>
+            <option selected>level</option>
+        </select>
+    </div>
+      
+      <button mat-mini-fab color="primary" (click)="findCourse(searchingBy, typeSearch)"><mat-icon>search</mat-icon></button>
+  
+    </div>
+  
+    <div class="containercourseslist">
+    <div *ngIf="founded > 0" [ngStyle]="{display: 'flex', flexDirection: 'column', margin: '10px 10px 10px 13px'}">
+      <app-course-card *ngFor="let i_course of c_founded 
+      | paginate:{itemsPerPage: 4, currentPage: p }" [course]="i_course"></app-course-card>
+    </div>
+    <ng-container *ngIf="founded > 0; else noStudentsFound">
+      <div class="found">
+        <h4>Founded: {{ founded }}</h4>
+      </div>
+    </ng-container>
+    <ng-template #noStudentsFound>
+      <div class="found">
+        <h4>No courses(s) were found</h4>
+      </div>
+    </ng-template>
+    <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Previous"
+        nextLabel="Next"></pagination-controls>
+      </div>
+  </div>

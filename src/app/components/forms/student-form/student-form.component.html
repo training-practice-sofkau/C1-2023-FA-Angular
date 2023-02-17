@@ -1,17 +1,29 @@
-<form [formGroup] = "studentForm" ngClass="save">
-    <mat-form-field appearance="fill" >
-        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification" formControlName="idNum"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="age"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
-    </mat-form-field>
-    <button mat-raised-button color="primary">Save</button>
-    <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
- 
-</form>
+<div class="container-fluid">
+    <mat-card class="example-card">
+        <mat-card-header>
+                <mat-card-title>Student</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="cardContains">
+            <form [formGroup]="studentForm" ngClass="save">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name: </mat-label> <input matInput placeholder="Insert name" formControlName="nameDTO" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification"
+                        formControlName="idNumDTO" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="ageDTO" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mailDTO" />
+                </mat-form-field>
+                <div class="btn">
+                    <button mat-raised-button color="primary" *ngIf="this.hiddeUpdateButton" (click)="ngSaveStudent()">Save</button>
+                    <button mat-raised-button color="primary" *ngIf="this.hiddeCreateButton" (click)="ngUpdateStudent()">Update</button>
+                    <button mat-raised-button color="warn" routerLink="/students">Back</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
