@@ -1,12 +1,12 @@
 <div class="search-course-page">
     <div class="input-button" >
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-        <button mat-raised-button color="primary" >Search</button>
+        <input matInput autocomplete="off" type="text" placeholder="Enter text" [(ngModel)]="searchingBy"/>
+        <!-- <button mat-raised-button color="primary" >Search</button> -->
     </div>
 
         <div class="results-container">
             <div *ngIf="founded > 0">
-                <app-course-card *ngFor="let i_course of s_founded" [course]="i_course"></app-course-card>
+                <app-course-card *ngFor="let i_course of s_founded | filter: searchingBy" [course]="i_course"></app-course-card>
             </div>
             <ng-container *ngIf="founded > 0; else noStudentsFound">
                 <div>

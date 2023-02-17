@@ -23,6 +23,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { CardEnrolledComponent } from './components/cards/card-enrolled/card-enrolled.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CardEnrolledComponent } from './components/cards/card-enrolled/card-enr
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
