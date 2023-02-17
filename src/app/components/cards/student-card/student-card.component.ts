@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student-service/student.service';
 import { StudentFormComponent } from '../../forms/student-form/student-form.component';
+import { Course } from 'src/app/models/course.model';
 
 @Component({
   selector: 'app-student-card',
@@ -11,6 +12,14 @@ import { StudentFormComponent } from '../../forms/student-form/student-form.comp
 })
 export class StudentCardComponent {
   constructor(private router: Router, private service: StudentService) { }
+
+  @Input() courseCall: boolean=false;
+  @Input() course:Course={
+    name:"",
+    coach:"",
+    level:0,
+  }
+
   @Input() student: Student = {
     studentId: '',
     name: '',
@@ -39,6 +48,14 @@ export class StudentCardComponent {
 
       }
 
+    })
+  }
+
+  onAdd():void {
+    this.student.course=this.course;
+    this.service.update(<string>this.student.studentId,this.student).subscribe((answer)=>{
+      console.log(answer)
+      alert(`Student with ID: ${answer.data.studentId} has been updated!`)
     })
   }
 

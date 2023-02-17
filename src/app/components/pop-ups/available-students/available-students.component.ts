@@ -16,6 +16,8 @@ export class AvailableStudentsComponent implements OnInit {
   l_students: Student[] = [];
   p: number = 1;
   total: number = this.l_students.length;
+  courseCall: boolean=true;
+  course: Course = this.data;
 
 
   getAllStudents(): any {
