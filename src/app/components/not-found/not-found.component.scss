@@ -5,10 +5,21 @@ $pink-color: mat.$pink-palette;
 $blue-gray-color: mat.$blue-gray-palette;
 $gray-color: mat.$gray-palette;
 
-.flexContainer {
+h1{
+  font-size: xx-large;
+  font-weight: bold;
+  color: map.get($pink-color, 500);
+}
+
+h3{
+  color: map.get($blue-gray-color, 500);
+}
+
+div{
+  padding: 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300px;
-  margin: 10px;
+  align-items: center;
+  text-align: center;
 }

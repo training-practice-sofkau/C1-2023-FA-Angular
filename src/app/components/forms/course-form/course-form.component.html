@@ -1,1 +1,20 @@
-<p>course-form works!</p>
+<div class="formContainer mat-elevation-z4">
+  <form [formGroup] = "courseForm" class="formulary">
+    <mat-form-field appearance="fill" >
+      <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" >
+      <mat-label>Coach: </mat-label> <input matInput placeholder="Insert Coach name" formControlName="coach"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" >
+      <mat-label>Level: </mat-label> <input matInput placeholder="Insert age" formControlName="level"/>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary"(click)="saveNew()" *ngIf="father=='/courses/new'">Save</button>
+      <button mat-raised-button color="primary"(click)="updateCourse()" *ngIf="father!='/courses/new'">Edit</button>
+      <button mat-raised-button color="accent" (click)="backButton()">Go Back</button>
+    </div>
+  </form>
+</div>

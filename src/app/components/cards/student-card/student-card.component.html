@@ -1,18 +1,23 @@
-<div [ngStyle]="{display: 'flex', flexDirection: 'column'}">
+<div class="flexContainer">
     <mat-card>
         <mat-card-header>
-          <mat-card-title>{{student.name}}</mat-card-title>
-          <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
-          <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
-          <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
-          <mat-card-subtitle>No. Courses: {{student.numCourses}}</mat-card-subtitle>
+            <mat-card-title>{{student.name}}</mat-card-title>
+            <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
+            <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
+            <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="start">
-          <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
-          <button mat-button mat-raised-button color="accent">Delete</button>
+            <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
+            <button mat-button mat-raised-button color="warn" [ngStyle]="{marginLeft:'10px'}"
+                    *ngIf="father == 'studentPage'" (click)="deleteStudent()">Delete
+            </button>
+            <button mat-button mat-raised-button color="warn" [ngStyle]="{marginLeft:'10px'}"
+                    (click)="unregisterStudent()"
+                    *ngIf="father == 'coursePage'">Unregister
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>
 
-  
+
 

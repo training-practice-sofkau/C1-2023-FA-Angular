@@ -1,1 +1,27 @@
-<p>course-list works!</p>
+<div id="searchBar" class="flexContainer">
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Enter text" [(ngModel)]="searchingBy"/>
+  </mat-form-field>
+    <mat-radio-group aria-label="Select the type of search">
+        <mat-radio-button (click)="typeOf='name'" value="name">Name</mat-radio-button>
+        <mat-radio-button (click)="typeOf='coach'" value="coach">Coach</mat-radio-button>
+        <mat-radio-button (click)="typeOf='level'" value="level">Level</mat-radio-button>
+    </mat-radio-group>
+  <button mat-raised-button (click)="search(searchingBy,typeOf)">search</button>
+</div>
+
+<div *ngIf="founded > 0"  class="flexContainer">
+  <app-course-card *ngFor="let course of c_founded" [course]="course"></app-course-card>
+</div>
+
+<ng-container *ngIf="founded > 0; else noCourseFound">
+  <div>
+    <h4 >Founded: {{ founded }}</h4>
+  </div>
+</ng-container>
+<ng-template #noCourseFound>
+  <div>
+    <h4 >No student(s) were found</h4>
+  </div>
+</ng-template>

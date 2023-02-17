@@ -1,4 +1,4 @@
-import { Student } from "./student.model";
+import {Student} from "./student.model";
 
 export interface Course {
     id: string,
@@ -6,5 +6,5 @@ export interface Course {
     coach: string,
     level: number,
     lastUpdated: Date,
-    studentList: Student[]
+    studentListDTO: Student[]
 }
