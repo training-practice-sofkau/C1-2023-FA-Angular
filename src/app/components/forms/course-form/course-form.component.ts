@@ -24,7 +24,7 @@ export class CourseFormComponent {
         name: '',
         coach: '',
         level: 0,
-        studentsList: ""
+        students: ""
       }
     );
 

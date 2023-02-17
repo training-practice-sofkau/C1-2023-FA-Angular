@@ -10,68 +10,68 @@ import { Student } from 'src/app/models/student.model';
 export class CoursePageComponent {
 
   l_courses: Course[] = [{
-    id: "1",
+    courseId: "1",
     name: "Development [English]",
     coach: "Mishell",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
 {
-    id: "2",
+    courseId: "2",
     name: "Development",
     coach: "Ricardo Milos",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
   {
-    id: "3",
+    courseId: "3",
     name: "Testing",
     coach: "Another Ricardo Milos",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
   {
-    id: "4",
+    courseId: "4",
     name: "Project Management",
     coach: "Ricarda Milan",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
   {
-    id: "5",
+    courseId: "5",
     name: "UI/UX",
     coach: "Richard Milos",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
   {
-    id: "3",
+    courseId: "3",
     name: "Testing",
     coach: "Another Ricardo Milos",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
   {
-    id: "4",
+    courseId: "4",
     name: "Project Management",
     coach: "Ricarda Milan",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
   {
-    id: "5",
+    courseId: "5",
     name: "UI/UX",
     coach: "Richard Milos",
     level: 1,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   },
 ];
   pageSlice = this.l_courses.slice(0, 6);

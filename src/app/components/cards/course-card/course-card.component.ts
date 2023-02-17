@@ -10,12 +10,12 @@ import { Course } from 'src/app/models/course.model';
 export class CourseCardComponent {
   constructor(private router: Router) { }
   @Input() course: Course = {
-    id: "",
+    courseId: "",
     name: "",
     coach: "",
     level: 0,
     lastUpdated: new Date("2023-05-16"),
-    studentList: []
+    studentsDTO: []
   }
 
   goToForm(){

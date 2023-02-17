@@ -23,9 +23,9 @@ export class StudentFormComponent implements OnInit{
     this.studentForm = this.builder.group(
       {
         name: '',
-        idNum: '',
+        dni: '',
         age: 0,
-        mail: ''
+        email: ''
       }
     );
 

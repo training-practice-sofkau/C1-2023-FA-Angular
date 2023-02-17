@@ -3,9 +3,9 @@
         <mat-card-header>
           <mat-card-title>{{student.name}}</mat-card-title>
           <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
-          <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
-          <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
-          <mat-card-subtitle>No. Courses: {{student.numCourses}}</mat-card-subtitle>
+          <mat-card-subtitle>Identification: {{student.dni}}</mat-card-subtitle>
+          <mat-card-subtitle>Mail: {{student.email}}</mat-card-subtitle>
+          <mat-card-subtitle>Course: {{student.courseDTO?.name}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="start">
           <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
@@ -14,5 +14,5 @@
     </mat-card>
 </div>
 
-  
+
 
