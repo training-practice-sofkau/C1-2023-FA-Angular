@@ -32,7 +32,8 @@ export class SearchCourseComponent {
 
   getByNameFilter(name: string) {
     this.courseService.getCoursesByName(name).subscribe({
-      next: (res) => (this.courseSearch = res),
+      next: (res) => {this.courseSearch = res
+        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)},
       error: console.log,
       complete: console.log,
     });
@@ -40,7 +41,8 @@ export class SearchCourseComponent {
 
   getByCoachFilter(name:string){
     this.courseService.getCoursesByCoach(name).subscribe({
-      next: (res) => (this.courseSearch = res),
+      next: (res) => {this.courseSearch = res
+        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)},
       error: console.log,
       complete: console.log,
     });
@@ -48,7 +50,8 @@ export class SearchCourseComponent {
 
   getByLevelFilter(name:number){
     this.courseService.getCoursesByLevel(name).subscribe({
-      next: (res) => (this.courseSearch = res),
+      next: (res) => {this.courseSearch = res
+        this.courseSearch.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)},
       error: console.log,
       complete: console.log,
     });

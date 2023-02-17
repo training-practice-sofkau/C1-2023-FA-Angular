@@ -30,7 +30,8 @@ export class SearchStudentComponent {
 
   getByNameFilter(name: string) {
     this.studentService.getStudentsByName(name).subscribe({
-      next: (res) => (this.studentSearch = res),
+      next: (res) => {this.studentSearch = res
+      this.studentSearch.sort((a,b) => a.name>b.name ? 1 : -1)},
       error: console.log,
       complete: console.log,
     });
@@ -38,7 +39,8 @@ export class SearchStudentComponent {
 
   getByIdNumFilter(name:string){
     this.studentService.getStudentsByIdNum(name).subscribe({
-      next: (res) => (this.studentSearch = res),
+      next: (res) => {this.studentSearch = res
+        this.studentSearch.sort((a,b) => a.name>b.name ? 1 : -1)},
       error: console.log,
       complete: console.log,
     });

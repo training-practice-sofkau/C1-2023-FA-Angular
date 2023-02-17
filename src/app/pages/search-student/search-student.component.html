@@ -1,4 +1,4 @@
 <div>
     <app-search-bar [filterBy]="dataSelector" (toSearch)="searchBy($event)"></app-search-bar>
-    <app-show-students [l_students]="studentSearch" (idStudent)="deleteStudent($event)" (editStudent)="updateStudent($event)"></app-show-students>
+    <app-show-students [l_students]="studentSearch" (idStudent)="deleteStudent($event)" (editStudent)="updateStudent($event)" *ngIf="studentSearch.length>0"></app-show-students>
 </div>
