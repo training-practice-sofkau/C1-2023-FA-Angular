@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
+import { CourseService } from 'src/app/services/course-service/course.service';
 
 @Component({
   selector: 'app-course-page',
@@ -8,98 +9,25 @@ import { Course } from 'src/app/models/course.model';
 })
 export class CoursePageComponent {
 
- page: number = 1;
+    constructor(private service: CourseService){}
 
-  l_courses: Course[] = [
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-      {
-          id: "1",
-          name: "Mary Rojas",
-          coach: "coach",
-          level: 5,
-          lastUpdated: new Date(),
-          studentList: []
-      },
-];
-  
-  total: number = this.l_courses.length;
+    @Input() param: string = "";
+    l_courses: Course[] = [];
+    total: number = 0;
+    page: number = 1;
+
+    ngOnInit(): void {
+        this.fetchData();
+    }
+
+    fetchData(){
+        this.service.getAll().subscribe({
+            next: (course) => {
+                this.l_courses = course;
+                this.total = this.l_courses.length;
+            },
+            error: (console.log),
+            complete: (console.log)
+        })
+    }
 }
