@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
+import { StudentPageComponent } from 'src/app/pages/student-page/student-page.component'
 
 @Component({
   selector: 'app-student-list',
@@ -7,9 +8,8 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent {
-  s_founded: Student[] = [];
-  founded: number = 0;
+  student: StudentPageComponent = new StudentPageComponent();
+  s_founded: Student[] = this.student.l_students;
+  founded: number = this.s_founded.length;
   searchingBy: string = '';
-
-
 }
