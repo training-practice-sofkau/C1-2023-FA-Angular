@@ -25,7 +25,7 @@ export class CourseCardComponent {
   someEvent = new EventEmitter();
 
   goToForm(){
-      this.router.navigate(['course/edit'],{
+      this.router.navigate(['courses/edit'],{
           queryParams:{
               data: JSON.stringify(this.course)
 
@@ -33,12 +33,6 @@ export class CourseCardComponent {
 
       })
   }
-
-  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
-  sendNotification() {
-      this.notifyParent.emit('Some value to send to the parent');
-  }
-
 
   deleteArtist(param: number){
       if(confirm("Do you really want to delete?"))

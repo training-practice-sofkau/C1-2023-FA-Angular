@@ -33,8 +33,6 @@ export class StudentCardComponent {
     })
   }
 
-  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
-
   deleteArtist(param: number){
       if(confirm("Do you really want to delete?"))
           {

@@ -57,7 +57,7 @@ export class CourseFormComponent {
     update(){
       this.route.queryParams
       .subscribe(params => {
-         this.service.updateCourse(JSON.parse(params['data']).id, this.courseForm.value).subscribe(() => this.router.navigate(['students']))
+         this.service.updateCourse(JSON.parse(params['data']).id, this.courseForm.value).subscribe(() => this.router.navigate(['courses']))
       })
     };
 
