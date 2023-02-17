@@ -2,6 +2,7 @@
   <div class="edit-content">
     <div class="information">
       <div class="form">
+        <h2>Course form</h2>
         <mat-form-field appearance="fill">
           <mat-label>Name: </mat-label>
           <input
@@ -27,43 +28,50 @@
             formControlName="level"
           />
         </mat-form-field>
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="onCreate()">
+            {{ this.courseForm.value.courseId === "" ? "Save" : "Edit" }}
+          </button>
+          <button
+            *ngIf="!(this.courseForm.value.courseId === '')"
+            mat-raised-button
+            color="primary"
+            (click)="onSave()"
+          >
+            Duplicate
+          </button>
+          <button mat-raised-button color="warn" routerLink="/courses">
+            Go Back
+          </button>
+        </div>
       </div>
       <div class="list current">
         <h2>Inscribed students</h2>
         <div class="objects">
-          <div class="student object card" *ngFor="let course of related">
-            <h2>{{ course.name }}</h2>
-            <h3>{{ course.idNum }}</h3>
-            <h3>{{ course.age }}</h3>
+          <div class="student object card" *ngFor="let student of related">
+            <div class="info">
+              <h2>{{ student.name }}</h2>
+              <h3><b>Students's ID: </b> {{ student.idNum }}</h3>
+              <h3><b>Student's age: </b> {{ student.age }}</h3>
+            </div>
+            <button class="switch-rlation" (click)="unRelate(student.studentId)">></button>
           </div>
         </div>
       </div>
       <div class="list all">
         <h2>All students</h2>
         <div class="objects">
-          <div class="student object card" *ngFor="let course of notRelated">
-            <h2>{{ course.name }}</h2>
-            <h3>{{ course.idNum }}</h3>
-            <h3>{{ course.age }}</h3>
+          <div class="student object card" *ngFor="let student of notRelated">
+            <div class="info">
+              <h2>{{ student.name }}</h2>
+              <h3><b>Students's ID: </b> {{ student.idNum }}</h3>
+              <h3><b>Student's age: </b> {{ student.age }}</h3>
+            </div>
+            <button class="switch-rlation" (click)="relate(student.studentId)"><</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="actions">
-      <button mat-raised-button color="primary" (click)="onCreate()">
-        {{ this.courseForm.value.courseId === "" ? "Save" : "Edit" }}
-      </button>
-      <button
-        *ngIf="!(this.courseForm.value.courseId === '')"
-        mat-raised-button
-        color="primary"
-        (click)="onSave()"
-      >
-        Duplicate
-      </button>
-      <button mat-raised-button color="warn" routerLink="/courses">
-        Go Back
-      </button>
-    </div>
+
   </div>
 </form>

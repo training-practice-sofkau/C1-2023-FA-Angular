@@ -2,6 +2,7 @@
   <div class="edit-content">
     <div class="information">
       <div class="form">
+        <h2>Student form</h2>
         <mat-form-field appearance="fill">
           <mat-label>Name: </mat-label>
           <input matInput placeholder="Insert name" formControlName="name" />
@@ -49,9 +50,14 @@
         <h2>Inscribed courses</h2>
         <div class="objects">
           <div class="course object card" *ngFor="let course of related">
-            <h2>{{ course.name }}</h2>
-            <h3>coach: <br>{{ course.coach }}</h3>
-            <h3>level: {{ course.level }}</h3>
+            <div class="info">
+              <h2>{{ course.name }}</h2>
+              <h3><b>Coach's name : </b> {{ course.coach }}</h3>
+              <h3><b>Course's level : </b> {{ course.level }}</h3>
+            </div>
+            <button class="switch-rlation" (click)="unRelate(course.courseId)">
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -59,13 +65,17 @@
         <h2>All courses</h2>
         <div class="objects">
           <div class="course object card" *ngFor="let course of notRelated">
-            <h2>{{ course.name }}</h2>
-            <h3>coach: <br>{{ course.coach }}</h3>
-            <h3>level: {{ course.level }}</h3>
+            <div class="info">
+              <h2>{{ course.name }}</h2>
+              <h3><b>Coach's name : </b> {{ course.coach }}</h3>
+              <h3><b>Course's level : </b> {{ course.level }}</h3>
+            </div>
+            <button class="switch-rlation" (click)="relate(course.courseId)">
+              <
+            </button>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </form>

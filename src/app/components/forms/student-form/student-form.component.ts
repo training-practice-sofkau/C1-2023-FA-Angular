@@ -23,6 +23,7 @@ export class StudentFormComponent implements OnInit {
   studentForm: FormGroup = new FormGroup({});
   related: Course[] = [];
   notRelated: Course[] = [];
+
   constructor(
     private builder: FormBuilder,
     private studentService: StudentService,
@@ -50,6 +51,46 @@ export class StudentFormComponent implements OnInit {
       }
     });
     this.loadRelations();
+  }
+
+  relate(courseId: string) {
+    if (this.studentForm.value.studentId === '') {
+      alert('Create or edit a student to add courses');
+    } else {
+      this.relationService.createRelation(courseId,this.studentForm.value.studentId).subscribe({
+        next: (course) => {
+          if (course) {
+            this.loadRelations();
+            alert('Course added');
+          } else {
+            alert("Course hasn't been deleted");
+          }
+        },
+        error: console.log,
+        complete: console.log,
+      })
+      this.loadRelations();
+    }
+  }
+
+  unRelate(courseId: string) {
+    if (this.studentForm.value.studentId === '') {
+      alert('Create or edit a student to remove courses');
+    } else {
+      this.relationService.removeRelation(courseId,this.studentForm.value.studentId).subscribe({
+        next: (course) => {
+          if (course) {
+            this.loadRelations();
+            alert('Course removed');
+          } else {
+            alert("Course hasn't been deleted");
+          }
+        },
+        error: console.log,
+        complete: console.log,
+      })
+      this.loadRelations();
+    }
   }
 
   setFormValues(student: Student) {

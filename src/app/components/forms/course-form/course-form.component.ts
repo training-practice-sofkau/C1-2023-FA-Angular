@@ -45,6 +45,46 @@ export class CourseFormComponent implements OnInit {
     this.loadRelations();
   }
 
+  relate(studentId: string) {
+    if (this.courseForm.value.courseId === '') {
+      alert('Create or edit a course to add courses');
+    } else {
+      this.relationService.createRelation(this.courseForm.value.courseId, studentId).subscribe({
+        next: (course) => {
+          if (course) {
+            this.loadRelations();
+            alert('Student added');
+          } else {
+            alert("Student hasn't been deleted");
+          }
+        },
+        error: console.log,
+        complete: console.log,
+      })
+      this.loadRelations();
+    }
+  }
+
+  unRelate(studentId: string) {
+    if (this.courseForm.value.courseId === '') {
+      alert('Create or edit a course to remove courses');
+    } else {
+      this.relationService.removeRelation(this.courseForm.value.courseId, studentId).subscribe({
+        next: (course) => {
+          if (course) {
+            this.loadRelations();
+            alert('Student removed');
+          } else {
+            alert("Student hasn't been deleted");
+          }
+        },
+        error: console.log,
+        complete: console.log,
+      })
+      this.loadRelations();
+    }
+  }
+
   setFormValues(course: Course) {
     this.courseForm.setValue({
       courseId: course.courseId,
