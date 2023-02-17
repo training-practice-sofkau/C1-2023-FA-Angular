@@ -1,6 +1,7 @@
-<form [formGroup] = "studentForm" ngClass="save">
+<form [formGroup] = "studentForm" ngClass="save" [ngStyle]="{display: 'flex', padding: '10px'}">
+    <mat-label>ID: {{currentCourse.id}}</mat-label>
     <mat-form-field appearance="fill" >
-        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
+        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
     </mat-form-field>
     <mat-form-field appearance="fill" >
         <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification" formControlName="idNum"/>
@@ -11,7 +12,15 @@
     <mat-form-field appearance="fill" >
         <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
     </mat-form-field>
-    <button mat-raised-button color="primary">Save</button>
-    <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
- 
+    <mat-form-field appearance="fill" >
+        <mat-label>Courses: {{currentCourse.name}}</mat-label>
+          <mat-select formControlName="course" (valueChange)="currentCourse">
+            <mat-option *ngFor="let c of l_course" [value]="{id: c.id}">{{c.name}}</mat-option>
+          </mat-select>
+
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="warn" routerLink="/students" [ngStyle]="{margin: '10px 0px 0px 0px'}">Go Back</button>
+
 </form>
