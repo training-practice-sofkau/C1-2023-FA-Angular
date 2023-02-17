@@ -1,7 +1,7 @@
 import { Student } from "./student.model";
 
 export interface Course {
-    id: string,
+    id: number,
     name: string,
     coach: string,
     level: number,
