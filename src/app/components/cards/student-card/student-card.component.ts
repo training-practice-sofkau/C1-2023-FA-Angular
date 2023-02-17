@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
+import { StudentService } from 'src/app/services/student-service/student.service';
 import { StudentFormComponent } from '../../forms/student-form/student-form.component';
 
 @Component({
@@ -9,14 +10,23 @@ import { StudentFormComponent } from '../../forms/student-form/student-form.comp
   styleUrls: ['./student-card.component.scss']
 })
 export class StudentCardComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: StudentService) { }
   @Input() student: Student = {
     id: '',
     name: '',
     idNum: '',
     age: 0,
     mail: '',
-    numCourses: 0
+    course: {
+      id: '',
+      name: '',
+      coach: '',
+      level: 0,
+      lastUpdated: new Date(),
+      studentList: []
+
+    },
+    //numCourses: 0
   }
 
   goToForm(){
@@ -25,8 +35,21 @@ export class StudentCardComponent {
         data: JSON.stringify(this.student)
 
       }
-      
+
     })
+  }
+  onDelete(){
+    console.log(this.student.id)
+    this.service.deleteStudent(this.student.id).subscribe({
+      next: (data) => {},
+      error: (err) =>{
+        console.error('Error '+err)
+      },
+      complete:()=>{},
+    });
+    location.reload();
+
+
   }
 
 

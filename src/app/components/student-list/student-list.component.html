@@ -1,22 +1,30 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
+<div [ngStyle]="{display: 'flex', padding: '10px'}">
 
+        <input matInput [style.width.px]=200 [style.height.px]=25 placeholder="Enter text" [(ngModel)]="param"/>
+        <mat-form-field appearance="fill" [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px'}">
+          <mat-select [(value)]="searchingBy" placeholder="Filter settings">
+            <mat-option value="idnum">ID number</mat-option>
+            <mat-option value="name">Student Name</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <button mat-raised-button color="primary" >Search</button>
+        <button mat-raised-button color="primary" (click)="ngSearch()" [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '10px'}">Search</button>
 
 </div>
 
-<div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
+<div *ngIf="found > 0">
+    <app-student-card *ngFor="let i_student of s_found" [student]="i_student"></app-student-card>
 </div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
-    <div>
-      <h4 >Founded: {{ founded }}</h4>
+<div *ngIf="found == 1">
+  <app-student-card [student]="s_foundID"></app-student-card>
+</div>
+<ng-container *ngIf="found > 0; else noStudentsFound">
+    <div [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '5px'}">
+      <h4 >Found: {{ found }}</h4>
     </div>
   </ng-container>
   <ng-template #noStudentsFound>
-    <div>
+    <div [ngStyle]="{display: 'flex', margin:'0px 0px 0px 5px',padding: '5px'}">
       <h4 >No student(s) were found</h4>
     </div>
 </ng-template>

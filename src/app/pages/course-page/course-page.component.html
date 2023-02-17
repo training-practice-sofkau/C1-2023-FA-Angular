@@ -1,1 +1,17 @@
-<p>course-page works!</p>
+<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column', padding: '10px'}">
+  <app-course-card *ngFor="let i_course of l_courses | paginate: {itemsPerPage: 2, currentPage: page}" [course]="i_course"></app-course-card>
+</div>
+<div>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+<ng-container *ngIf="total > 0; else noCoursesFound">
+  <br/>
+  <div [ngStyle]="{display: 'flex', flexDirection: 'column', padding: '15px'}">
+    <h4 class="result_text">Found: {{ total }}</h4>
+  </div>
+</ng-container>
+<ng-template #noCoursesFound>
+  <div [ngStyle]="{display: 'flex', flexDirection: 'column', padding: '15px'}">
+    <h4 class="result_text">There are no Courses, start by adding one</h4>
+  </div>
+</ng-template>
