@@ -5,11 +5,11 @@
             <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
             <mat-card-subtitle>level: {{course.level}}</mat-card-subtitle>
             <mat-card-subtitle>Last Updated: {{course.lastUpdated}}</mat-card-subtitle>
-            <mat-card-subtitle>Studet List: <ul *ngFor="let student of course.enrolledStudents">
-                    <li>
+            <mat-card-subtitle>Studet List: 
+                <ul class='list-students'>
+                    <li  *ngFor="let student of course.enrolledStudents">
                         {{student['name']}} 
-                        <button mat-button mat-raised-button color="primary" 
-                            (click)="removeStudent(course.id, student['id'])">Remove</button>
+                        <mat-icon (click)="removeStudent(course.id, student['id'])">delete</mat-icon>
                     </li>
                 </ul>
             </mat-card-subtitle>
