@@ -32,4 +32,17 @@ export class StudentService{
     return this.http.delete(this.api+"/"+param);
   }
 
+
+  getByName(param: string, strategy:string): Observable<any> {
+    console.log("this is the api url", this.api+"/name/"+strategy+"/"+param)
+    return this.http.get(this.api+"/name/"+strategy+"/"+param);
+  }
+
+  getByAge(param: string): Observable<any> {
+    return this.http.get(this.api+"/age/"+param);
+  }
+
+  getByMail(param: string, strategy:string): Observable<any> {
+    return this.http.get(this.api+"/mail/"+strategy+"/"+param);
+  }
 }
