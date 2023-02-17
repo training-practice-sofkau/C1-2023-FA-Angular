@@ -12,6 +12,7 @@ export class CourseCardComponent {
   @Input() course: Course | undefined = undefined;
   @Output() idCourse = new EventEmitter<string>();
   @Output() editCourse = new EventEmitter<Course>();
+  @Output() idStudent = new EventEmitter<boolean>();
 
 
 
@@ -21,6 +22,10 @@ export class CourseCardComponent {
         this.idCourse.emit(id);
       }
     
+  }
+
+  sendIdStudent(trigger:boolean){
+    this.idStudent.emit(trigger)
   }
 
   sendCourse(myCourse:Course){
