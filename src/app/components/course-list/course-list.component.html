@@ -2,7 +2,16 @@
     <div class="search-container" >
   
       <input  class="inp" matInput placeholder="Enter text" [(ngModel)]="searchingBy" (keydown.backspace)="ngOnInit()"/>
-      <button mat-mini-fab color="primary" (click)="findCourse(searchingBy)"><mat-icon>search</mat-icon></button>
+      <div ngClass="artistOps">
+        <select class="form-control" [(ngModel)]="typeSearch">
+            <option disable selected>Select an option</option>
+            <option selected>name</option>
+            <option selected>coach</option>
+            <option selected>level</option>
+        </select>
+    </div>
+      
+      <button mat-mini-fab color="primary" (click)="findCourse(searchingBy, typeSearch)"><mat-icon>search</mat-icon></button>
   
     </div>
   

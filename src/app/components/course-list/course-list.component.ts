@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable, forkJoin, map, zip } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { EMPTY, Observable, forkJoin, map, zip } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
 
@@ -14,6 +14,7 @@ export class CourseListComponent {
   founded: number = 0;
   searchingBy: string = '';
   p: number = 0;
+  @Input() typeSearch: string = "";
 
   constructor(private service: CourseService) { }
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class CourseListComponent {
     return !isNaN(parseFloat(numStr)) && !isNaN(+numStr)
   }
 
-  /*ngFindbyName(name: string): Course[]{
+  ngFindbyName(name: string): Course[] {
     this.service.getByName(name).subscribe(
       (courses) => {
         if (courses.length != 0) {
@@ -38,12 +39,12 @@ export class CourseListComponent {
       (Error) => {
         console.error('error caught in component' + Error);
       }
-      
-      );
-      return this.c_founded;
+
+    );
+    return this.c_founded;
   }
 
-  ngFindbyCoach (coach: string): Course[]{
+  ngFindbyCoach(coach: string): Course[] {
     this.service.getByCoach(coach).subscribe(
       (courses) => {
         if (courses.length != 0) {
@@ -54,11 +55,13 @@ export class CourseListComponent {
       (Error) => {
         console.error('error caught in component' + Error);
       }
-      
-      );
-      return this.c_founded;
-  }*/
-  ngFindByString(n: string): Course[] {
+
+    );
+    return this.c_founded;
+  }
+
+  //Actually works
+  /*ngFindByString(n: string): Course[] {
     this.service.getBystring(n).subscribe(
       (courses) => {
         console.log(courses);
@@ -71,7 +74,9 @@ export class CourseListComponent {
       }
     );
     return this.c_founded;
-  }
+  }*/
+
+
   ngFindbyLevel(level: number): Course[] {
     this.service.getByLevel(level).subscribe(
       (courses) => {
@@ -88,23 +93,19 @@ export class CourseListComponent {
     return this.c_founded;
   }
 
-  findCourse(searchingBy: string): Course[] {
-    if (this.isNumber(searchingBy)) {
-      return this.ngFindbyLevel(+searchingBy);
+  findCourse(searchingBy: string, typeSearch: string): void {
+    if (searchingBy == "" || typeSearch === "Select an option") this.ngOnInit();
+    switch (typeSearch) {
+      case "name":
+        this.ngFindbyName(searchingBy);
+        break;
+      case "coach":
+        this.ngFindbyCoach(searchingBy);
+        break;
+      case "level":
+        this.ngFindbyLevel(+searchingBy);
+        break
     }
-    /*else {
-      this.service.getBystring(searchingBy).subscribe(
-        (courses) => {
-          console.log(courses);
-          this.c_founded = courses;
-          this.founded = this.mix_founded.length;
-        }
-      )
-
-    }*/
-
-
-    return this.ngFindByString(searchingBy);
   }
 
 }

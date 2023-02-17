@@ -28,12 +28,19 @@ export class CourseService{
     return this.http.get(this.api+"/byLevel/"+level);
   }
 
-  getBystring(param: string): Observable<any>{
+  //funciona
+  /*getBystring(param: string): Observable<any>{
     let obsCourses: Observable<any> = zip(this.getByCoach(param), this.getByName(param)).pipe(map(x=>{x[0].concat(x[1])}));
-    obsCourses = obsCourses.pipe(map((courses: Course[])=> courses.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v) === JSON.stringify(v2)))===i)));
+    obsCourses = obsCourses.pipe(
+      map((courses: Course[])=> courses.filter((v,i,a)=>a.findIndex(v2=>(JSON.stringify(v) === JSON.stringify(v2)))===i)));
    return obsCourses;
-  }
-  
+  }*/
+
+  /*getBystring(param: string): Observable<any>{
+  forkJoin(this.getByCoach(param),this.getByName(param)).subscribe(
+      
+      )
+  }*/
   saveCourse(course: Course): Observable<any>{
     return this.http.post(this.api,course);
   }
