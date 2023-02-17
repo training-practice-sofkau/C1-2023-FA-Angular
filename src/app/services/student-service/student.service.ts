@@ -15,6 +15,10 @@ export class StudentService {
     return this.http.get(this.api);
   }
 
+  getAllUnsubscribedStudents(): Observable<any> {
+    return this.http.get(this.api + '/unsubscribed');
+  }
+
   getByIdentificationNumber(idNumber: string): Observable<any> {
     return this.http.get(this.api + '/idNumber/' + idNumber);
   }
