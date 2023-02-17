@@ -1,11 +1,11 @@
-<div class="students-container">
+<div class="students-container" *ngIf="students.length > 0; else noStudentsFound">
   <app-student-card *ngFor="let student of students" [student]="student"></app-student-card>
 </div>
 <div class="students-results-details">
-  <ng-container *ngIf="total > 0; else noStudentsFound">
+  <ng-container *ngIf="students.length > 0; else noStudentsFound">
       <br/>
       <div>
-        <h4 class="result_text">Founded: {{ total }}</h4>
+        <h4 class="result_text">Founded: {{ students.length }}</h4>
       </div>
   </ng-container>
   <ng-template #noStudentsFound>

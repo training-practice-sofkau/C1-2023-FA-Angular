@@ -14,14 +14,11 @@ export class StudentPageComponent implements OnInit {
 
   students: Student[] = [];
   pageSlice: Student[] = this.students.slice(0, 6);
-  total: number = 0;
 
   ngOnInit(): void {
     this.studentService.getAll().subscribe({
       next: (students) => {
         this.students = students;
-        this.total = this.students.length
-
       },
       error: (console.log),
       complete: (console.log)
