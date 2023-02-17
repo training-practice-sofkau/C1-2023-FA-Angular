@@ -46,9 +46,7 @@ export class CourseCardComponent {
   removeStudent(courseId: number, studentId: number ){
       if(confirm("Do you really want to delete?"))
           {
-              this.service.removeStudent(courseId, studentId).subscribe();
+              this.service.removeStudent(courseId, studentId).subscribe(() => this.someEvent.emit(null));
           }
-      console.log(courseId)
-      console.log(studentId)
   }
 }
