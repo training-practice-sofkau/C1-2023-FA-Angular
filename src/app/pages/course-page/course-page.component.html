@@ -1,8 +1,7 @@
 <div *ngIf="total > 0">
   <app-course-card
     *ngFor="
-      let course of courses
-        | paginate : { itemsPerPage: 2, currentPage: page }
+      let course of courses | paginate : { itemsPerPage: 2, currentPage: page }
     "
     [course]="course"
   ></app-course-card>
