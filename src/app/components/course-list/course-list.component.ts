@@ -27,6 +27,7 @@ export class CourseListComponent implements OnInit{
     this.serviceCourse.getAll().subscribe(
       {
         next: (res) => {this.myCourses=res
+          this.myCourses.sort((a,b) => a.lastUpdated>b.lastUpdated ? 1:-1)
         this.total=this.myCourses.length
         },
         error: console.error,
