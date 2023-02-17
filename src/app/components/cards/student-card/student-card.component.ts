@@ -33,7 +33,7 @@ export class StudentCardComponent {
     })
   }
 
-  deleteArtist(param: number){
+  deleteStudent(param: number){
       if(confirm("Do you really want to delete?"))
           {
               this.service.deleteStudent(param).subscribe(() => this.someEvent.emit(null));

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
+import { Student } from 'src/app/models/student.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
 
 @Component({
@@ -18,11 +19,11 @@ export class CourseCardComponent {
     coach: '',
     level: 0,
     lastUpdated: new Date(),
-    studentList: []
+    enrolledStudents: []
   }
 
-  @Output()
-  someEvent = new EventEmitter();
+  @Output() someEvent = new EventEmitter();
+
 
   goToForm(){
       this.router.navigate(['courses/edit'],{
@@ -34,7 +35,7 @@ export class CourseCardComponent {
       })
   }
 
-  deleteArtist(param: number){
+  deleteCourse(param: number){
       if(confirm("Do you really want to delete?"))
           {
               this.service.deleteCourse(param).subscribe(() => this.someEvent.emit(null));

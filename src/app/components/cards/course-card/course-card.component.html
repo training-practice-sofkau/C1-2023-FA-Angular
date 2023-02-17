@@ -1,15 +1,18 @@
 <div class="course-card">
     <mat-card>
         <mat-card-header>
-          <mat-card-title>{{course.name}}</mat-card-title>
-          <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
-          <mat-card-subtitle>level: {{course.level}}</mat-card-subtitle>
-          <mat-card-subtitle>Last Updated: {{course.lastUpdated}}</mat-card-subtitle>
-          <mat-card-subtitle>Studet List {{course.studentList}}</mat-card-subtitle>
+            <mat-card-title>{{course.name}}</mat-card-title>
+            <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
+            <mat-card-subtitle>level: {{course.level}}</mat-card-subtitle>
+            <mat-card-subtitle>Last Updated: {{course.lastUpdated}}</mat-card-subtitle>
+            <mat-card-subtitle>Studet List: <ul *ngFor="let student of course.enrolledStudents">
+                    <li>{{student['name']}}</li>
+                </ul>
+            </mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="start">
-          <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
-          <button mat-button mat-raised-button color="accent" (click)="deleteArtist(course.id)">Delete</button>
+            <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
+            <button mat-button mat-raised-button color="accent" (click)="deleteCourse(course.id)">Delete</button>
         </mat-card-actions>
     </mat-card>
 </div>
