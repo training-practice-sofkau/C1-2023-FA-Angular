@@ -39,9 +39,9 @@ export class StudentListComponent {
         }
 
         if (this.selected === 'n_ident') {
-            this.service.getCoursesByIdNum(this.searchingBy).subscribe({
+            this.service.getCoursesByIdNum(this.searchingBy.trim()).subscribe({
                 next: (data) => {
-                    this.s_founded = data;
+                    this.s_founded = [data];
                     this.founded = this.s_founded.length;
                 },
                 error: (console.log),
