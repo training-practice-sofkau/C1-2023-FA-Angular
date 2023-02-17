@@ -46,8 +46,8 @@ export class CourseService {
         return this.http.put(this.api + "/studentList", student);
     }
 
-    deleteCourse(id: string) {
-        this.http.delete(this.api + `/${id}`);
+    deleteCourse(id: string):Observable<any>{
+        return this.http.delete(`http://localhost:8080/courses/`+ id)
     }
 
     deleteStudentFromCourse(id: string) {

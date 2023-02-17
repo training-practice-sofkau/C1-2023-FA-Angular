@@ -34,7 +34,7 @@ export class StudentService {
         return this.http.put(this.api, student);
     }
 
-    deleteStudent(id: string){
-        this.http.delete(this.api+`/${id}`)
+    deleteStudent(id: string): Observable<any>{
+        return this.http.delete(this.api+`/${id}`)
     }
 }
