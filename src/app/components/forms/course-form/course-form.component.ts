@@ -11,11 +11,14 @@ import { CourseService } from 'src/app/services/course-service/course.service';
 export class CourseFormComponent {
   courseForm: FormGroup = new FormGroup({});
 
-  constructor(private builder: FormBuilder, 
-    private service: CourseService, 
-    private route: ActivatedRoute){
-     
-    }
+  constructor(
+      private builder: FormBuilder, 
+      private service: CourseService, 
+      private route: ActivatedRoute,
+      private router: Router,
+  ){}
+
+  newPath: boolean = false;
 
   ngOnInit(): void {
     this.courseForm = this.builder.group(
@@ -27,19 +30,35 @@ export class CourseFormComponent {
     );
 
     this.route.queryParams.subscribe((info) => {
-      if(JSON.stringify(info) !== JSON.stringify({})){
-        this.courseForm.setValue({
-          name: JSON.parse(info['data']).name,
-          coach: JSON.parse(info['data']).coach,
-          level: JSON.parse(info['data']).level,
-         })
+        if(JSON.stringify(info) !== JSON.stringify({})){
+            this.courseForm.setValue({
+                name: JSON.parse(info['data']).name,
+                coach: JSON.parse(info['data']).coach,
+                level: JSON.parse(info['data']).level,
+            })
 
-      }
-        
+        }
 
-    } )
+
+    });
+
+    if(this.route.routeConfig?.path === 'new'){
+        this.newPath = true; 
+    };
 
 
   }
+
+    onSubmit(){
+        this.service.postCourse(this.courseForm.value).subscribe(() => this.router.navigate(['courses']));
+    };
+
+
+    update(){
+      this.route.queryParams
+      .subscribe(params => {
+         this.service.updateCourse(JSON.parse(params['data']).id, this.courseForm.value).subscribe(() => this.router.navigate(['students']))
+      })
+    };
 
 }

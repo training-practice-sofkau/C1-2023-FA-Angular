@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { StudentService } from 'src/app/services/student-service/student.service';
-import { StudentFormComponent } from '../../forms/student-form/student-form.component';
 
 @Component({
   selector: 'app-student-card',
@@ -35,10 +34,6 @@ export class StudentCardComponent {
   }
 
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
-    sendNotification() {
-        this.notifyParent.emit('Some value to send to the parent');
-    }
-
 
   deleteArtist(param: number){
       if(confirm("Do you really want to delete?"))

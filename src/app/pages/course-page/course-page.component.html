@@ -11,7 +11,7 @@
         </div>
     </ng-template>
     <div *ngIf="total > 0" class="course-card">
-        <app-course-card *ngFor="let i_course of l_courses | paginate : { itemsPerPage: 3,
+        <app-course-card (someEvent)="ngOnInit()" *ngFor="let i_course of l_courses | paginate : { itemsPerPage: 3,
             currentPage: page}" [course]="i_course"></app-course-card>
     </div>
 
