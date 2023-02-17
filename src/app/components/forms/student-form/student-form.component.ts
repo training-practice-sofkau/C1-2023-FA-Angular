@@ -63,22 +63,8 @@ export class StudentFormComponent implements OnInit {
       })
     }
 
-    //first mishel implementation to fill the form
-    /* this.route.queryParams.subscribe((info) => {
-      if (JSON.stringify(info) !== JSON.stringify({})) {
-        this.studentForm.setValue({
-          name: JSON.parse(info['data']).name,
-          idNum: JSON.parse(info['data']).idNum,
-          age: JSON.parse(info['data']).age,
-          mail: JSON.parse(info['data']).mail,
-        })
-      }
-    }) */
   }
- /*  onUpdateCourse(): void {
-    this.updateCourse = !this.updateCourse;
-  }
- */
+
   onSubmit(): void{
      console.log(this.student?.name)
      //Put
@@ -90,6 +76,7 @@ export class StudentFormComponent implements OnInit {
      }
      //Post
      if (!this.student){
+      delete this.studentForm.value.course;
       this.service.post(this.studentForm.value).subscribe((answer)=>{
         console.log(answer)
         alert(`Student with ID: ${answer.data.studentId} has been created!`)
