@@ -18,7 +18,6 @@ export class StudentListComponent {
             idNum: "0987654321",
             age: 55,
             mail: "sarah.vargas@hotmail.com",
-            numCourses: 0
         }];
 
         this.founded = 1;

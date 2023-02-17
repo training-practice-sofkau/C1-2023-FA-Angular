@@ -3,7 +3,12 @@
     <mat-label>Search</mat-label>
     <input matInput placeholder="Enter text" [(ngModel)]="searchingBy"/>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="fill()">Search</button>
+    <mat-radio-group aria-label="Select the type of search">
+        <mat-radio-button (click)="typeOf='name'" value="name">Name</mat-radio-button>
+        <mat-radio-button (click)="typeOf='coach'" value="coach">Coach</mat-radio-button>
+        <mat-radio-button (click)="typeOf='level'" value="level">Level</mat-radio-button>
+    </mat-radio-group>
+  <button mat-raised-button (click)="search(searchingBy,typeOf)">search</button>
 </div>
 
 <div *ngIf="founded > 0"  class="flexContainer">

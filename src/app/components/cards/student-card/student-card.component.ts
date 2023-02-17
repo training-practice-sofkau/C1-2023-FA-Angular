@@ -19,7 +19,6 @@ export class StudentCardComponent {
         idNum: '',
         age: 0,
         mail: '',
-        numCourses: 0
     };
 
     goToForm() {

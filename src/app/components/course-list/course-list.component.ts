@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Course} from "../../models/course.model";
+import {CourseService} from "../../services/course-service/course.service";
 
 @Component({
     selector: 'app-course-list',
@@ -10,18 +11,49 @@ export class CourseListComponent {
 
     c_founded: Course[] = [];
     founded: number = 0;
-    searchingBy: string = '';
 
-    fill() {
-        this.c_founded = [{
-            id: "2",
-            name: "Angular",
-            coach: "Daniel",
-            level: 2,
-            lastUpdated: new Date("December 25, 2022"),
-            studentList: []
-        }];
+    constructor(private courseService: CourseService) {
+    }
 
-        this.founded = 1;
+    @Input() searchingBy: string = '';
+    typeOf: string = '';
+
+    search(searchingBy: string, typeOf: string) {
+        this.c_founded = [];
+        this.founded = 0;
+        console.log(searchingBy);
+        console.log(typeOf);
+        if (typeOf === "name") {
+            return this.courseService.getByName(searchingBy).subscribe({
+                next: students => {
+                    this.c_founded.push(students);
+                    this.founded = 1;
+                    console.log(this.c_founded);
+                },
+                error: error => console.log(error),
+                complete: (console.log)
+            });
+        } else if (typeOf === "coach") {
+            return this.courseService.getByCoach(searchingBy).subscribe({
+                next: students => {
+                    this.c_founded = students;
+                    this.founded = 1;
+                    console.log(this.c_founded);
+                },
+                error: error => console.log(error),
+                complete: (console.log)
+            });
+        } else if (typeOf === "level") {
+            return this.courseService.getByLevel(Number(searchingBy)).subscribe({
+                next: students => {
+                    this.c_founded = students;
+                    this.founded = 1;
+                    console.log(this.c_founded);
+                },
+                error: error => console.log(error),
+                complete: (console.log)
+            });
+        }
+        return this.founded = 0;
     }
 }

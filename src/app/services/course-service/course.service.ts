@@ -19,15 +19,15 @@ export class CourseService {
     }
 
     getByName(name: string): Observable<any> {
-        return this.http.get(this.api + `byname/${name}`);
+        return this.http.get(this.api + `/byname/${name}`);
     }
 
     getByCoach(coach: string): Observable<any> {
-        return this.http.get(this.api + `bycoach/${coach}`);
+        return this.http.get(this.api + `/bycoach/${coach}`);
     }
 
     getByLevel(level: number): Observable<any> {
-        return this.http.get(this.api + `bylevel/${level}`);
+        return this.http.get(this.api + `/bylevel/${level}`);
     }
 
     saveNewCourse(course: Course): Observable<any> {

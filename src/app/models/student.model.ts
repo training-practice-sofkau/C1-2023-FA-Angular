@@ -4,5 +4,4 @@ export interface Student {
     idNum: string,
     age: number,
     mail: string,
-    numCourses: number
 }

@@ -8,6 +8,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
         declarations: [],
@@ -20,8 +22,10 @@ import {MatCardModule} from '@angular/material/card';
             MatInputModule,
             MatSidenavModule,
             MatExpansionModule,
-            MatCardModule
-        ]
+            MatCardModule,
+            MatSelectModule,
+            MatRadioModule
+        ],
     }
 )
 export class MaterialsModule {
