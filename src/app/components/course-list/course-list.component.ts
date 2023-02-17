@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Course} from 'src/app/models/course.model';
+import { Student } from 'src/app/models/student.model';
 import { CourseService } from 'src/app/services/course-service/course.service';
+import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
   selector: 'app-course-list',
@@ -14,7 +16,8 @@ export class CourseListComponent implements OnInit{
 
   total:number = 0;
 
-  constructor(private serviceCourse:CourseService) {}
+  constructor(private serviceCourse:CourseService,
+    private studentService:StudentService) {}
 
   ngOnInit(): void {
     this.getAllCourses()
@@ -47,6 +50,10 @@ export class CourseListComponent implements OnInit{
         this.getAllCourses()},
       error: console.log
     })
+  }
+
+  updateAll(trigger:boolean){
+    if(trigger) this.getAllCourses()
   }
 
 

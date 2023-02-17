@@ -2,7 +2,7 @@
     <div class="title--container"><h1>Sofka Courses</h1></div>
     <div class="info--container">
         <div class="cards--container">
-            <app-course-card *ngFor="let course of myCourses" [course]="course" (idCourse)="deleteCourse($event)" (editCourse)="updateCourse($event)"></app-course-card>
+            <app-course-card *ngFor="let course of myCourses" [course]="course" (idCourse)="deleteCourse($event)" (editCourse)="updateCourse($event)" (idStudent)="updateAll($event)"></app-course-card>
 
         </div>
         
@@ -15,7 +15,7 @@
         
         <ng-template #noStudentsFound>
           <div>
-            <h4 class="result_text">There is no students, start adding one</h4>
+            <h4 class="result_text">There is no courses, start adding one</h4>
           </div>
         </ng-template>
       </div>
