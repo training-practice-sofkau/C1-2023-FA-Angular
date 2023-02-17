@@ -1,1 +1,42 @@
-<p>course-card works!</p>
+<div [ngStyle]="{display: 'flex', flexDirection: 'column', margin: '20px'}">
+  <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{course.name}}</mat-card-title>
+        <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
+        <mat-card-subtitle>Level: {{course.level}}</mat-card-subtitle>
+        <mat-card-subtitle>last Updated: {{course.lastUpdated}}</mat-card-subtitle>
+        <mat-card-subtitle> Students:{{ course.studentListDTO.length }}
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                List of Students
+              </mat-panel-title>
+              <mat-panel-description>
+                Press to display the list
+                <mat-icon>account_circle</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let student of course.studentListDTO">
+              <mat-card [ngStyle]="{margin: '10px'}">
+                <mat-card-header>
+                  <mat-card-title>{{student.name}}</mat-card-title>
+                  <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
+                  <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
+                  <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
+                  <mat-card-subtitle>No. Courses: {{student.numCourses}}</mat-card-subtitle>
+              </mat-card-header>
+              </mat-card>
+            </div>
+          </mat-expansion-panel>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <div [ngStyle]="{display: 'grid', 'grid-template-columns': 'repeat(auto-fit, 100px)', gap: '10px', margin: '10px'}">
+          <button mat-button mat-raised-button color="primary" (click)="goToUpdateForm()">Edit</button>
+          <button mat-button mat-raised-button color="accent" (click)="ngDeleteById(course.id)">Delete</button>
+        </div>
+      </mat-card-actions>
+  </mat-card>
+</div>
+
+
