@@ -7,10 +7,10 @@
     </mat-select>
 
     <mat-form-field  style="width: 40%;">
-      <input matInput  placeholder="Search" [(ngModel)]="searchingBy"/>
+      <input matInput  placeholder="Search" [(ngModel)]="searchingBy" (keyup)="ngOnSearch()"/>
     </mat-form-field>
     
-    <button mat-raised-button color="primary" >Search</button>
+    <button mat-raised-button color="primary" (click)="ngOnSearch()">Search</button>
   </div>
 
   <div *ngIf="founded > 0">

@@ -41,4 +41,12 @@ export class StudentService {
   deleteStudent(idNum: string): Observable<any> {
     return this.httpClient.delete(`${this.url}delete/${idNum}`);
   }
+
+  getStudentByIdNum(idNum: string): Observable<any> {
+    return this.httpClient.get(`${this.url}id_num/${idNum}`);
+  }
+
+  getStudentsByName(name: string): Observable<any> {
+    return this.httpClient.get(`${this.url}name/${name}`);
+  }
 }
