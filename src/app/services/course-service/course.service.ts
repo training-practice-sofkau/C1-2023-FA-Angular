@@ -36,4 +36,17 @@ export class CourseService{
     return this.http.put(`${this.api}/${courseId}/students/remove/${studentId}`, {});
   }
 
+
+  getCoursesByname(name: string): Observable<any> {
+      return this.http.get(`${this.api}/byName/${name}`);
+  }
+
+  getCoursesByCoach(coach: string): Observable<any> {
+      return this.http.get(`${this.api}/byCoach/${coach}`);
+  }
+
+  getCoursesByLevel(level: number): Observable<any> {
+      return this.http.get(`${this.api}/byLevel/${level}`);
+  }
+
 }

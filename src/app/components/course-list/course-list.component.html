@@ -1,15 +1,32 @@
 <div class="search-course-page">
-    <div class="input-button" >
-        <input matInput autocomplete="off" type="text" placeholder="Enter text" [(ngModel)]="searchingBy"/>
-        <!-- <button mat-raised-button color="primary" >Search</button> -->
+    <mat-select [(value)]="selected" style="width: 30%;">
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="level">Level</mat-option>
+        <mat-option value="coach">Coach</mat-option>
+    </mat-select>
+
+    <mat-form-field  style="width: 40%;">
+        <input matInput  placeholder="Search" [(ngModel)]="searchingBy" (keyup)="onSearch()"/>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+
+    <div class="results-container">
+        <app-course-card *ngFor="let i_course of s_founded | paginate : { itemsPerPage: 3,
+            currentPage: page}" [course]="i_course"></app-course-card>
     </div>
 
-    <div>
-        <div  class="results-container" *ngIf="founded > 0">
-            <app-course-card *ngFor="let i_course of s_founded | filter: searchingBy | paginate : { itemsPerPage: 3,
-            currentPage: page}" [course]="i_course"></app-course-card>
+    <ng-container *ngIf="founded > 0; else noStudentsFound">
+        <div>
+            <h4 >Founded: {{ founded }}</h4>
         </div>
-    </div>
+    </ng-container>
+
+    <ng-template #noStudentsFound>
+        <div>
+            <h4 >No course(s) were found</h4>
+        </div>
+    </ng-template>
 
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>

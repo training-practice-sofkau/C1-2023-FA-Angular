@@ -34,12 +34,11 @@ export class StudentListComponent {
 
     onSearch() {
         if (this.searchingBy.trim() === ""){
-            this.s_founded = [];
-            this.founded = this.s_founded.length;
+            this.fetchData();
         }
 
         if (this.selected === 'n_ident') {
-            this.service.getCoursesByIdNum(this.searchingBy.trim()).subscribe({
+            this.service.getStudentByIdNum(this.searchingBy.trim()).subscribe({
                 next: (data) => {
                     this.s_founded = [data];
                     this.founded = this.s_founded.length;

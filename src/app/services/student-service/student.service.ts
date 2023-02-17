@@ -32,7 +32,7 @@ export class StudentService{
       return this.http.get(`${this.api}/byName/${name}`);
   }
 
-  getCoursesByIdNum(idNum: string): Observable<any> {
+  getStudentByIdNum(idNum: string): Observable<any> {
       return this.http.get(`${this.api}/byIdNum/${idNum}`);
   }
 
