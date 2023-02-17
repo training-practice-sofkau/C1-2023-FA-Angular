@@ -1,0 +1,4 @@
+<div>
+    <app-search-bar [filterBy]="dataSelector" (toSearch)="searchBy($event)"></app-search-bar>
+    <app-show-courses [myCourses]="courseSearch" (idCourse)="deleteCourse($event)" (editCourse)="updateCourse($event)"></app-show-courses>
+</div>
