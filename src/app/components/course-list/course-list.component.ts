@@ -11,5 +11,10 @@ export class CourseListComponent {
   course: CoursePageComponent = new CoursePageComponent();
   coursesFound: Course[] = this.course.l_courses;
   founded: number = this.coursesFound.length;
+  pageSlice = this.coursesFound.slice(0, 6);
   searchingBy: string = '';
+
+  updateCoursesSlice(courses: Course[]){
+    this.pageSlice = courses;
+  }
 }
