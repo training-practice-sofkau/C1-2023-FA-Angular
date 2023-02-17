@@ -14,7 +14,8 @@
         </div>
   </div>
   <div *ngIf="results.length > 0" class="results-found">
-      <app-course-card *ngFor="let course of pageSlice" [course]="course"></app-course-card>
+      <app-course-card *ngFor="let course of pageSlice" [course]="course"
+      (courseDeleted)="onDelete($event)"></app-course-card>
   </div>
   <div class="results-details">
     <ng-container *ngIf="results.length > 0; else noCoursesFound">

@@ -84,4 +84,11 @@ export class CourseListComponent implements OnInit{
   updateCoursesSlice(courses: Course[]){
     this.pageSlice = courses;
   }
+
+  onDelete(course: Course){
+    let courseIndex = this.pageSlice.indexOf(course, 0);
+    if (courseIndex > -1) {
+      this.pageSlice.splice(courseIndex, 1);
+    }
+  }
 }

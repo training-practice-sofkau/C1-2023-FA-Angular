@@ -16,19 +16,19 @@ export class CourseService{
 
   getAll(): Observable<any> {
     return this.http.get(this.api);
-  }
+  };
 
   getByName(filterParam: string, coursesList: Course[]): Observable<any> {
     return this.http.get(`${this.api}/name/${filterParam}`)
-  }
+  };
 
   getByCoach(filterParam: string, coursesList: Course[]): Observable<any> {
     return this.http.get(`${this.api}/coach/${filterParam}`)
-  }
+  };
 
   getByLevel(filterParam: string, coursesList: Course[]): Observable<any> {
     return this.http.get(`${this.api}/level/${filterParam}`)
-  }
+  };
 
   postCourse(course: Course){
     return this.http.post(this.api, course);
@@ -36,5 +36,9 @@ export class CourseService{
 
   updateCourse(course: Course, courseID: string){
     return this.http.put(`${this.api}/${courseID}`, course);
+  };
+
+  deleteCourse(courseID: string){
+    return this.http.delete(`${this.api}/${courseID}`);
   }
 }
