@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { CourseFormComponent } from './components/forms/course-form/course-form.component';
 import { StudentFormComponent } from './components/forms/student-form/student-form.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
@@ -52,9 +54,16 @@ const routes: Routes = [
         component: CourseFormComponent},
       {
         path: 'search',
-        component: CourseListComponent}
+        component: CourseListComponent},
+      {
+        path: 'edit',
+        component: CourseFormComponent},
+      {
+        path: 'add-student',
+        component: AddStudentComponent},
     ]
-  }
+  },
+  {path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({

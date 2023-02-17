@@ -1,0 +1,29 @@
+.search-student-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    .input-button{
+        input{
+            margin: 1rem;
+        }
+
+        button{
+            margin: 1rem;
+        }
+    }
+
+    .results-container{
+        margin: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .search-student-page{
+        align-items: center;
+        text-align: center;
+    }
+
+}

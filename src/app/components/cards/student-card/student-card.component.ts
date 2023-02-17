@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
-import { StudentFormComponent } from '../../forms/student-form/student-form.component';
+import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
   selector: 'app-student-card',
@@ -9,15 +9,19 @@ import { StudentFormComponent } from '../../forms/student-form/student-form.comp
   styleUrls: ['./student-card.component.scss']
 })
 export class StudentCardComponent {
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private service: StudentService) { }
+
   @Input() student: Student = {
-    id: '',
+    id: 0,
     name: '',
     idNum: '',
     age: 0,
     mail: '',
-    numCourses: 0
   }
+
+  @Output()
+ someEvent = new EventEmitter();
 
   goToForm(){
     this.router.navigate(['students/edit'],{
@@ -27,6 +31,14 @@ export class StudentCardComponent {
       }
       
     })
+  }
+
+  deleteStudent(param: number){
+      if(confirm("Do you really want to delete?"))
+          {
+              this.service.deleteStudent(param).subscribe(() => this.someEvent.emit(null));
+          }
+
   }
 
 

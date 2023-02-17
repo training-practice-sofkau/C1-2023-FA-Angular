@@ -1,14 +1,20 @@
-<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-<app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
+<div class="student-page">
+    <ng-container *ngIf="total > 0; else noStudentsFound">
+        <br/>
+        <div>
+            <h4 class="result_text">Founded: {{ total }}</h4>
+        </div>
+    </ng-container>
+    <ng-template #noStudentsFound>
+        <div>
+            <h4 class="result_text">There is no students, start adding one</h4>
+        </div>
+    </ng-template>
+    <div *ngIf="total > 0" class="student-card">
+        <app-student-card (someEvent)="ngOnInit()" *ngFor="let i_student of l_students | paginate : { itemsPerPage: 3,
+            currentPage: page}" [student]="i_student"></app-student-card>
+    </div>
+
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
 </div>
-<ng-container *ngIf="total > 0; else noStudentsFound">
-    <br/>
-    <div>
-      <h4 class="result_text">Founded: {{ total }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 class="result_text">There is no students, start adding one</h4>
-    </div>
-</ng-template>

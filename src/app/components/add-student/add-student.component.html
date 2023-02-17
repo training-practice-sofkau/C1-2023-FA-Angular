@@ -1,0 +1,9 @@
+<div class="student-page">
+    <div *ngIf="total > 0" class="student-card">
+        <app-card-enrolled (someEvent)="ngOnInit()" *ngFor="let i_student of l_students | paginate : { itemsPerPage: 6,
+            currentPage: page}" [student]="i_student"></app-card-enrolled>
+    </div>
+
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+</div>

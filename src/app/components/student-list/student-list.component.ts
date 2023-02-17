@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
+import { StudentService } from 'src/app/services/student-service/student.service';
 
 @Component({
   selector: 'app-student-list',
@@ -7,9 +8,13 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent {
-  s_founded: Student[] = [];
-  founded: number = 0;
-  searchingBy: string = '';
+
+
+    @Input() searchingBy: string = '';
+    s_founded: Student[] = [];
+    founded: number = 0;
+
+
 
 
 }

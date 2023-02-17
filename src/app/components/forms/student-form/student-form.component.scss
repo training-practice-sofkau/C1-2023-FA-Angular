@@ -1,5 +1,11 @@
 .save{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-  }
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+
+    button{
+        margin: 0.5rem;
+    }
+}
