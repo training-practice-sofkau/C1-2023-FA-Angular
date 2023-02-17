@@ -14,7 +14,7 @@ import { StudentFormComponent } from './components/forms/student-form/student-fo
 import { CourseFormComponent } from './components/forms/course-form/course-form.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
+import { notFoundComponent } from './components/welcome/404.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { StudentCardComponent } from './components/cards/student-card/student-card.component';
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
@@ -29,9 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     SidenavbarComponent,
     StudentFormComponent,
     CourseFormComponent,
+    notFoundComponent,
     StudentListComponent,
     CourseListComponent,
-    WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
     CourseCardComponent

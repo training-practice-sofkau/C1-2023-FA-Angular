@@ -4,6 +4,7 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { CourseFormComponent } from './components/forms/course-form/course-form.component';
 import { StudentFormComponent } from './components/forms/student-form/student-form.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
+import { notFoundComponent } from './components/welcome/404.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
@@ -62,6 +63,8 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '**', pathMatch: 'full',
+  component: notFoundComponent },
 ];
 
 @NgModule({
