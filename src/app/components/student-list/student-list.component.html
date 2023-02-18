@@ -1,19 +1,25 @@
 <div class="main-container">
   <div class="searching-bar">
-        <div>
-          <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-        </div>
-        <div>
-          <button mat-raised-button color="primary" >Search</button>
-        </div>
+      <div>
+        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy" (change)="ngOnSearch()"/>
+      </div>
+      <div class="search-options">
+        <label>Filter by</label>
+        <select name="filterOption" id="filterOption" [(ngModel)]="filterOption">
+          <option value="none" (click)="ngOnSearch()">None</option>
+          <option value="name">Name</option>
+          <option value="dni">DNI</option>
+        </select>
+      </div>
   </div>
-  <div *ngIf="founded > 0" class="results-found">
-      <app-student-card *ngFor="let i_student of pageSlice" [student]="i_student"></app-student-card>
+  <div *ngIf="results.length > 0" class="results-found">
+      <app-student-card *ngFor="let i_student of pageSlice" [student]="i_student"
+      (studentDeleted)="onDelete($event)"></app-student-card>
   </div>
   <div class="results-details">
-    <ng-container *ngIf="founded > 0; else noStudentsFound">
+    <ng-container *ngIf="results.length > 0; else noStudentsFound">
       <div>
-        <h4 >Founded: {{ founded }}</h4>
+        <h4 >Founded: {{ results.length }}</h4>
       </div>
     </ng-container>
     <ng-template #noStudentsFound>
@@ -23,11 +29,10 @@
       </div>
     </ng-template>
     <div>
-      <app-paginator [students]="s_found"
+      <app-paginator [students]="results"
                  (studentSliceUpdated)="updateStudentsSlice($event)">
       </app-paginator>
     </div>
   </div>
-
 </div>
 

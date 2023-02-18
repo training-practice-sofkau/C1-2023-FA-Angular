@@ -30,4 +30,11 @@ export class StudentPageComponent implements OnInit {
   updateStudentsSlice(students: Student[]){
     this.pageSlice = students;
   }
+
+  onDelete(student: Student){
+    let studentIndex = this.pageSlice.indexOf(student, 0);
+    if (studentIndex > -1) {
+      this.pageSlice.splice(studentIndex, 1);
+    }
+  }
 }

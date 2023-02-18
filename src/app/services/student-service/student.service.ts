@@ -21,6 +21,14 @@ export class StudentService{
     return this.http.get(this.api);
   }
 
+  getByName(filterParam: string): Observable<any> {
+    return this.http.get(`${this.api}/name/${filterParam}`)
+  };
+
+  getByDni(filterParam: string): Observable<any> {
+    return this.http.get(`${this.api}/${filterParam}`)
+  };
+
   postStudent(student: Student){
     return this.http.post(this.api, student);
   };
@@ -29,36 +37,7 @@ export class StudentService{
     return this.http.put(`${this.api}/${studentID}`, student);
   };
 
-  /*
-  getById(id: string): Observable<any>{
-    return this.http.get(this.api+"/"+id);
+  deleteStudent(studentID: string){
+    return this.http.delete(`${this.api}/${studentID}`);
   }
-
-  getByName(filterParam: string, artistList: IArtist[]): Observable<IArtist[]> {
-
-    let obsArtist: Observable<IArtist[]> = new Observable(observer =>{
-      observer.next(artistList.filter(artist => artist.name.startsWith(filterParam)));
-      observer.complete();
-    });
-    return obsArtist;
-  }
-
-  getByCountry (filterParam: string, artistList: IArtist[]): Observable<IArtist[]> {
-    let obsArtist: Observable<IArtist[]> = new Observable(observer => {
-      observer.next(artistList.filter(artist => artist.country.startsWith(filterParam)));
-      observer.complete();
-    });
-
-    return obsArtist;
-  }
-
-  deleteArtist(artistID: string){
-    console.log(this.api+"/"+artistID);
-    return this.http.delete(`${this.api}/${artistID}`);
-  }
-
-  updateArtist(artistID: string, artist: IArtist){
-    return this.http.put(`${this.api}/${artistID}`, artist);
-  }
-  */
 }

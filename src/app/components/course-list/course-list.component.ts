@@ -32,7 +32,6 @@ export class CourseListComponent implements OnInit{
   }
 
   ngOnSearch(){
-    console.log(this.filterOption + this.searchingBy)
     switch(this.filterOption){
       case "none": {
         this.results = this.courses;

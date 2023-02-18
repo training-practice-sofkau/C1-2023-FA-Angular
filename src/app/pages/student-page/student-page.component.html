@@ -1,5 +1,6 @@
 <div class="students-container" *ngIf="students.length > 0; else noStudentsFound">
-  <app-student-card *ngFor="let student of pageSlice" [student]="student"></app-student-card>
+  <app-student-card *ngFor="let student of pageSlice" [student]="student"
+  (studentDeleted)="onDelete($event)"></app-student-card>
 </div>
 <div class="students-results-details">
   <ng-container *ngIf="students.length > 0; else noStudentsFound">
