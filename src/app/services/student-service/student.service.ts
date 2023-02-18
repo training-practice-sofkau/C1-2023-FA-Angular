@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable} from 'rxjs';
+import { Student } from 'src/app/models/student.model';
 
 
 
@@ -19,6 +20,14 @@ export class StudentService{
   getAll(): Observable<any> {
     return this.http.get(this.api);
   }
+
+  postStudent(student: Student){
+    return this.http.post(this.api, student);
+  };
+
+  update(student: Student, studentID: string){
+    return this.http.put(`${this.api}/${studentID}`, student);
+  };
 
   /*
   getById(id: string): Observable<any>{
@@ -42,10 +51,6 @@ export class StudentService{
 
     return obsArtist;
   }
-
-  postArtist(artist: IArtist){
-    return this.http.post(this.api, artist);
-  };
 
   deleteArtist(artistID: string){
     console.log(this.api+"/"+artistID);

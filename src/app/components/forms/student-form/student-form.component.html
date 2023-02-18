@@ -11,9 +11,19 @@
     <mat-form-field appearance="fill" >
         <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="email"/>
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Course: </mat-label>
+      <mat-select [(value)]="courseSelected" formControlName="course">
+        <mat-option *ngFor="let course of courses" value="{{ course.name }}">{{ course.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="user-options">
-      <button mat-raised-button color="primary" *ngIf="!studentFromUpdate">Save</button>
-      <button mat-raised-button color="primary" *ngIf="studentFromUpdate">Update</button>
+      <button mat-raised-button color="primary" *ngIf="!studentFromUpdate"
+      (click)="OnSubmit()">
+      Save</button>
+      <button mat-raised-button color="primary" *ngIf="studentFromUpdate"
+      (click)="OnUpdate()">
+      Update</button>
       <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
     </div>
 </form>

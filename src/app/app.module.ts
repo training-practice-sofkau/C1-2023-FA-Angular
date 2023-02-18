@@ -21,6 +21,7 @@ import { StudentCardComponent } from './components/cards/student-card/student-ca
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     MaterialModule,
     FormsModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
