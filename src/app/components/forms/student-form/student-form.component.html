@@ -1,17 +1,23 @@
-<form [formGroup] = "studentForm" ngClass="save">
-    <mat-form-field appearance="fill" >
-        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification" formControlName="idNum"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="age"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-        <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
-    </mat-form-field>
-    <button mat-raised-button color="primary">Save</button>
-    <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
- 
+<div ngClass="form-container">
+<form [formGroup]="studentForm" ngClass="save">
+  <mat-form-field appearance="fill">
+    <mat-label>Name: </mat-label> <input matInput placeholder="Insert name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification"
+      formControlName="idNum" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="age" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail" />
+  </mat-form-field>
+  <!-- <mat-form-field appearance="fill" *ngIf="updateCourse">
+    <mat-label>Course ID: </mat-label> <input matInput placeholder="Insert course ID" />
+  </mat-form-field> -->
+  <button mat-raised-button color="primary" style="margin: 5px" (click)="onSubmit()">Save</button>
+<!--   <button mat-raised-button color="primary" style="margin: 5px" (click)="onUpdateCourse()">Update course</button> -->
+  <button mat-raised-button color="warn" style="margin: 5px" routerLink="/students">Go Back</button>
 </form>
+</div>

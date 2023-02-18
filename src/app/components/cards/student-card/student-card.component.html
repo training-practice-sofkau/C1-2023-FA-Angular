@@ -1,18 +1,19 @@
 <div [ngStyle]="{display: 'flex', flexDirection: 'column'}">
     <mat-card>
         <mat-card-header>
+          <img mat-card-avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaGYfwgNgkfNypf_EEM6LvkpO6mNwvY81Lzw&usqp=CAU">
           <mat-card-title>{{student.name}}</mat-card-title>
           <mat-card-subtitle>Age: {{student.age}}</mat-card-subtitle>
           <mat-card-subtitle>Identification: {{student.idNum}}</mat-card-subtitle>
           <mat-card-subtitle>Mail: {{student.mail}}</mat-card-subtitle>
-          <mat-card-subtitle>No. Courses: {{student.numCourses}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="start">
-          <button mat-button mat-raised-button color="primary" (click)="goToForm()">Edit</button>
-          <button mat-button mat-raised-button color="accent">Delete</button>
+          <button *ngIf="courseCall" mat-button mat-raised-button color="primary" style="margin: 5px" (click)="onAdd()">Register to course</button>
+          <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="goToForm()">Edit</button>
+          <button mat-button mat-raised-button color="accent" style="margin: 5px" (click)="onDelete()">Delete</button>
         </mat-card-actions>
     </mat-card>
 </div>
 
-  
+
 

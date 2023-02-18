@@ -8,6 +8,9 @@ import { MatInputModule} from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
+import { MatSelectModule} from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -20,8 +23,9 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatSidenavModule,
     MatExpansionModule,
-    MatCardModule
-
+    MatCardModule,
+    MatSelectModule,
+    MatDialogModule
   ]}
 )
 export class MaterialModule { }

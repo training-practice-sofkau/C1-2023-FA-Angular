@@ -1,1 +1,29 @@
-<p>course-card works!</p>
+<div [ngStyle]="{display: 'flex', flexDirection: 'column'}">
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar src="https://avatars.githubusercontent.com/u/70767641?v=4">
+      <mat-card-title>{{course.name}}</mat-card-title>
+      <mat-card-subtitle>Level: {{course.level}}</mat-card-subtitle>
+      <mat-card-subtitle>Coach: {{course.coach}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="showStudents">
+      Students:
+      <ul>
+        <div *ngFor="let student of course.studentList ">
+          <div ngClass="student-container">
+            <li ngClass="student-name">{{student.name}}</li>
+            <mat-icon (click)="openDialog(student)">search</mat-icon>
+            <mat-icon (click)="onUnregisterStudent(student)">clear</mat-icon>
+          </div>
+        </div>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="goToForm()">Edit</button>
+      <button mat-button mat-raised-button color="accent" style="margin: 5px" (click)="onDelete()">Delete</button>
+      <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="onShowStudents()">Show
+        students</button>
+      <button mat-button mat-raised-button color="primary" style="margin: 5px" (click)="openAllStudentsDialog()">Add students</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

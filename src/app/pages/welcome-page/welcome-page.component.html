@@ -1,1 +1,42 @@
-<p>welcome-page works!</p>
+<div ngClass="background-image">
+  <div ngClass="big-image-container">
+    <img ngClass="sofka-background"
+      src="https://ik.imagekit.io/lvh0tltbeph/SofkaU/logo-sofkau_1Fn3uH-1S.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645658493330"
+      width="700" />
+  </div>
+
+  <div ngClass="small-image-container">
+    <img ngClass="sofka-background-min" src="https://avatars.githubusercontent.com/u/70767641?v=4" width="200" />
+  </div>
+</div>
+
+<hr ngClass="horizontal-division">
+
+<div ngClass="welcome-info">
+  <div ngClass="text-container">
+    <h1>Welcome to SofkaU</h1>
+  </div>
+  <div ngClass="text-container">
+    <h3>Enjoy our courses and join the student community!</h3>
+  </div>
+
+  <div ngClass="cards-container" [ngStyle]="{display: 'flex', flexDirection: 'row'}">
+    <mat-card ngClass="card-container">
+      <mat-card-header>
+        <div ngClass="card-title">
+          <mat-card-title>Courses</mat-card-title>
+          <mat-card-subtitle>{{courses}} courses available</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+    </mat-card>
+    <mat-card ngClass="card-container">
+      <mat-card-header>
+        <div ngClass="card-title">
+          <mat-card-title>Students</mat-card-title>
+          <mat-card-subtitle>{{students}} students enrolled</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+</div>
