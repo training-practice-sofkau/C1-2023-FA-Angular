@@ -1,14 +1,22 @@
-<div *ngIf="total > 0" [ngStyle]="{display: 'flex', flexDirection: 'column'}">
-<app-student-card *ngFor="let i_student of l_students" [student]="i_student"></app-student-card>
+<div class="students-container" *ngIf="students.length > 0; else noStudentsFound">
+  <app-student-card *ngFor="let student of pageSlice" [student]="student"
+  (studentDeleted)="onDelete($event)"></app-student-card>
 </div>
-<ng-container *ngIf="total > 0; else noStudentsFound">
-    <br/>
-    <div>
-      <h4 class="result_text">Founded: {{ total }}</h4>
-    </div>
+<div class="students-results-details">
+  <ng-container *ngIf="students.length > 0; else noStudentsFound">
+      <br/>
+      <div>
+        <h4 class="result_text">Founded: {{ students.length }}</h4>
+      </div>
   </ng-container>
   <ng-template #noStudentsFound>
     <div>
       <h4 class="result_text">There is no students, start adding one</h4>
     </div>
-</ng-template>
+  </ng-template>
+  <div>
+    <app-paginator [students]="students"
+               (studentSliceUpdated)="updateStudentsSlice($event)">
+    </app-paginator>
+  </div>
+</div>

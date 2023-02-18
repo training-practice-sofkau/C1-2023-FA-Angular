@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +19,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { StudentCardComponent } from './components/cards/student-card/student-card.component';
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

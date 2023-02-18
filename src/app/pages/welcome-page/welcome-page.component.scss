@@ -1,0 +1,49 @@
+.welcome-container{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  .sofka-logo-container {
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 45%;
+    }
+  }
+}
+
+.training-leagues-container {
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  .training-league {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    .training-league-logo {
+      width: 75%;
+    }
+    .agile-training-league-logo {
+      width: 63%;
+    }
+  }
+}
+
+@media screen and (max-width: 40em){
+  .training-leagues-container{
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+
+

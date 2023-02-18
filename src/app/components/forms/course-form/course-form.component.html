@@ -1,1 +1,23 @@
-<p>course-form works!</p>
+<form [formGroup] = "courseForm" ngClass="save">
+  <mat-form-field appearance="fill" >
+      <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+      <mat-label>Coach: </mat-label> <input matInput placeholder="Insert the coach name" formControlName="coach"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+      <mat-label>Level: </mat-label> <input matInput placeholder="Insert level" formControlName="level"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+      <mat-label>Last Update (Read only): </mat-label> <input matInput [readonly]="true" formControlName="lastUpdate"/>
+  </mat-form-field>
+  <div class="user-options">
+    <button mat-raised-button color="primary" *ngIf="!courseFromUpdate"
+    (click)="OnSubmit()"
+    >Save</button>
+    <button mat-raised-button color="primary" *ngIf="courseFromUpdate"
+    (click)="onUpdate()"
+    >Update</button>
+    <button mat-raised-button color="warn" routerLink="/courses">Go Back</button>
+  </div>
+</form>

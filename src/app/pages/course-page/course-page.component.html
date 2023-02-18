@@ -1,1 +1,23 @@
-<p>course-page works!</p>
+<div class="courses-container">
+  <app-course-card *ngFor="let course of pageSlice" [course]="course"
+  (courseDeleted)="onDelete($event)"
+  ></app-course-card>
+</div>
+<div class="courses-results-details">
+  <ng-container *ngIf="courses.length > 0; else noCoursesFound">
+      <br/>
+      <div>
+        <h4 class="result_text">Founded: {{ courses.length }}</h4>
+      </div>
+  </ng-container>
+  <ng-template #noCoursesFound>
+    <div>
+      <h4 class="result_text">There is no courses, start adding one</h4>
+    </div>
+  </ng-template>
+  <div>
+    <app-paginator [courses]="courses"
+                 (courseSliceUpdated)="updateCoursesSlice($event)">
+    </app-paginator>
+  </div>
+</div>

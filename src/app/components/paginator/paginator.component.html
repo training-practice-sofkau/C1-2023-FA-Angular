@@ -1,0 +1,14 @@
+<mat-paginator *ngIf="students.length == 0"
+              [length]="courses.length"
+              [pageSize]="6"
+              [pageSizeOptions]="[3, 6]"
+              aria-label="Select page"
+              (page)="OnPageChange($event)">
+</mat-paginator>
+<mat-paginator *ngIf="courses.length == 0"
+              [length]="students.length"
+              [pageSize]="6"
+              [pageSizeOptions]="[3, 6]"
+              aria-label="Select page"
+              (page)="OnPageChange($event)">
+</mat-paginator>

@@ -1,17 +1,29 @@
 <form [formGroup] = "studentForm" ngClass="save">
     <mat-form-field appearance="fill" >
-        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
+        <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
     </mat-form-field>
     <mat-form-field appearance="fill" >
-        <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification" formControlName="idNum"/>
+        <mat-label>Identification: </mat-label> <input matInput placeholder="Insert Identification" formControlName="dni"/>
     </mat-form-field>
     <mat-form-field appearance="fill" >
         <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="age"/>
     </mat-form-field>
     <mat-form-field appearance="fill" >
-        <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
+        <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="email"/>
     </mat-form-field>
-    <button mat-raised-button color="primary">Save</button>
-    <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
- 
+    <mat-form-field>
+      <mat-label>Course: </mat-label>
+      <mat-select [(value)]="courseSelected" formControlName="course">
+        <mat-option *ngFor="let course of courses" value="{{ course.name }}">{{ course.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="user-options">
+      <button mat-raised-button color="primary" *ngIf="!studentFromUpdate"
+      (click)="OnSubmit()">
+      Save</button>
+      <button mat-raised-button color="primary" *ngIf="studentFromUpdate"
+      (click)="OnUpdate()">
+      Update</button>
+      <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
+    </div>
 </form>

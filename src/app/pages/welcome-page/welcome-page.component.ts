@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class WelcomePageComponent {
 
+  sofkaULogo = "https://ik.imagekit.io/lvh0tltbeph/SofkaU/logo-sofkau_1Fn3uH-1S.png";
+  agileLogo = "./assets/training-leagues/agile.png"
+  devLogo = "./assets/training-leagues/development.png"
+  qaLogo = "./assets/training-leagues/qa.png"
 }

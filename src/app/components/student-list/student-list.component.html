@@ -1,22 +1,38 @@
-<div [ngStyle]="{display: 'flex'}">
-  
-        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy"/>
-
-
-        <button mat-raised-button color="primary" >Search</button>
-
+<div class="main-container">
+  <div class="searching-bar">
+      <div>
+        <input matInput  placeholder="Enter text" [(ngModel)]="searchingBy" (change)="ngOnSearch()"/>
+      </div>
+      <div class="search-options">
+        <label>Filter by</label>
+        <select name="filterOption" id="filterOption" [(ngModel)]="filterOption">
+          <option value="none" (click)="ngOnSearch()">None</option>
+          <option value="name">Name</option>
+          <option value="dni">DNI</option>
+        </select>
+      </div>
+  </div>
+  <div *ngIf="results.length > 0" class="results-found">
+      <app-student-card *ngFor="let i_student of pageSlice" [student]="i_student"
+      (studentDeleted)="onDelete($event)"></app-student-card>
+  </div>
+  <div class="results-details">
+    <ng-container *ngIf="results.length > 0; else noStudentsFound">
+      <div>
+        <h4 >Founded: {{ results.length }}</h4>
+      </div>
+    </ng-container>
+    <ng-template #noStudentsFound>
+      <div>
+        <h4 >No student(s) were found
+        </h4>
+      </div>
+    </ng-template>
+    <div>
+      <app-paginator [students]="results"
+                 (studentSliceUpdated)="updateStudentsSlice($event)">
+      </app-paginator>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="founded > 0">
-    <app-student-card *ngFor="let i_student of s_founded" [student]="i_student"></app-student-card>
-</div>
-<ng-container *ngIf="founded > 0; else noStudentsFound">
-    <div>
-      <h4 >Founded: {{ founded }}</h4>
-    </div>
-  </ng-container>
-  <ng-template #noStudentsFound>
-    <div>
-      <h4 >No student(s) were found</h4>
-    </div>
-</ng-template>
