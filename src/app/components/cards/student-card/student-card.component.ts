@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
-import { StudentFormComponent } from '../../forms/student-form/student-form.component';
 
 @Component({
   selector: 'app-student-card',
@@ -9,25 +7,25 @@ import { StudentFormComponent } from '../../forms/student-form/student-form.comp
   styleUrls: ['./student-card.component.scss']
 })
 export class StudentCardComponent {
-  constructor(private router: Router) { }
-  @Input() student: Student = {
-    id: '',
-    name: '',
-    idNum: '',
-    age: 0,
-    mail: '',
-    numCourses: 0
-  }
 
-  goToForm(){
-    this.router.navigate(['students/edit'],{
-      queryParams:{
-        data: JSON.stringify(this.student)
+  @Input() student: Student | undefined = undefined
+  @Output() idStudent = new EventEmitter<string>();
+  @Output() editStudent = new EventEmitter<Student>();
 
+
+
+  sendId(id:string){
+    let op = confirm("Are you sure you want to remove this?")
+      if(op){
+        this.idStudent.emit(id);
       }
-      
-    })
+    
   }
+
+  sendStudent(myStudent:Student | undefined){
+    this.editStudent.emit(myStudent)
+  }
+
 
 
 }

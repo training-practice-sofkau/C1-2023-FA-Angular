@@ -18,6 +18,22 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { StudentCardComponent } from './components/cards/student-card/student-card.component';
 import { CourseCardComponent } from './components/cards/course-card/course-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EditCourseButtonComponent } from './components/modals/edit-course-button/edit-course-button.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditCourseFormComponent } from './components/forms/edit-course-form/edit-course-form.component';
+import { EditStudentComponent } from './components/forms/edit-student/edit-student.component';
+import { EditStudentButtonComponent } from './components/modals/edit-student-button/edit-student-button.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SearchBarComponent } from './components/search/search-bar/search-bar.component';
+import { SearchCourseComponent } from './pages/search-course/search-course.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ShowCoursesComponent } from './components/list/show-courses/show-courses.component';
+import { ShowStudentsComponent } from './components/list/show-students/show-students.component';
+import { SearchStudentComponent } from './pages/search-student/search-student.component';
+import { ShowStudentsButtonComponent } from './components/modals/show-students-button/show-students-button.component';
+import { StudentsSuscribedComponent } from './components/students-suscribed/students-suscribed.component';
+
 
 @NgModule({
   declarations: [
@@ -33,8 +49,20 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     WelcomeComponent,
     WelcomePageComponent,
     StudentCardComponent,
-    CourseCardComponent
-  ],
+    CourseCardComponent,
+    EditCourseButtonComponent,
+    EditCourseFormComponent,
+    EditStudentComponent,
+    EditStudentButtonComponent,
+    NotFoundComponent,
+    SearchBarComponent,
+    SearchCourseComponent,
+    ShowCoursesComponent,
+    ShowStudentsComponent,
+    SearchStudentComponent,
+    ShowStudentsButtonComponent,
+    StudentsSuscribedComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,6 +70,10 @@ import { CourseCardComponent } from './components/cards/course-card/course-card.
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
+    MatDialogModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

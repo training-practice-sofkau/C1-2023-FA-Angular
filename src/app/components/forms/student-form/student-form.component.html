@@ -1,4 +1,6 @@
+<div class="form--container">
 <form [formGroup] = "studentForm" ngClass="save">
+    <h2>Add new Student</h2>
     <mat-form-field appearance="fill" >
         <mat-label>Name: </mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
     </mat-form-field>
@@ -11,7 +13,8 @@
     <mat-form-field appearance="fill" >
         <mat-label>Mail: </mat-label> <input matInput placeholder="Insert mail" formControlName="mail"/>
     </mat-form-field>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary" (click)="sendStudent()">Save</button>
     <button mat-raised-button color="warn" routerLink="/students">Go Back</button>
  
 </form>
+</div>

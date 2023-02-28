@@ -1,1 +1,33 @@
-<p>course-form works!</p>
+<div class="form--container">
+    
+  <form [formGroup]="courseForm" ngClass="save">
+    <h2>Add new course</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Course name: </mat-label>
+      <input matInput placeholder="Insert name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Coach: </mat-label>
+      <input
+        matInput
+        placeholder="Insert Identification"
+        formControlName="coach"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Level: </mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Insert age"
+        formControlName="level"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendCourse()">
+      Save
+    </button>
+    <button mat-raised-button color="warn" routerLink="/students">
+      Go Back
+    </button>
+  </form>
+</div>

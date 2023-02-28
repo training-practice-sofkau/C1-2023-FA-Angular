@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="info--container">
+    <div class="cards--container">
+      <app-student-card
+        *ngFor="let i_student of pagination_students"
+        [student]="i_student"
+        (editStudent)="updateStudent($event)"
+        (idStudent)="deleteStudent($event)"
+      ></app-student-card>
+    </div>
+
+    <ng-container *ngIf="total > 0; else noStudentsFound">
+      <br />
+      <div>
+        <h4 class="result_text">Found: {{ total }}</h4>
+      </div>
+      <div class="paginator--container" *ngIf="pagination_students.length > 0">
+        <p
+          (click)="changePage('down')"
+          *ngIf="currentPage > 1"
+          class="pagination--button"
+        >
+          <<
+        </p>
+        <p (click)="paginationList()">Page {{ currentPage }}</p>
+        <p
+          (click)="changePage('up')"
+          *ngIf="l_students.length / rows > currentPage"
+          class="pagination--button"
+        >
+          >>
+        </p>
+      </div>
+
+    </ng-container>
+
+    <ng-template #noStudentsFound>
+      <div>
+        <h4 class="result_text">There is no students that match with param</h4>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

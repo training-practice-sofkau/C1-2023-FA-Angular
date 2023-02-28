@@ -1,1 +1,5 @@
-<p>course-list works!</p>
+<div class="container">
+    <div class="title--container"><h1>Sofka Courses</h1></div>
+    <app-show-courses [myCourses]="myCourses" (idCourse)="deleteCourse($event)" (editCourse)="updateCourse($event)"></app-show-courses>
+</div>
+

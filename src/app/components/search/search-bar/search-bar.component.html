@@ -1,0 +1,25 @@
+<div class="container--search">
+  <div class="c--search">
+    <h1>Search {{title}}</h1>
+    <form [formGroup]="searchForm" ngClass="save">
+    <mat-form-field class="example-full-width">
+        <mat-label>Search..</mat-label>
+        <input matInput formControlName="paramSearch"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Filter by</mat-label>
+        <mat-select matNativeControl required formControlName="myFilter">
+          <mat-option *ngFor="let ex of filterBy" [value]="ex">
+            {{ex}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" (click)="submitInfo()">Send</button>
+    </form>
+  </div>
+    
+
+</div>

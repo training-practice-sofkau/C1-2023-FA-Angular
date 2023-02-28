@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Suscribe Students Course: {{data.course.name}}</h1>
+  <div class="suscribed--student" *ngFor="let item of data.course.studentList">
+    <div >
+      <h2>{{ item.name }}</h2>
+      <h4>Identification: {{ item.idNum }}</h4>
+    </div>
+    <button
+      mat-fab
+      color="warn"
+      aria-label="Example icon button with a home icon"
+      (click)="removeStudent(item)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  
+  <ng-container *ngIf="noCourse.length > 0; else noStudentsAvailable">
+    <h1 class="available--student">Available students</h1>
+    <div class="suscribed--student" *ngFor="let item of noCourse">
+      <div >
+        <h2>{{ item.name }}</h2>
+        <h4>Identification: {{ item.idNum }}</h4>
+      </div>
+      <button
+        mat-fab
+        color="primary"
+        aria-label="Example icon button with a home icon"
+        (click)="addStudentToCourse(item)"
+      >
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+
+<ng-template #noStudentsAvailable>
+  -----------
+  <div>
+    <h4 class="result_text">There is no students to register. All students have a course now</h4>
+  </div>
+</ng-template>
+
+ 
+</div>
