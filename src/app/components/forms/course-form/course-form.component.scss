@@ -1,0 +1,16 @@
+.save {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  button {
+    margin: 4px;
+  }
+}

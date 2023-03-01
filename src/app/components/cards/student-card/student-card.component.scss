@@ -1,0 +1,36 @@
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 2%;
+  margin-left: 20%;
+  margin-right: 20%;
+
+  border-width: thick;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #3f51b5;
+
+  padding: 1%;
+
+  background-color: #dadded;
+}
+
+mat-card {
+  border-radius: 5%;
+  border-width: thick;
+  border-style: solid;
+  border-color: #8693d5;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  button {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
